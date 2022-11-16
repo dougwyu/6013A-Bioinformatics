@@ -1,0 +1,52 @@
+--- 
+title: "Introduction to Bioinformatics - 5023Y"
+author: "Philip Leftwich"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics - with one reproducible example analysing microbiome sequencing data"
+always_allow_html: true
+
+---
+
+# Introduction
+
+This is a very short introduction to some of the processes and tools we use when working in bioinformatics. 
+
+This is not meant to be anywhere near comprehensive, you will be shown a few of the fundamentals, and one walkthrough of a single bioinformatics 'pipeline'. 
+
+The *main* difference between Bioinformatics and the data analysis you have done before is the **size** of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.
+
+Handling **big data** means you need to know how to operate on a supercomputer so we will be learning a little bit of Linux, processing **big** data into **small** data and then exporting into R to make some more amazing data visuals and interpret our findings!
+
+
+
+
+
+**DON'T** worry if you don't understand everything
+
+**DO** ask lots of questions! 
+
+
+
+```{r include=FALSE}
+library(tidyverse)
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=FALSE)
+```
+
+```{r klippy, echo=FALSE, eval=TRUE, include=TRUE}
+klippy::klippy(c('r', 'bash'), position = c('top', 'right'), tooltip_message = 'copy to clipboard', tooltip_success = 'Copied!')
+```
+
+
+
