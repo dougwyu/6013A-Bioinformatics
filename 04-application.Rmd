@@ -1,7 +1,47 @@
-# Applications
+# Exercises in understanding
 
-Some _significant_ applications are demonstrated in this chapter.
 
-## Example one
+## Exercise one
 
-## Example two
+### Critical analysis of a figure
+
+Choose one figure you have made from the exercises and answer the following questions:
+
+- Why was this figure drawn? What research question does it address?
+
+- What does the figure show? Does it successfully address the research question? What conclusions can be drawn or what statistical tests might be required to answer this?
+
+- What is confusing or misleading about the figure? 
+
+- What additional scientific questions does the figure raise? 
+
+## Exercise two
+
+### Produce a figure legend
+
+Write a figure legend for any one of the plots you have generated - if you have experience with R you can try to improve the plots as well
+
+```{r, eval = F, echo = T}
+#If you have made a figure you should be able to save and then export from RStudio cloud using
+
+ggsave("Figure1.png", width = 7, height = 7)
+```
+
+Swap your figure and legend with a partner and critically assess your partner's work against these criteria
+
+1. **The title** A single sentence that summarises the major result in the figure
+
+2. **The methods** Include the methods that are *required* to understand the figure
+
+3. **The results** One or a few sentences that describe the key finding of the figure 
+
+## Exercise three
+
+### Compare your analysis against the published paper
+
+This [paper](https://www.frontiersin.org/articles/10.3389/fmicb.2015.01470/full) is where you can find a write-up of this data. Can you compare the Dada2 pipeline you have run through to the published paper?
+
+1. Write down every way in which you observe differences in the analysis steps *you* performed against the described methods in the paper. In addition are any details missing?
+
+2. Do you think the interpretation of the results in the paper is different to your generated results?
+

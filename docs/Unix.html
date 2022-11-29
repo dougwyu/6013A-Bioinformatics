@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Unix | Introduction to Bioinformatics - 5023Y</title>
   <meta name="description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics - with one reproducible example analysing microbiome sequencing data" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Unix | Introduction to Bioinformatics - 5023Y" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Philip Leftwich" />
 
 
-<meta name="date" content="2021-08-17" />
+<meta name="date" content="2022-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="ngs-sequence-analysis.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +51,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
 <link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
 <link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
@@ -126,6 +129,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -143,85 +147,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="Unix.html"><a href="Unix.html"><i class="fa fa-check"></i><b>2</b> Unix</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="2" data-path="Unix.html"><a href="Unix.html"><i class="fa fa-check"></i><b>2</b> Unix<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="Unix.html"><a href="Unix.html#what-is-unixlinux"><i class="fa fa-check"></i><b>2.1</b> What is Unix/Linux?</a>
+<li class="chapter" data-level="2.1" data-path="Unix.html"><a href="Unix.html#what-is-unixlinux"><i class="fa fa-check"></i><b>2.1</b> What is Unix/Linux?<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="Unix.html"><a href="Unix.html#some-terms"><i class="fa fa-check"></i><b>2.1.1</b> Some terms</a></li>
+<li class="chapter" data-level="2.1.1" data-path="Unix.html"><a href="Unix.html#some-terms"><i class="fa fa-check"></i><b>2.1.1</b> Some terms<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="Unix.html"><a href="Unix.html#why-learn-unix"><i class="fa fa-check"></i><b>2.2</b> Why Learn Unix?</a></li>
-<li class="chapter" data-level="2.3" data-path="Unix.html"><a href="Unix.html#getting-started"><i class="fa fa-check"></i><b>2.3</b> Getting started</a></li>
-<li class="chapter" data-level="2.4" data-path="Unix.html"><a href="Unix.html#a-few-foundational-rules"><i class="fa fa-check"></i><b>2.4</b> A few foundational rules</a></li>
-<li class="chapter" data-level="2.5" data-path="Unix.html"><a href="Unix.html#lets-get-started"><i class="fa fa-check"></i><b>2.5</b> Let’s get started</a>
+<li class="chapter" data-level="2.2" data-path="Unix.html"><a href="Unix.html#why-learn-unix"><i class="fa fa-check"></i><b>2.2</b> Why Learn Unix?<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="Unix.html"><a href="Unix.html#getting-started"><i class="fa fa-check"></i><b>2.3</b> Getting started<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="Unix.html"><a href="Unix.html#a-few-foundational-rules"><i class="fa fa-check"></i><b>2.4</b> A few foundational rules<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="Unix.html"><a href="Unix.html#lets-get-started"><i class="fa fa-check"></i><b>2.5</b> Let’s get started<span></span></a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="Unix.html"><a href="Unix.html#downloading-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading data</a></li>
-<li class="chapter" data-level="2.5.2" data-path="Unix.html"><a href="Unix.html#more-functions"><i class="fa fa-check"></i><b>2.5.2</b> More functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="Unix.html"><a href="Unix.html#downloading-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading data<span></span></a></li>
+<li class="chapter" data-level="2.5.2" data-path="Unix.html"><a href="Unix.html#more-functions"><i class="fa fa-check"></i><b>2.5.2</b> More functions<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="Unix.html"><a href="Unix.html#unix-file-structure"><i class="fa fa-check"></i><b>2.6</b> Unix File Structure</a></li>
-<li class="chapter" data-level="2.7" data-path="Unix.html"><a href="Unix.html#absolute-vs-relative-file-paths"><i class="fa fa-check"></i><b>2.7</b> Absolute vs relative file paths</a></li>
-<li class="chapter" data-level="2.8" data-path="Unix.html"><a href="Unix.html#moving-around"><i class="fa fa-check"></i><b>2.8</b> Moving around</a></li>
-<li class="chapter" data-level="2.9" data-path="Unix.html"><a href="Unix.html#summary"><i class="fa fa-check"></i><b>2.9</b> Summary</a>
+<li class="chapter" data-level="2.6" data-path="Unix.html"><a href="Unix.html#unix-file-structure"><i class="fa fa-check"></i><b>2.6</b> Unix File Structure<span></span></a></li>
+<li class="chapter" data-level="2.7" data-path="Unix.html"><a href="Unix.html#absolute-vs-relative-file-paths"><i class="fa fa-check"></i><b>2.7</b> Absolute vs relative file paths<span></span></a></li>
+<li class="chapter" data-level="2.8" data-path="Unix.html"><a href="Unix.html#moving-around"><i class="fa fa-check"></i><b>2.8</b> Moving around<span></span></a></li>
+<li class="chapter" data-level="2.9" data-path="Unix.html"><a href="Unix.html#summary"><i class="fa fa-check"></i><b>2.9</b> Summary<span></span></a>
 <ul>
-<li class="chapter" data-level="2.9.1" data-path="Unix.html"><a href="Unix.html#terms"><i class="fa fa-check"></i><b>2.9.1</b> Terms</a></li>
-<li class="chapter" data-level="2.9.2" data-path="Unix.html"><a href="Unix.html#commands"><i class="fa fa-check"></i><b>2.9.2</b> Commands</a></li>
-<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters"><i class="fa fa-check"></i><b>2.9.3</b> Special characters</a></li>
+<li class="chapter" data-level="2.9.1" data-path="Unix.html"><a href="Unix.html#terms"><i class="fa fa-check"></i><b>2.9.1</b> Terms<span></span></a></li>
+<li class="chapter" data-level="2.9.2" data-path="Unix.html"><a href="Unix.html#commands"><i class="fa fa-check"></i><b>2.9.2</b> Commands<span></span></a></li>
+<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters"><i class="fa fa-check"></i><b>2.9.3</b> Special characters<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="Unix.html"><a href="Unix.html#summary-1"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
-<li class="chapter" data-level="2.11" data-path="Unix.html"><a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills"><i class="fa fa-check"></i><b>2.11</b> Stretch yourself - optional extras to try a couple of other skills</a>
+<li class="chapter" data-level="2.10" data-path="Unix.html"><a href="Unix.html#summary-1"><i class="fa fa-check"></i><b>2.10</b> Summary<span></span></a></li>
+<li class="chapter" data-level="2.11" data-path="Unix.html"><a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills"><i class="fa fa-check"></i><b>2.11</b> Stretch yourself - optional extras to try a couple of other skills<span></span></a>
 <ul>
-<li class="chapter" data-level="2.11.1" data-path="Unix.html"><a href="Unix.html#creation"><i class="fa fa-check"></i><b>2.11.1</b> Creation</a></li>
+<li class="chapter" data-level="2.11.1" data-path="Unix.html"><a href="Unix.html#creation"><i class="fa fa-check"></i><b>2.11.1</b> Creation<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html"><i class="fa fa-check"></i><b>3</b> NGS sequence analysis</a>
+<li class="chapter" data-level="3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html"><i class="fa fa-check"></i><b>3</b> NGS sequence analysis<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#background-on-high-throughput-sequencing"><i class="fa fa-check"></i><b>3.1</b> Background on high throughput sequencing</a></li>
-<li class="chapter" data-level="3.2" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#some-terms-1"><i class="fa fa-check"></i><b>3.2</b> Some terms</a></li>
-<li class="chapter" data-level="3.3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-data"><i class="fa fa-check"></i><b>3.3</b> The data</a>
+<li class="chapter" data-level="3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#background-on-high-throughput-sequencing"><i class="fa fa-check"></i><b>3.1</b> Background on high throughput sequencing<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#some-terms-1"><i class="fa fa-check"></i><b>3.2</b> Some terms<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-data"><i class="fa fa-check"></i><b>3.3</b> The data<span></span></a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#fastq"><i class="fa fa-check"></i><b>3.3.1</b> FASTQ?</a></li>
+<li class="chapter" data-level="3.3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#fastq"><i class="fa fa-check"></i><b>3.3.1</b> FASTQ?<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-pipeline"><i class="fa fa-check"></i><b>3.4</b> The Pipeline</a></li>
-<li class="chapter" data-level="3.5" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#removing-primers"><i class="fa fa-check"></i><b>3.5</b> Removing Primers</a>
+<li class="chapter" data-level="3.4" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-pipeline"><i class="fa fa-check"></i><b>3.4</b> The Pipeline<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#removing-primers"><i class="fa fa-check"></i><b>3.5</b> Removing Primers<span></span></a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#loops"><i class="fa fa-check"></i><b>3.5.1</b> Loops</a></li>
+<li class="chapter" data-level="3.5.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#loops"><i class="fa fa-check"></i><b>3.5.1</b> Loops<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dada2"><i class="fa fa-check"></i><b>3.6</b> DADA2</a></li>
-<li class="chapter" data-level="3.7" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#quality-trimmingfiltering"><i class="fa fa-check"></i><b>3.7</b> Quality trimming/filtering</a></li>
-<li class="chapter" data-level="3.8" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dereplication"><i class="fa fa-check"></i><b>3.8</b> Dereplication</a></li>
-<li class="chapter" data-level="3.9" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#asvs"><i class="fa fa-check"></i><b>3.9</b> ASV’s</a></li>
-<li class="chapter" data-level="3.10" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#merging-reads"><i class="fa fa-check"></i><b>3.10</b> Merging reads</a></li>
-<li class="chapter" data-level="3.11" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#count-table"><i class="fa fa-check"></i><b>3.11</b> Count table</a></li>
-<li class="chapter" data-level="3.12" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#overview"><i class="fa fa-check"></i><b>3.12</b> Overview</a></li>
-<li class="chapter" data-level="3.13" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#assign-taxonomy"><i class="fa fa-check"></i><b>3.13</b> Assign taxonomy</a></li>
-<li class="chapter" data-level="3.14" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#standard-goods"><i class="fa fa-check"></i><b>3.14</b> Standard goods</a></li>
-<li class="chapter" data-level="3.15" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#functions-list"><i class="fa fa-check"></i><b>3.15</b> Functions list</a></li>
-<li class="chapter" data-level="3.16" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#summary-2"><i class="fa fa-check"></i><b>3.16</b> Summary</a></li>
+<li class="chapter" data-level="3.6" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dada2"><i class="fa fa-check"></i><b>3.6</b> DADA2<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#quality-trimmingfiltering"><i class="fa fa-check"></i><b>3.7</b> Quality trimming/filtering<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dereplication"><i class="fa fa-check"></i><b>3.8</b> Dereplication<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#asvs"><i class="fa fa-check"></i><b>3.9</b> ASV’s<span></span></a></li>
+<li class="chapter" data-level="3.10" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#merging-reads"><i class="fa fa-check"></i><b>3.10</b> Merging reads<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#count-table"><i class="fa fa-check"></i><b>3.11</b> Count table<span></span></a></li>
+<li class="chapter" data-level="3.12" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#overview"><i class="fa fa-check"></i><b>3.12</b> Overview<span></span></a></li>
+<li class="chapter" data-level="3.13" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#assign-taxonomy"><i class="fa fa-check"></i><b>3.13</b> Assign taxonomy<span></span></a></li>
+<li class="chapter" data-level="3.14" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#standard-goods"><i class="fa fa-check"></i><b>3.14</b> Standard goods<span></span></a></li>
+<li class="chapter" data-level="3.15" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#functions-list"><i class="fa fa-check"></i><b>3.15</b> Functions list<span></span></a></li>
+<li class="chapter" data-level="3.16" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#summary-2"><i class="fa fa-check"></i><b>3.16</b> Summary<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html"><i class="fa fa-check"></i><b>4</b> Introduction to Statistical Analysis of the microbiome data</a>
+<li class="chapter" data-level="4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html"><i class="fa fa-check"></i><b>4</b> Introduction to Statistical Analysis of the microbiome data<span></span></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#important-files"><i class="fa fa-check"></i><b>4.1</b> Important files</a></li>
-<li class="chapter" data-level="4.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#phyloseq"><i class="fa fa-check"></i><b>4.2</b> Phyloseq</a></li>
-<li class="chapter" data-level="4.3" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#relative-abundance-of-bacteria-by-taxonomic-class"><i class="fa fa-check"></i><b>4.3</b> Relative abundance of bacteria by taxonomic Class</a></li>
-<li class="chapter" data-level="4.4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#alpha-diversity---community-richness"><i class="fa fa-check"></i><b>4.4</b> Alpha diversity - community richness</a>
+<li class="chapter" data-level="4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#important-files"><i class="fa fa-check"></i><b>4.1</b> Important files<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#phyloseq"><i class="fa fa-check"></i><b>4.2</b> Phyloseq<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#relative-abundance-of-bacteria-by-taxonomic-class"><i class="fa fa-check"></i><b>4.3</b> Relative abundance of bacteria by taxonomic Class<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#alpha-diversity---community-richness"><i class="fa fa-check"></i><b>4.4</b> Alpha diversity - community richness<span></span></a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#analyse-and-plot"><i class="fa fa-check"></i><b>4.4.1</b> Analyse and plot</a></li>
+<li class="chapter" data-level="4.4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#analyse-and-plot"><i class="fa fa-check"></i><b>4.4.1</b> Analyse and plot<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#beta-diversity"><i class="fa fa-check"></i><b>4.5</b> Beta diversity</a>
+<li class="chapter" data-level="4.5" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#beta-diversity"><i class="fa fa-check"></i><b>4.5</b> Beta diversity<span></span></a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#heatmaps"><i class="fa fa-check"></i><b>4.5.1</b> Heatmaps</a></li>
-<li class="chapter" data-level="4.5.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#multidimensional-analysis"><i class="fa fa-check"></i><b>4.5.2</b> Multidimensional analysis</a></li>
+<li class="chapter" data-level="4.5.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#heatmaps"><i class="fa fa-check"></i><b>4.5.1</b> Heatmaps<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#multidimensional-analysis"><i class="fa fa-check"></i><b>4.5.2</b> Multidimensional analysis<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#question"><i class="fa fa-check"></i><b>4.6</b> Question</a></li>
-<li class="chapter" data-level="4.7" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#summary-3"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
+<li class="chapter" data-level="4.6" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#question"><i class="fa fa-check"></i><b>4.6</b> Question<span></span></a></li>
+<li class="chapter" data-level="4.7" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#summary-3"><i class="fa fa-check"></i><b>4.7</b> Summary<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<li class="chapter" data-level="5" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html"><i class="fa fa-check"></i><b>5</b> Exercises in understanding<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="5.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-one"><i class="fa fa-check"></i><b>5.1</b> Exercise one<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#critical-analysis-of-a-figure"><i class="fa fa-check"></i><b>5.1.1</b> Critical analysis of a figure<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="5.2" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-two"><i class="fa fa-check"></i><b>5.2</b> Exercise two<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#produce-a-figure-legend"><i class="fa fa-check"></i><b>5.2.1</b> Produce a figure legend<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-three"><i class="fa fa-check"></i><b>5.3</b> Exercise three<span></span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#compare-your-analysis-against-the-published-paper"><i class="fa fa-check"></i><b>5.3.1</b> Compare your analysis against the published paper<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -242,20 +255,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Unix" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Unix</h1>
+<div id="Unix" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Unix<a href="Unix.html#Unix" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <script>
   addClassKlippyTo("pre.r, pre.bash");
   addKlippy('right', 'top', 'auto', '1', 'copy to clipboard', 'Copied!');
 </script>
 <p>Unix is very likely the most fundamental skillset we can develop for bioinformatics (and much more than bioinformatics). Many of the most common and powerful bioinformatics approaches happen in this text-based environment, and having a solid foundation here can make everything we’re trying to learn and do much easier. This is a short introductory tutorial to help us get from being completely new to Unix up to being friendly with it 🙂</p>
-<div id="what-is-unixlinux" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> What is Unix/Linux?</h2>
+<div id="what-is-unixlinux" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> What is Unix/Linux?<a href="Unix.html#what-is-unixlinux" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language <code>C</code>.</p>
 <p>Unix is proprietary software, whereas Linux is <em>basically</em> free and open-source Unix.</p>
 <p>The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of “unix-Like” systems.</p>
-<div id="some-terms" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Some terms</h3>
+<div id="some-terms" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Some terms<a href="Unix.html#some-terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here are some terms worth knowing, don’t worry about memorising them, it can just be useful to have these to refer to in the future.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -333,8 +346,8 @@ a way to set options for a function, a specific type of argument usually precede
 </blockquote>
 </div>
 </div>
-<div id="why-learn-unix" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Why Learn Unix?</h2>
+<div id="why-learn-unix" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Why Learn Unix?<a href="Unix.html#why-learn-unix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Most sequencing data files are large, and require a lot of RAM to process. As a result most of the work Bioinformaticians do is not hosted on their own computers, instead they “remote-connect” to high performance supercomputers or cluster computers. Almost all of these high performance computers use “Unix-like” operatings systems, the most common of which is Linux.</p>
 <p>As stated above Linux is free (so no expensive licenses), open-source so lots of developers, its also well known for being stable, secure, reliable and efficient.</p>
 <p>You already have some experience with using a Linux OS - every time you log into RStudio Cloud you are connecting to a supercomputer that runs on Linux. Normally we do not interact directly with the OS, instead we use R and RStudio directly.</p>
@@ -345,14 +358,14 @@ a way to set options for a function, a specific type of argument usually precede
 <p>This series of practicals is designed for you to have a first introduction to Bioinformatics, it’s about exposure, not memorising or mastering anything. Don’t worry about the details!</p>
 </blockquote>
 </div>
-<div id="getting-started" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Getting started</h2>
+<div id="getting-started" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Getting started<a href="Unix.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before we get started we need a terminal to work in.</p>
 <ul>
 <li><p>Open the Bioinformatics RStudio Cloud Project in the 5023Y workspace</p></li>
 <li><p>Click on the <code>Terminal</code> tab next to <code>Console</code> in the bottom-left pane of the RStudio GUI, this opens a command-line <em>Shell</em></p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="images/terminal.png" alt="Here is an example of the Terminal tab, right next to the R console" width="80%" />
 <p class="caption">
 Figure 2.1: Here is an example of the Terminal tab, right next to the R console
@@ -364,16 +377,16 @@ Figure 2.1: Here is an example of the Terminal tab, right next to the R console
 <li><p>If you need to, you can exit the Terminal and start a new session easily with options in RStudio</p></li>
 </ul>
 </div>
-<div id="a-few-foundational-rules" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> A few foundational rules</h2>
+<div id="a-few-foundational-rules" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> A few foundational rules<a href="Unix.html#a-few-foundational-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>Just like in R spaces are special, spaces break things apart, as a rule it is therefore better to have functions and file names with dashes (-) or underscores (_) - e.g. “draft_v3.txt” is preferred to “draft v3.txt.”</p></li>
 <li><p>The general syntax on the command line is: <code>command argument</code>. Again this is very similar to R except we don’t use brackets e.g. in R we are used to <code>command(argument)</code></p></li>
 <li><p>Arguments can be <strong>optional</strong> e.g. if their is a default argument you may not have to write anything. Some functions <em>require</em> that arguments are specified. Again this is just like R.</p></li>
 </ul>
 </div>
-<div id="lets-get-started" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Let’s get started</h2>
+<div id="lets-get-started" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Let’s get started<a href="Unix.html#lets-get-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will perform a very simple function and get a flavour of the similarities and differences to working in <code>R</code>.</p>
 <p><code>date</code> is a command that prints out the date and time. Copy and paste this command into your terminal</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="Unix.html#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">date</span></span></code></pre></div>
@@ -383,8 +396,8 @@ Figure 2.1: Here is an example of the Terminal tab, right next to the R console
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="Unix.html#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="va">TZ=</span>Europe/London <span class="fu">date</span></span></code></pre></div>
 <p>Or we can ask the computer what the date will be next Tuesday…</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="Unix.html#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">date</span> <span class="at">--date</span><span class="op">=</span><span class="st">&quot;next tue&quot;</span></span></code></pre></div>
-<div id="downloading-data" class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Downloading data</h3>
+<div id="downloading-data" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Downloading data<a href="Unix.html#downloading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it:</p>
 <ul>
 <li><p>curl is a command line tool for transferring data to and from the server here we will use this to download data from an online repository.</p></li>
@@ -400,8 +413,8 @@ Check each command line has run, in the example above you might find that the fi
 </p>
 </div>
 </div>
-<div id="more-functions" class="section level3" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> More functions</h3>
+<div id="more-functions" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> More functions<a href="Unix.html#more-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Unlike date, most commands require arguments and won’t work without them. head is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="Unix.html#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span> example.txt</span></code></pre></div>
 <p>Here “example.txt” is the required argument, and in this case it is also what’s known as a positional argument. Whether things need to be provided as positional arguments or not depends on how the command or program we are using was written.</p>
@@ -423,8 +436,8 @@ Check each command line has run, in the example above you might find that the fi
 <p>Remember just like with R, one of your best friends is Google! As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!</p>
 </div>
 </div>
-<div id="unix-file-structure" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Unix File Structure</h2>
+<div id="unix-file-structure" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Unix File Structure<a href="Unix.html#unix-file-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are two special locations in all Unix-based systems: the “root” location and the current user’s “home” location. “Root” is where the address system of the computer starts; “home” is usally where the current user’s location starts.</p>
 <p>Just to be awkward RStudio Cloud actually has us working in a different location “Cloud,” which is underneath Root but separate to home which would be in the “Users” folder.</p>
 <p><img src="images/file_system_structure.png" width="80%" style="display: block; margin: auto;" /></p>
@@ -437,8 +450,8 @@ Check each command line has run, in the example above you might find that the fi
 <p>Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (nice-click and point interface), all commands have to be submitted through the terminal. So you would have to get used to navigating directories with typed commands, and it’s useful to know what the standard hierarchy is.</p>
 </blockquote>
 </div>
-<div id="absolute-vs-relative-file-paths" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Absolute vs relative file paths</h2>
+<div id="absolute-vs-relative-file-paths" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Absolute vs relative file paths<a href="Unix.html#absolute-vs-relative-file-paths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You should be used to these concepts from your work with R projects.</p>
 <p>There are two ways to specify the path (address) of the file we want to do something to:</p>
 <ul>
@@ -460,8 +473,8 @@ Check each command line has run, in the example above you might find that the fi
 <p>We can see the file we were looking for is located in the subdirectory called “experiment.” Here is how we can run head on “notes.txt” by specifying an accurate relative path to that file:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="Unix.html#cb16-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span> experiment/notes.txt</span></code></pre></div>
 </div>
-<div id="moving-around" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Moving around</h2>
+<div id="moving-around" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Moving around<a href="Unix.html#moving-around" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also move into the directory containing the file we want to work with by using the <code>cd</code> command (<strong>c</strong>hange <strong>d</strong>irectory). This command takes a positional argument that is the path (address) of the directory we want to change into. This can be a relative path or an absolute path. Here we’ll use the relative path of the subdirectory, “experiment,” to change into it</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="Unix.html#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> experiment/</span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="Unix.html#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="bu">pwd</span></span></code></pre></div>
@@ -476,11 +489,11 @@ Check each command line has run, in the example above you might find that the fi
 <p>One way to speed things up is to start using <strong>tab</strong> to perform <strong>tab-completion</strong> often this will auto-complete file names! Press tab twice quickly and it will print all possible combinations.</p>
 </blockquote>
 </div>
-<div id="summary" class="section level2" number="2.9">
-<h2><span class="header-section-number">2.9</span> Summary</h2>
+<div id="summary" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Summary<a href="Unix.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While maybe not all that exciting, these things really are the foundation needed to start utilizing the command line – which then gives us the capability to use lots of tools that only work at a command line, manipulate large files rapidly, access and work with remote computers, and more! These are the fundamental tools that every scientist needs to work with <strong>big data</strong>.</p>
-<div id="terms" class="section level3" number="2.9.1">
-<h3><span class="header-section-number">2.9.1</span> Terms</h3>
+<div id="terms" class="section level3 hasAnchor" number="2.9.1">
+<h3><span class="header-section-number">2.9.1</span> Terms<a href="Unix.html#terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -544,8 +557,8 @@ our best friend
 </tbody>
 </table>
 </div>
-<div id="commands" class="section level3" number="2.9.2">
-<h3><span class="header-section-number">2.9.2</span> Commands</h3>
+<div id="commands" class="section level3 hasAnchor" number="2.9.2">
+<h3><span class="header-section-number">2.9.2</span> Commands<a href="Unix.html#commands" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -601,8 +614,8 @@ change directories
 </tbody>
 </table>
 </div>
-<div id="special-characters" class="section level3" number="2.9.3">
-<h3><span class="header-section-number">2.9.3</span> Special characters</h3>
+<div id="special-characters" class="section level3 hasAnchor" number="2.9.3">
+<h3><span class="header-section-number">2.9.3</span> Special characters<a href="Unix.html#special-characters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -651,16 +664,16 @@ specifies a directory one level “above” the current working directory
 </table>
 </div>
 </div>
-<div id="summary-1" class="section level2" number="2.10">
-<h2><span class="header-section-number">2.10</span> Summary</h2>
+<div id="summary-1" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Summary<a href="Unix.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You won’t get used to operating in bash, or moving around directories using just the command line in a single session. So if you think you are interested in developing your bioinformatic skills, spend some time practising.</p>
 <p>Here is a link to a couple of extended tutorials you can bookmark if you want to explore this further:</p>
 <p><a href="https://datacarpentry.org/shell-genomics/01-introduction/index.html" class="uri">https://datacarpentry.org/shell-genomics/01-introduction/index.html</a></p>
 </div>
-<div id="stretch-yourself---optional-extras-to-try-a-couple-of-other-skills" class="section level2" number="2.11">
-<h2><span class="header-section-number">2.11</span> Stretch yourself - optional extras to try a couple of other skills</h2>
-<div id="creation" class="section level3" number="2.11.1">
-<h3><span class="header-section-number">2.11.1</span> Creation</h3>
+<div id="stretch-yourself---optional-extras-to-try-a-couple-of-other-skills" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Stretch yourself - optional extras to try a couple of other skills<a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="creation" class="section level3 hasAnchor" number="2.11.1">
+<h3><span class="header-section-number">2.11.1</span> Creation<a href="Unix.html#creation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I want to create a new directory to store some code files I’m going to write later, so I’ll use <code>mkdir</code> to create a new directory called Code:</p>
 <details>
 <summary>
@@ -706,7 +719,6 @@ specifies a directory one level “above” the current working directory
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -725,6 +737,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -745,6 +758,10 @@ gitbook.start({
 "text": null
 },
 "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

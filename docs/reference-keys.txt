@@ -1,7 +1,6 @@
 fig:unnamed-chunk-4
 fig:nice-fig
 fig:unnamed-chunk-40
-fig:miniUI
 introduction
 Unix
 what-is-unixlinux
@@ -52,7 +51,10 @@ heatmaps
 multidimensional-analysis
 question
 summary-3
-applications
-example-one
-example-two
-final-words
+exercises-in-understanding
+exercise-one
+critical-analysis-of-a-figure
+exercise-two
+produce-a-figure-legend
+exercise-three
+compare-your-analysis-against-the-published-paper

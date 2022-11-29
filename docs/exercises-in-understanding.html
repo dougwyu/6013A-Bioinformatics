@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction to Bioinformatics - 5023Y</title>
+  <title>Chapter 5 Exercises in understanding | Introduction to Bioinformatics - 5023Y</title>
   <meta name="description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics - with one reproducible example analysing microbiome sequencing data" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction to Bioinformatics - 5023Y" />
+  <meta property="og:title" content="Chapter 5 Exercises in understanding | Introduction to Bioinformatics - 5023Y" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to Bioinformatics - 5023Y" />
+  <meta name="twitter:title" content="Chapter 5 Exercises in understanding | Introduction to Bioinformatics - 5023Y" />
   
   <meta name="twitter:description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics - with one reproducible example analysing microbiome sequencing data" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="Unix.html"/>
+<link rel="prev" href="introduction-to-statistical-analysis-of-the-microbiome-data.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -255,32 +255,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Introduction to Bioinformatics - 5023Y</h1>
-<p class="author"><em>Philip Leftwich</em></p>
-<p class="date"><em>2022-11-29</em></p>
+<div id="exercises-in-understanding" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Exercises in understanding<a href="exercises-in-understanding.html#exercises-in-understanding" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="exercise-one" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Exercise one<a href="exercises-in-understanding.html#exercise-one" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="critical-analysis-of-a-figure" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Critical analysis of a figure<a href="exercises-in-understanding.html#critical-analysis-of-a-figure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Choose one figure you have made from the exercises and answer the following questions:</p>
+<ul>
+<li><p>Why was this figure drawn? What research question does it address?</p></li>
+<li><p>What does the figure show? Does it successfully address the research question? What conclusions can be drawn or what statistical tests might be required to answer this?</p></li>
+<li><p>What is confusing or misleading about the figure?</p></li>
+<li><p>What additional scientific questions does the figure raise?</p></li>
+</ul>
 </div>
-<div id="introduction" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a very short introduction to some of the processes and tools we use when working in bioinformatics.</p>
-<p>This is not meant to be anywhere near comprehensive, you will be shown a few of the fundamentals, and one walkthrough of a single bioinformatics ‘pipeline.’</p>
-<p>The <em>main</em> difference between Bioinformatics and the data analysis you have done before is the <strong>size</strong> of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.</p>
-<p>Handling <strong>big data</strong> means you need to know how to operate on a supercomputer so we will be learning a little bit of Linux, processing <strong>big</strong> data into <strong>small</strong> data and then exporting into R to make some more amazing data visuals and interpret our findings!</p>
-<p><strong>DON’T</strong> worry if you don’t understand everything</p>
-<p><strong>DO</strong> ask lots of questions!</p>
-<script>
-  addClassKlippyTo("pre.r, pre.bash");
-  addKlippy('right', 'top', 'auto', '1', 'copy to clipboard', 'Copied!');
-</script>
+</div>
+<div id="exercise-two" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Exercise two<a href="exercises-in-understanding.html#exercise-two" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="produce-a-figure-legend" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Produce a figure legend<a href="exercises-in-understanding.html#produce-a-figure-legend" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Write a figure legend for any one of the plots you have generated - if you have experience with R you can try to improve the plots as well</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="exercises-in-understanding.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#If you have made a figure you should be able to save and then export from RStudio cloud using</span></span>
+<span id="cb62-2"><a href="exercises-in-understanding.html#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="exercises-in-understanding.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;Figure1.png&quot;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">7</span>)</span></code></pre></div>
+<p>Swap your figure and legend with a partner and critically assess your partner’s work against these criteria</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>The title</strong> A single sentence that summarises the major result in the figure</p></li>
+<li><p><strong>The methods</strong> Include the methods that are <em>required</em> to understand the figure</p></li>
+<li><p><strong>The results</strong> One or a few sentences that describe the key finding of the figure</p></li>
+</ol>
+</div>
+</div>
+<div id="exercise-three" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Exercise three<a href="exercises-in-understanding.html#exercise-three" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="compare-your-analysis-against-the-published-paper" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Compare your analysis against the published paper<a href="exercises-in-understanding.html#compare-your-analysis-against-the-published-paper" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This <a href="https://www.frontiersin.org/articles/10.3389/fmicb.2015.01470/full">paper</a> is where you can find a write-up of this data. Can you compare the Dada2 pipeline you have run through to the published paper?</p>
+<ol style="list-style-type: decimal">
+<li><p>Write down every way in which you observe differences in the analysis steps <em>you</em> performed against the described methods in the paper. In addition are any details missing?</p></li>
+<li><p>Do you think the interpretation of the results in the paper is different to your generated results?</p></li>
+</ol>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="Unix.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -311,7 +336,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-application.Rmd",
 "text": "Edit"
 },
 "history": {

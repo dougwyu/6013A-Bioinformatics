@@ -123,6 +123,26 @@ taxonomy %>%
   labs(x="Bacterial class", y="Relative Abundance")
 ```
 
+
+<div id="box">
+<details><summary>**Need code?**
+**Click here**</summary>
+
+```{r, echo=TRUE, eval=FALSE}
+taxonomy %>% 
+  mutate(class=fct_reorder(class, Abundance)) %>% 
+  ggplot(aes(x=class, y=Abundance))+
+  geom_boxplot()+geom_jitter(aes(color=class), width=0.2)+
+  facet_wrap(.~char)+
+  theme_classic()+
+  theme(axis.text.x=element_text(angle=45, hjust=1), legend.position="none")+
+  labs(x="Bacterial class", y="Relative Abundance")
+```
+
+</details>
+</div>
+
+
 Think about what you can infer from these plots?
 
 ## Alpha diversity - community richness

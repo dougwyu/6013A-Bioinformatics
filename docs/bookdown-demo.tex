@@ -191,7 +191,7 @@
 
 \title{Introduction to Bioinformatics - 5023Y}
 \author{Philip Leftwich}
-\date{2021-08-17}
+\date{2022-11-29}
 
 \begin{document}
 \maketitle
@@ -1392,6 +1392,23 @@ Try and produce something similar to the plot below
 
 \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-68-1.pdf}
 
+\hypertarget{box}{}
+\textbf{Need code?}
+\textbf{Click here}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{taxonomy }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{class=}\FunctionTok{fct\_reorder}\NormalTok{(class, Abundance)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{class, }\AttributeTok{y=}\NormalTok{Abundance))}\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}\SpecialCharTok{+}\FunctionTok{geom\_jitter}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color=}\NormalTok{class), }\AttributeTok{width=}\FloatTok{0.2}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(.}\SpecialCharTok{\textasciitilde{}}\NormalTok{char)}\SpecialCharTok{+}
+  \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x=}\FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle=}\DecValTok{45}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{), }\AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{"Bacterial class"}\NormalTok{, }\AttributeTok{y=}\StringTok{"Relative Abundance"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 Think about what you can infer from these plots?
 
 \hypertarget{alpha-diversity---community-richness}{%
@@ -1443,7 +1460,7 @@ NA & rock & altered & chocolate4 & R12 & 524 & 525.8947 & 1.9684441 & 525.94449 
 NA & rock & carbonate & darkkhaki & R7 & 435 & 436.7838 & 1.7397113 & 438.10995 & 10.011218 & 5.557851 & 0.9939838 & 166.21652 & 110.12229 \\ 
 13.5 & rock & glassy & black & R8 & 424 & 428.1379 & 3.0460370 & 428.53605 & 10.245312 & 5.295582 & 0.9910943 & 112.28782 & 91.16232 \\ 
 13.7 & rock & glassy & black & R9 & 296 & 300.5652 & 3.3753169 & 300.44067 & 8.397187 & 4.348445 & 0.9517400 & 20.72112 & 63.39469 \\ 
-\bottomrule
+ \bottomrule
 \end{longtable}
 
 \hypertarget{analyse-and-plot}{%
@@ -1479,7 +1496,7 @@ We will make a simple heatmap here, but a common addition might be a dendrogram 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 \hypertarget{multidimensional-analysis}{%
 \subsection{Multidimensional analysis}\label{multidimensional-analysis}}
@@ -1572,7 +1589,7 @@ We can use the function plot.ordination to use our NMDS scaling to position our 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-75-1.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-76-1.pdf}
 
 And we can add customisations to improve the plot
 
@@ -1588,7 +1605,7 @@ And we can add customisations to improve the plot
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-76-1.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-77-1.pdf}
 
 \hypertarget{question}{%
 \section{Question}\label{question}}
@@ -1621,42 +1638,71 @@ And remember at the heart of everything is Data! It doesn't matter what you are 
 
 Thank you!
 
-\hypertarget{applications}{%
-\chapter{Applications}\label{applications}}
+\hypertarget{exercises-in-understanding}{%
+\chapter{Exercises in understanding}\label{exercises-in-understanding}}
 
-Some \emph{significant} applications are demonstrated in this chapter.
+\hypertarget{exercise-one}{%
+\section{Exercise one}\label{exercise-one}}
 
-\hypertarget{example-one}{%
-\section{Example one}\label{example-one}}
+\hypertarget{critical-analysis-of-a-figure}{%
+\subsection{Critical analysis of a figure}\label{critical-analysis-of-a-figure}}
 
-\hypertarget{example-two}{%
-\section{Example two}\label{example-two}}
+Choose one figure you have made from the exercises and answer the following questions:
 
-\hypertarget{final-words}{%
-\chapter{Final Words}\label{final-words}}
+\begin{itemize}
+\item
+  Why was this figure drawn? What research question does it address?
+\item
+  What does the figure show? Does it successfully address the research question? What conclusions can be drawn or what statistical tests might be required to answer this?
+\item
+  What is confusing or misleading about the figure?
+\item
+  What additional scientific questions does the figure raise?
+\end{itemize}
+
+\hypertarget{exercise-two}{%
+\section{Exercise two}\label{exercise-two}}
+
+\hypertarget{produce-a-figure-legend}{%
+\subsection{Produce a figure legend}\label{produce-a-figure-legend}}
+
+Write a figure legend for any one of the plots you have generated - if you have experience with R you can try to improve the plots as well
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_app}\NormalTok{(}\StringTok{\textquotesingle{}https://yihui.shinyapps.io/miniUI/\textquotesingle{}}\NormalTok{, }\AttributeTok{height =} \StringTok{\textquotesingle{}600px\textquotesingle{}}\NormalTok{)}
+\CommentTok{\#If you have made a figure you should be able to save and then export from RStudio cloud using}
+
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"Figure1.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{7}\NormalTok{, }\AttributeTok{height =} \DecValTok{7}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}
+Swap your figure and legend with a partner and critically assess your partner's work against these criteria
 
-{\centering \href{https://yihui.shinyapps.io/miniUI/}{\includegraphics{bookdown-demo_files/figure-latex/miniUI-1} }
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{The title} A single sentence that summarises the major result in the figure
+\item
+  \textbf{The methods} Include the methods that are \emph{required} to understand the figure
+\item
+  \textbf{The results} One or a few sentences that describe the key finding of the figure
+\end{enumerate}
 
-}
+\hypertarget{exercise-three}{%
+\section{Exercise three}\label{exercise-three}}
 
-\caption{A Shiny app created via the miniUI package; you can see a live version at https://yihui.shinyapps.io/miniUI/.}\label{fig:miniUI}
-\end{figure}
+\hypertarget{compare-your-analysis-against-the-published-paper}{%
+\subsection{Compare your analysis against the published paper}\label{compare-your-analysis-against-the-published-paper}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_app}\NormalTok{(}\StringTok{\textquotesingle{}https://biouea.shinyapps.io/covidhm\_shiny/?\_ga=2.167137790.1196997618.1629188729{-}590961367.1629188729\%27\textquotesingle{}}\NormalTok{, }\AttributeTok{height =} \StringTok{\textquotesingle{}600px\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+This \href{https://www.frontiersin.org/articles/10.3389/fmicb.2015.01470/full}{paper} is where you can find a write-up of this data. Can you compare the Dada2 pipeline you have run through to the published paper?
 
-\begin{center}\href{https://biouea.shinyapps.io/covidhm_shiny/?_ga=2.167137790.1196997618.1629188729-590961367.1629188729%27}{\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-77-1} }\end{center}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Write down every way in which you observe differences in the analysis steps \emph{you} performed against the described methods in the paper. In addition are any details missing?
+\item
+  Do you think the interpretation of the results in the paper is different to your generated results?
+\end{enumerate}
 
   \bibliography{book.bib,packages.bib}
 

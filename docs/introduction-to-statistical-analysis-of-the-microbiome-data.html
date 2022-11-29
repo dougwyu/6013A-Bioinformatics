@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Introduction to Statistical Analysis of the microbiome data | Introduction to Bioinformatics - 5023Y</title>
   <meta name="description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics - with one reproducible example analysing microbiome sequencing data" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Introduction to Statistical Analysis of the microbiome data | Introduction to Bioinformatics - 5023Y" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Philip Leftwich" />
 
 
-<meta name="date" content="2021-08-17" />
+<meta name="date" content="2022-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,9 +32,10 @@
   
   
 <link rel="prev" href="ngs-sequence-analysis.html"/>
-<link rel="next" href="applications.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="exercises-in-understanding.html"/>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +51,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
 <link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
 <link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
@@ -126,6 +129,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -143,85 +147,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="Unix.html"><a href="Unix.html"><i class="fa fa-check"></i><b>2</b> Unix</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="2" data-path="Unix.html"><a href="Unix.html"><i class="fa fa-check"></i><b>2</b> Unix<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="Unix.html"><a href="Unix.html#what-is-unixlinux"><i class="fa fa-check"></i><b>2.1</b> What is Unix/Linux?</a>
+<li class="chapter" data-level="2.1" data-path="Unix.html"><a href="Unix.html#what-is-unixlinux"><i class="fa fa-check"></i><b>2.1</b> What is Unix/Linux?<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="Unix.html"><a href="Unix.html#some-terms"><i class="fa fa-check"></i><b>2.1.1</b> Some terms</a></li>
+<li class="chapter" data-level="2.1.1" data-path="Unix.html"><a href="Unix.html#some-terms"><i class="fa fa-check"></i><b>2.1.1</b> Some terms<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="Unix.html"><a href="Unix.html#why-learn-unix"><i class="fa fa-check"></i><b>2.2</b> Why Learn Unix?</a></li>
-<li class="chapter" data-level="2.3" data-path="Unix.html"><a href="Unix.html#getting-started"><i class="fa fa-check"></i><b>2.3</b> Getting started</a></li>
-<li class="chapter" data-level="2.4" data-path="Unix.html"><a href="Unix.html#a-few-foundational-rules"><i class="fa fa-check"></i><b>2.4</b> A few foundational rules</a></li>
-<li class="chapter" data-level="2.5" data-path="Unix.html"><a href="Unix.html#lets-get-started"><i class="fa fa-check"></i><b>2.5</b> Let’s get started</a>
+<li class="chapter" data-level="2.2" data-path="Unix.html"><a href="Unix.html#why-learn-unix"><i class="fa fa-check"></i><b>2.2</b> Why Learn Unix?<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="Unix.html"><a href="Unix.html#getting-started"><i class="fa fa-check"></i><b>2.3</b> Getting started<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="Unix.html"><a href="Unix.html#a-few-foundational-rules"><i class="fa fa-check"></i><b>2.4</b> A few foundational rules<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="Unix.html"><a href="Unix.html#lets-get-started"><i class="fa fa-check"></i><b>2.5</b> Let’s get started<span></span></a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="Unix.html"><a href="Unix.html#downloading-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading data</a></li>
-<li class="chapter" data-level="2.5.2" data-path="Unix.html"><a href="Unix.html#more-functions"><i class="fa fa-check"></i><b>2.5.2</b> More functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="Unix.html"><a href="Unix.html#downloading-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading data<span></span></a></li>
+<li class="chapter" data-level="2.5.2" data-path="Unix.html"><a href="Unix.html#more-functions"><i class="fa fa-check"></i><b>2.5.2</b> More functions<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="Unix.html"><a href="Unix.html#unix-file-structure"><i class="fa fa-check"></i><b>2.6</b> Unix File Structure</a></li>
-<li class="chapter" data-level="2.7" data-path="Unix.html"><a href="Unix.html#absolute-vs-relative-file-paths"><i class="fa fa-check"></i><b>2.7</b> Absolute vs relative file paths</a></li>
-<li class="chapter" data-level="2.8" data-path="Unix.html"><a href="Unix.html#moving-around"><i class="fa fa-check"></i><b>2.8</b> Moving around</a></li>
-<li class="chapter" data-level="2.9" data-path="Unix.html"><a href="Unix.html#summary"><i class="fa fa-check"></i><b>2.9</b> Summary</a>
+<li class="chapter" data-level="2.6" data-path="Unix.html"><a href="Unix.html#unix-file-structure"><i class="fa fa-check"></i><b>2.6</b> Unix File Structure<span></span></a></li>
+<li class="chapter" data-level="2.7" data-path="Unix.html"><a href="Unix.html#absolute-vs-relative-file-paths"><i class="fa fa-check"></i><b>2.7</b> Absolute vs relative file paths<span></span></a></li>
+<li class="chapter" data-level="2.8" data-path="Unix.html"><a href="Unix.html#moving-around"><i class="fa fa-check"></i><b>2.8</b> Moving around<span></span></a></li>
+<li class="chapter" data-level="2.9" data-path="Unix.html"><a href="Unix.html#summary"><i class="fa fa-check"></i><b>2.9</b> Summary<span></span></a>
 <ul>
-<li class="chapter" data-level="2.9.1" data-path="Unix.html"><a href="Unix.html#terms"><i class="fa fa-check"></i><b>2.9.1</b> Terms</a></li>
-<li class="chapter" data-level="2.9.2" data-path="Unix.html"><a href="Unix.html#commands"><i class="fa fa-check"></i><b>2.9.2</b> Commands</a></li>
-<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters"><i class="fa fa-check"></i><b>2.9.3</b> Special characters</a></li>
+<li class="chapter" data-level="2.9.1" data-path="Unix.html"><a href="Unix.html#terms"><i class="fa fa-check"></i><b>2.9.1</b> Terms<span></span></a></li>
+<li class="chapter" data-level="2.9.2" data-path="Unix.html"><a href="Unix.html#commands"><i class="fa fa-check"></i><b>2.9.2</b> Commands<span></span></a></li>
+<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters"><i class="fa fa-check"></i><b>2.9.3</b> Special characters<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="Unix.html"><a href="Unix.html#summary-1"><i class="fa fa-check"></i><b>2.10</b> Summary</a></li>
-<li class="chapter" data-level="2.11" data-path="Unix.html"><a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills"><i class="fa fa-check"></i><b>2.11</b> Stretch yourself - optional extras to try a couple of other skills</a>
+<li class="chapter" data-level="2.10" data-path="Unix.html"><a href="Unix.html#summary-1"><i class="fa fa-check"></i><b>2.10</b> Summary<span></span></a></li>
+<li class="chapter" data-level="2.11" data-path="Unix.html"><a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills"><i class="fa fa-check"></i><b>2.11</b> Stretch yourself - optional extras to try a couple of other skills<span></span></a>
 <ul>
-<li class="chapter" data-level="2.11.1" data-path="Unix.html"><a href="Unix.html#creation"><i class="fa fa-check"></i><b>2.11.1</b> Creation</a></li>
+<li class="chapter" data-level="2.11.1" data-path="Unix.html"><a href="Unix.html#creation"><i class="fa fa-check"></i><b>2.11.1</b> Creation<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html"><i class="fa fa-check"></i><b>3</b> NGS sequence analysis</a>
+<li class="chapter" data-level="3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html"><i class="fa fa-check"></i><b>3</b> NGS sequence analysis<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#background-on-high-throughput-sequencing"><i class="fa fa-check"></i><b>3.1</b> Background on high throughput sequencing</a></li>
-<li class="chapter" data-level="3.2" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#some-terms-1"><i class="fa fa-check"></i><b>3.2</b> Some terms</a></li>
-<li class="chapter" data-level="3.3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-data"><i class="fa fa-check"></i><b>3.3</b> The data</a>
+<li class="chapter" data-level="3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#background-on-high-throughput-sequencing"><i class="fa fa-check"></i><b>3.1</b> Background on high throughput sequencing<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#some-terms-1"><i class="fa fa-check"></i><b>3.2</b> Some terms<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-data"><i class="fa fa-check"></i><b>3.3</b> The data<span></span></a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#fastq"><i class="fa fa-check"></i><b>3.3.1</b> FASTQ?</a></li>
+<li class="chapter" data-level="3.3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#fastq"><i class="fa fa-check"></i><b>3.3.1</b> FASTQ?<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-pipeline"><i class="fa fa-check"></i><b>3.4</b> The Pipeline</a></li>
-<li class="chapter" data-level="3.5" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#removing-primers"><i class="fa fa-check"></i><b>3.5</b> Removing Primers</a>
+<li class="chapter" data-level="3.4" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-pipeline"><i class="fa fa-check"></i><b>3.4</b> The Pipeline<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#removing-primers"><i class="fa fa-check"></i><b>3.5</b> Removing Primers<span></span></a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#loops"><i class="fa fa-check"></i><b>3.5.1</b> Loops</a></li>
+<li class="chapter" data-level="3.5.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#loops"><i class="fa fa-check"></i><b>3.5.1</b> Loops<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dada2"><i class="fa fa-check"></i><b>3.6</b> DADA2</a></li>
-<li class="chapter" data-level="3.7" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#quality-trimmingfiltering"><i class="fa fa-check"></i><b>3.7</b> Quality trimming/filtering</a></li>
-<li class="chapter" data-level="3.8" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dereplication"><i class="fa fa-check"></i><b>3.8</b> Dereplication</a></li>
-<li class="chapter" data-level="3.9" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#asvs"><i class="fa fa-check"></i><b>3.9</b> ASV’s</a></li>
-<li class="chapter" data-level="3.10" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#merging-reads"><i class="fa fa-check"></i><b>3.10</b> Merging reads</a></li>
-<li class="chapter" data-level="3.11" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#count-table"><i class="fa fa-check"></i><b>3.11</b> Count table</a></li>
-<li class="chapter" data-level="3.12" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#overview"><i class="fa fa-check"></i><b>3.12</b> Overview</a></li>
-<li class="chapter" data-level="3.13" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#assign-taxonomy"><i class="fa fa-check"></i><b>3.13</b> Assign taxonomy</a></li>
-<li class="chapter" data-level="3.14" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#standard-goods"><i class="fa fa-check"></i><b>3.14</b> Standard goods</a></li>
-<li class="chapter" data-level="3.15" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#functions-list"><i class="fa fa-check"></i><b>3.15</b> Functions list</a></li>
-<li class="chapter" data-level="3.16" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#summary-2"><i class="fa fa-check"></i><b>3.16</b> Summary</a></li>
+<li class="chapter" data-level="3.6" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dada2"><i class="fa fa-check"></i><b>3.6</b> DADA2<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#quality-trimmingfiltering"><i class="fa fa-check"></i><b>3.7</b> Quality trimming/filtering<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dereplication"><i class="fa fa-check"></i><b>3.8</b> Dereplication<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#asvs"><i class="fa fa-check"></i><b>3.9</b> ASV’s<span></span></a></li>
+<li class="chapter" data-level="3.10" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#merging-reads"><i class="fa fa-check"></i><b>3.10</b> Merging reads<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#count-table"><i class="fa fa-check"></i><b>3.11</b> Count table<span></span></a></li>
+<li class="chapter" data-level="3.12" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#overview"><i class="fa fa-check"></i><b>3.12</b> Overview<span></span></a></li>
+<li class="chapter" data-level="3.13" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#assign-taxonomy"><i class="fa fa-check"></i><b>3.13</b> Assign taxonomy<span></span></a></li>
+<li class="chapter" data-level="3.14" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#standard-goods"><i class="fa fa-check"></i><b>3.14</b> Standard goods<span></span></a></li>
+<li class="chapter" data-level="3.15" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#functions-list"><i class="fa fa-check"></i><b>3.15</b> Functions list<span></span></a></li>
+<li class="chapter" data-level="3.16" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#summary-2"><i class="fa fa-check"></i><b>3.16</b> Summary<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html"><i class="fa fa-check"></i><b>4</b> Introduction to Statistical Analysis of the microbiome data</a>
+<li class="chapter" data-level="4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html"><i class="fa fa-check"></i><b>4</b> Introduction to Statistical Analysis of the microbiome data<span></span></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#important-files"><i class="fa fa-check"></i><b>4.1</b> Important files</a></li>
-<li class="chapter" data-level="4.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#phyloseq"><i class="fa fa-check"></i><b>4.2</b> Phyloseq</a></li>
-<li class="chapter" data-level="4.3" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#relative-abundance-of-bacteria-by-taxonomic-class"><i class="fa fa-check"></i><b>4.3</b> Relative abundance of bacteria by taxonomic Class</a></li>
-<li class="chapter" data-level="4.4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#alpha-diversity---community-richness"><i class="fa fa-check"></i><b>4.4</b> Alpha diversity - community richness</a>
+<li class="chapter" data-level="4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#important-files"><i class="fa fa-check"></i><b>4.1</b> Important files<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#phyloseq"><i class="fa fa-check"></i><b>4.2</b> Phyloseq<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#relative-abundance-of-bacteria-by-taxonomic-class"><i class="fa fa-check"></i><b>4.3</b> Relative abundance of bacteria by taxonomic Class<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#alpha-diversity---community-richness"><i class="fa fa-check"></i><b>4.4</b> Alpha diversity - community richness<span></span></a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#analyse-and-plot"><i class="fa fa-check"></i><b>4.4.1</b> Analyse and plot</a></li>
+<li class="chapter" data-level="4.4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#analyse-and-plot"><i class="fa fa-check"></i><b>4.4.1</b> Analyse and plot<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#beta-diversity"><i class="fa fa-check"></i><b>4.5</b> Beta diversity</a>
+<li class="chapter" data-level="4.5" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#beta-diversity"><i class="fa fa-check"></i><b>4.5</b> Beta diversity<span></span></a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#heatmaps"><i class="fa fa-check"></i><b>4.5.1</b> Heatmaps</a></li>
-<li class="chapter" data-level="4.5.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#multidimensional-analysis"><i class="fa fa-check"></i><b>4.5.2</b> Multidimensional analysis</a></li>
+<li class="chapter" data-level="4.5.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#heatmaps"><i class="fa fa-check"></i><b>4.5.1</b> Heatmaps<span></span></a></li>
+<li class="chapter" data-level="4.5.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#multidimensional-analysis"><i class="fa fa-check"></i><b>4.5.2</b> Multidimensional analysis<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#question"><i class="fa fa-check"></i><b>4.6</b> Question</a></li>
-<li class="chapter" data-level="4.7" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#summary-3"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
+<li class="chapter" data-level="4.6" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#question"><i class="fa fa-check"></i><b>4.6</b> Question<span></span></a></li>
+<li class="chapter" data-level="4.7" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#summary-3"><i class="fa fa-check"></i><b>4.7</b> Summary<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<li class="chapter" data-level="5" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html"><i class="fa fa-check"></i><b>5</b> Exercises in understanding<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="5.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-one"><i class="fa fa-check"></i><b>5.1</b> Exercise one<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#critical-analysis-of-a-figure"><i class="fa fa-check"></i><b>5.1.1</b> Critical analysis of a figure<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="5.2" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-two"><i class="fa fa-check"></i><b>5.2</b> Exercise two<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#produce-a-figure-legend"><i class="fa fa-check"></i><b>5.2.1</b> Produce a figure legend<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-three"><i class="fa fa-check"></i><b>5.3</b> Exercise three<span></span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#compare-your-analysis-against-the-published-paper"><i class="fa fa-check"></i><b>5.3.1</b> Compare your analysis against the published paper<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -242,8 +255,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-statistical-analysis-of-the-microbiome-data" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Introduction to Statistical Analysis of the microbiome data</h1>
+<div id="introduction-to-statistical-analysis-of-the-microbiome-data" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Introduction to Statistical Analysis of the microbiome data<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#introduction-to-statistical-analysis-of-the-microbiome-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
 <span id="cb48-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb48-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code></pre></div>
@@ -260,8 +273,8 @@ In previous sections we worked with microbiome generated data, but ran through s
 <li><p>Estimating within- and between-sample diversity</p></li>
 <li><p>Identifying differentially abundant taxa</p></li>
 </ul>
-<div id="important-files" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Important files</h2>
+<div id="important-files" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Important files<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#important-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’re mostly going to be working with just 3 files now.</p>
 <ul>
 <li><p>A count table: the number of reads for each unique sequence</p></li>
@@ -273,8 +286,8 @@ In previous sections we worked with microbiome generated data, but ran through s
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb49-1" aria-hidden="true" tabindex="-1"></a>sample_info_tab <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;sample_info.tsv&quot;</span>, <span class="at">header=</span>T, <span class="at">row.names=</span><span class="dv">1</span>,</span>
 <span id="cb49-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb49-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">check.names=</span>F, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
 </div>
-<div id="phyloseq" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Phyloseq</h2>
+<div id="phyloseq" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Phyloseq<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#phyloseq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Microbiome community analysis works really well with a package called <code>phyloseq</code> it allows you to make special R objects that hold the distinct sets of information on ASV abundance, taxonomy and relation to the environmental samples in one R object.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb50-1" aria-hidden="true" tabindex="-1"></a>ps <span class="ot">&lt;-</span> <span class="fu">phyloseq</span>(<span class="fu">otu_table</span>(asv_tab_no_contam, <span class="at">taxa_are_rows=</span>T), </span>
 <span id="cb50-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb50-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sample_data</span>(sample_info_tab), </span>
@@ -299,8 +312,8 @@ In previous sections we worked with microbiome generated data, but ran through s
 </ul>
 </details>
 </div>
-<div id="relative-abundance-of-bacteria-by-taxonomic-class" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Relative abundance of bacteria by taxonomic Class</h2>
+<div id="relative-abundance-of-bacteria-by-taxonomic-class" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Relative abundance of bacteria by taxonomic Class<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#relative-abundance-of-bacteria-by-taxonomic-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will use some functions provided by <code>phyloseq</code> to agglomerate the reads to Class-level and plot the results</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb52-1" aria-hidden="true" tabindex="-1"></a>taxonomy <span class="ot">&lt;-</span> ps <span class="sc">%&gt;%</span> </span>
 <span id="cb52-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tax_glom</span>(<span class="at">taxrank=</span><span class="st">&quot;class&quot;</span>) <span class="sc">%&gt;%</span> <span class="do">### Preserves taxonomy only to Taxonomic level class</span></span>
@@ -317,22 +330,39 @@ The ability to discriminate between more than say a dozen colors in a single plo
 <p>Let’s generate boxplots according to <code>char</code> and facet these according to Bacterial <code>class</code>. This will allow us to compare how different bacterial classes appear to change in relative abundance between samples.</p>
 <p>Try and produce something similar to the plot below</p>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<div id="box">
+<details>
+<summary>
+<strong>Need code?</strong>
+<strong>Click here</strong>
+</summary>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-1" aria-hidden="true" tabindex="-1"></a>taxonomy <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class=</span><span class="fu">fct_reorder</span>(class, Abundance)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>class, <span class="at">y=</span>Abundance))<span class="sc">+</span></span>
+<span id="cb54-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span><span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color=</span>class), <span class="at">width=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb54-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>char)<span class="sc">+</span></span>
+<span id="cb54-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb54-7"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>), <span class="at">legend.position=</span><span class="st">&quot;none&quot;</span>)<span class="sc">+</span></span>
+<span id="cb54-8"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Bacterial class&quot;</span>, <span class="at">y=</span><span class="st">&quot;Relative Abundance&quot;</span>)</span></code></pre></div>
+</details>
+</div>
 <p>Think about what you can infer from these plots?</p>
 </div>
-<div id="alpha-diversity---community-richness" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Alpha diversity - community richness</h2>
+<div id="alpha-diversity---community-richness" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Alpha diversity - community richness<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#alpha-diversity---community-richness" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is a common ecological term, and one that applies just as well when we consider microbial ecosystems.</p>
 <p>What is the mean species diversity in the different sample sites?</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-1" aria-hidden="true" tabindex="-1"></a>ps_richness <span class="ot">&lt;-</span> <span class="fu">estimate_richness</span>(ps)</span>
-<span id="cb54-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb54-2" aria-hidden="true" tabindex="-1"></a>ps_richness</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-1" aria-hidden="true" tabindex="-1"></a>ps_richness <span class="ot">&lt;-</span> <span class="fu">estimate_richness</span>(ps)</span>
+<span id="cb55-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-2" aria-hidden="true" tabindex="-1"></a>ps_richness</span></code></pre></div>
 <p>This command generates a number of different diversity indices.
 Firstly we can take this information and use <code>join</code> functions to attach it back onto our sample <em>metadata</em></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-1" aria-hidden="true" tabindex="-1"></a>sample_info_tab<span class="sc">$</span>Sample <span class="ot">&lt;-</span> <span class="fu">rownames</span>(sample_info_tab)</span>
-<span id="cb55-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-3" aria-hidden="true" tabindex="-1"></a>ps_richness<span class="sc">$</span>Sample <span class="ot">&lt;-</span> <span class="fu">rownames</span>(ps_richness)</span>
-<span id="cb55-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-5" aria-hidden="true" tabindex="-1"></a>full_richness <span class="ot">&lt;-</span> <span class="fu">left_join</span>(sample_info_tab, ps_richness, <span class="st">&quot;Sample&quot;</span>)</span>
-<span id="cb55-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb55-6" aria-hidden="true" tabindex="-1"></a>full_richness </span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-1" aria-hidden="true" tabindex="-1"></a>sample_info_tab<span class="sc">$</span>Sample <span class="ot">&lt;-</span> <span class="fu">rownames</span>(sample_info_tab)</span>
+<span id="cb56-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-3" aria-hidden="true" tabindex="-1"></a>ps_richness<span class="sc">$</span>Sample <span class="ot">&lt;-</span> <span class="fu">rownames</span>(ps_richness)</span>
+<span id="cb56-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-5" aria-hidden="true" tabindex="-1"></a>full_richness <span class="ot">&lt;-</span> <span class="fu">left_join</span>(sample_info_tab, ps_richness, <span class="st">&quot;Sample&quot;</span>)</span>
+<span id="cb56-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-6" aria-hidden="true" tabindex="-1"></a>full_richness </span></code></pre></div>
+<div id="bqomojtylo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -389,7 +419,7 @@ Firstly we can take this information and use <code>join</code> functions to atta
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -461,7 +491,7 @@ Firstly we can take this information and use <code>join</code> functions to atta
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
@@ -666,10 +696,11 @@ Firstly we can take this information and use <code>join</code> functions to atta
 
 #bqomojtylo .gt_footnote_marks {
   font-style: italic;
+  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div id="bqomojtylo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -690,268 +721,237 @@ Firstly we can take this information and use <code>join</code> functions to atta
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_right">2.0</td>
-      <td class="gt_row gt_center">water</td>
-      <td class="gt_row gt_center">water</td>
-      <td class="gt_row gt_center">blue</td>
-      <td class="gt_row gt_left">BW1</td>
-      <td class="gt_row gt_right">61</td>
-      <td class="gt_row gt_right">62.5000</td>
-      <td class="gt_row gt_right">2.5911387</td>
-      <td class="gt_row gt_right">61.88289</td>
-      <td class="gt_row gt_right">3.569938</td>
-      <td class="gt_row gt_right">3.576981</td>
-      <td class="gt_row gt_right">0.9585698</td>
-      <td class="gt_row gt_right">24.13700</td>
-      <td class="gt_row gt_right">12.04096</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">2.0</td>
-      <td class="gt_row gt_center">water</td>
-      <td class="gt_row gt_center">water</td>
-      <td class="gt_row gt_center">blue</td>
-      <td class="gt_row gt_left">BW2</td>
-      <td class="gt_row gt_right">204</td>
-      <td class="gt_row gt_right">205.9091</td>
-      <td class="gt_row gt_right">2.1571603</td>
-      <td class="gt_row gt_right">205.71458</td>
-      <td class="gt_row gt_right">7.069400</td>
-      <td class="gt_row gt_right">4.436499</td>
-      <td class="gt_row gt_right">0.9750331</td>
-      <td class="gt_row gt_right">40.05305</td>
-      <td class="gt_row gt_right">43.45043</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">13.7</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">glassy</td>
-      <td class="gt_row gt_center">black</td>
-      <td class="gt_row gt_left">R10</td>
-      <td class="gt_row gt_right">383</td>
-      <td class="gt_row gt_right">385.4375</td>
-      <td class="gt_row gt_right">2.1449492</td>
-      <td class="gt_row gt_right">386.66260</td>
-      <td class="gt_row gt_right">9.717693</td>
-      <td class="gt_row gt_right">5.079826</td>
-      <td class="gt_row gt_right">0.9872712</td>
-      <td class="gt_row gt_right">78.56183</td>
-      <td class="gt_row gt_right">81.57801</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">7.3</td>
-      <td class="gt_row gt_center">biofilm</td>
-      <td class="gt_row gt_center">biofilm</td>
-      <td class="gt_row gt_center">darkgreen</td>
-      <td class="gt_row gt_left">R11BF</td>
-      <td class="gt_row gt_right">144</td>
-      <td class="gt_row gt_right">145.1538</td>
-      <td class="gt_row gt_right">1.5236935</td>
-      <td class="gt_row gt_right">146.00669</td>
-      <td class="gt_row gt_right">5.980036</td>
-      <td class="gt_row gt_right">3.309788</td>
-      <td class="gt_row gt_right">0.9044015</td>
-      <td class="gt_row gt_right">10.46042</td>
-      <td class="gt_row gt_right">25.68876</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">7.3</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">glassy</td>
-      <td class="gt_row gt_center">black</td>
-      <td class="gt_row gt_left">R11</td>
-      <td class="gt_row gt_right">281</td>
-      <td class="gt_row gt_right">284.4737</td>
-      <td class="gt_row gt_right">2.9104269</td>
-      <td class="gt_row gt_right">284.57048</td>
-      <td class="gt_row gt_right">8.337302</td>
-      <td class="gt_row gt_right">4.812376</td>
-      <td class="gt_row gt_right">0.9851114</td>
-      <td class="gt_row gt_right">67.16529</td>
-      <td class="gt_row gt_right">59.63308</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">NA</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R12</td>
-      <td class="gt_row gt_right">524</td>
-      <td class="gt_row gt_right">525.8947</td>
-      <td class="gt_row gt_right">1.9684441</td>
-      <td class="gt_row gt_right">525.94449</td>
-      <td class="gt_row gt_right">11.362166</td>
-      <td class="gt_row gt_right">5.789071</td>
-      <td class="gt_row gt_right">0.9956479</td>
-      <td class="gt_row gt_right">229.77212</td>
-      <td class="gt_row gt_right">115.57917</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">8.6</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R1A</td>
-      <td class="gt_row gt_right">497</td>
-      <td class="gt_row gt_right">501.2500</td>
-      <td class="gt_row gt_right">2.9984998</td>
-      <td class="gt_row gt_right">502.32876</td>
-      <td class="gt_row gt_right">11.107301</td>
-      <td class="gt_row gt_right">5.666947</td>
-      <td class="gt_row gt_right">0.9945360</td>
-      <td class="gt_row gt_right">183.01554</td>
-      <td class="gt_row gt_right">115.04680</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">8.6</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R1B</td>
-      <td class="gt_row gt_right">577</td>
-      <td class="gt_row gt_right">579.6000</td>
-      <td class="gt_row gt_right">2.2526890</td>
-      <td class="gt_row gt_right">580.24471</td>
-      <td class="gt_row gt_right">11.965009</td>
-      <td class="gt_row gt_right">5.812676</td>
-      <td class="gt_row gt_right">0.9953007</td>
-      <td class="gt_row gt_right">212.79743</td>
-      <td class="gt_row gt_right">129.04718</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">8.6</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R2</td>
-      <td class="gt_row gt_right">608</td>
-      <td class="gt_row gt_right">609.4062</td>
-      <td class="gt_row gt_right">1.5321223</td>
-      <td class="gt_row gt_right">610.17688</td>
-      <td class="gt_row gt_right">12.296746</td>
-      <td class="gt_row gt_right">5.850938</td>
-      <td class="gt_row gt_right">0.9955702</td>
-      <td class="gt_row gt_right">225.74143</td>
-      <td class="gt_row gt_right">133.85232</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">12.7</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R3</td>
-      <td class="gt_row gt_right">566</td>
-      <td class="gt_row gt_right">567.5517</td>
-      <td class="gt_row gt_right">1.6446664</td>
-      <td class="gt_row gt_right">568.36545</td>
-      <td class="gt_row gt_right">11.819663</td>
-      <td class="gt_row gt_right">5.788769</td>
-      <td class="gt_row gt_right">0.9953827</td>
-      <td class="gt_row gt_right">216.57487</td>
-      <td class="gt_row gt_right">122.16253</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">12.7</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R4</td>
-      <td class="gt_row gt_right">643</td>
-      <td class="gt_row gt_right">644.2857</td>
-      <td class="gt_row gt_right">1.4737632</td>
-      <td class="gt_row gt_right">644.75628</td>
-      <td class="gt_row gt_right">12.645710</td>
-      <td class="gt_row gt_right">5.718854</td>
-      <td class="gt_row gt_right">0.9940234</td>
-      <td class="gt_row gt_right">167.31991</td>
-      <td class="gt_row gt_right">137.19651</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">12.7</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R5</td>
-      <td class="gt_row gt_right">624</td>
-      <td class="gt_row gt_right">624.2069</td>
-      <td class="gt_row gt_right">0.5163104</td>
-      <td class="gt_row gt_right">624.78554</td>
-      <td class="gt_row gt_right">12.367463</td>
-      <td class="gt_row gt_right">5.966462</td>
-      <td class="gt_row gt_right">0.9962834</td>
-      <td class="gt_row gt_right">269.06381</td>
-      <td class="gt_row gt_right">137.21126</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">12.7</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">altered</td>
-      <td class="gt_row gt_center">chocolate4</td>
-      <td class="gt_row gt_left">R6</td>
-      <td class="gt_row gt_right">523</td>
-      <td class="gt_row gt_right">527.2857</td>
-      <td class="gt_row gt_right">3.1338410</td>
-      <td class="gt_row gt_right">527.52112</td>
-      <td class="gt_row gt_right">11.340777</td>
-      <td class="gt_row gt_right">5.711816</td>
-      <td class="gt_row gt_right">0.9948403</td>
-      <td class="gt_row gt_right">193.80933</td>
-      <td class="gt_row gt_right">115.90757</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">NA</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">carbonate</td>
-      <td class="gt_row gt_center">darkkhaki</td>
-      <td class="gt_row gt_left">R7</td>
-      <td class="gt_row gt_right">435</td>
-      <td class="gt_row gt_right">436.7838</td>
-      <td class="gt_row gt_right">1.7397113</td>
-      <td class="gt_row gt_right">438.10995</td>
-      <td class="gt_row gt_right">10.011218</td>
-      <td class="gt_row gt_right">5.557851</td>
-      <td class="gt_row gt_right">0.9939838</td>
-      <td class="gt_row gt_right">166.21652</td>
-      <td class="gt_row gt_right">110.12229</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">13.5</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">glassy</td>
-      <td class="gt_row gt_center">black</td>
-      <td class="gt_row gt_left">R8</td>
-      <td class="gt_row gt_right">424</td>
-      <td class="gt_row gt_right">428.1379</td>
-      <td class="gt_row gt_right">3.0460370</td>
-      <td class="gt_row gt_right">428.53605</td>
-      <td class="gt_row gt_right">10.245312</td>
-      <td class="gt_row gt_right">5.295582</td>
-      <td class="gt_row gt_right">0.9910943</td>
-      <td class="gt_row gt_right">112.28782</td>
-      <td class="gt_row gt_right">91.16232</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_right">13.7</td>
-      <td class="gt_row gt_center">rock</td>
-      <td class="gt_row gt_center">glassy</td>
-      <td class="gt_row gt_center">black</td>
-      <td class="gt_row gt_left">R9</td>
-      <td class="gt_row gt_right">296</td>
-      <td class="gt_row gt_right">300.5652</td>
-      <td class="gt_row gt_right">3.3753169</td>
-      <td class="gt_row gt_right">300.44067</td>
-      <td class="gt_row gt_right">8.397187</td>
-      <td class="gt_row gt_right">4.348445</td>
-      <td class="gt_row gt_right">0.9517400</td>
-      <td class="gt_row gt_right">20.72112</td>
-      <td class="gt_row gt_right">63.39469</td>
-    </tr>
+    <tr><td class="gt_row gt_right">2.0</td>
+<td class="gt_row gt_center">water</td>
+<td class="gt_row gt_center">water</td>
+<td class="gt_row gt_center">blue</td>
+<td class="gt_row gt_left">BW1</td>
+<td class="gt_row gt_right">61</td>
+<td class="gt_row gt_right">62.5000</td>
+<td class="gt_row gt_right">2.5911387</td>
+<td class="gt_row gt_right">61.88289</td>
+<td class="gt_row gt_right">3.569938</td>
+<td class="gt_row gt_right">3.576981</td>
+<td class="gt_row gt_right">0.9585698</td>
+<td class="gt_row gt_right">24.13700</td>
+<td class="gt_row gt_right">12.04096</td></tr>
+    <tr><td class="gt_row gt_right">2.0</td>
+<td class="gt_row gt_center">water</td>
+<td class="gt_row gt_center">water</td>
+<td class="gt_row gt_center">blue</td>
+<td class="gt_row gt_left">BW2</td>
+<td class="gt_row gt_right">204</td>
+<td class="gt_row gt_right">205.9091</td>
+<td class="gt_row gt_right">2.1571603</td>
+<td class="gt_row gt_right">205.71458</td>
+<td class="gt_row gt_right">7.069400</td>
+<td class="gt_row gt_right">4.436499</td>
+<td class="gt_row gt_right">0.9750331</td>
+<td class="gt_row gt_right">40.05305</td>
+<td class="gt_row gt_right">43.45043</td></tr>
+    <tr><td class="gt_row gt_right">13.7</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">glassy</td>
+<td class="gt_row gt_center">black</td>
+<td class="gt_row gt_left">R10</td>
+<td class="gt_row gt_right">383</td>
+<td class="gt_row gt_right">385.4375</td>
+<td class="gt_row gt_right">2.1449492</td>
+<td class="gt_row gt_right">386.66260</td>
+<td class="gt_row gt_right">9.717693</td>
+<td class="gt_row gt_right">5.079826</td>
+<td class="gt_row gt_right">0.9872712</td>
+<td class="gt_row gt_right">78.56183</td>
+<td class="gt_row gt_right">81.57801</td></tr>
+    <tr><td class="gt_row gt_right">7.3</td>
+<td class="gt_row gt_center">biofilm</td>
+<td class="gt_row gt_center">biofilm</td>
+<td class="gt_row gt_center">darkgreen</td>
+<td class="gt_row gt_left">R11BF</td>
+<td class="gt_row gt_right">144</td>
+<td class="gt_row gt_right">145.1538</td>
+<td class="gt_row gt_right">1.5236935</td>
+<td class="gt_row gt_right">146.00669</td>
+<td class="gt_row gt_right">5.980036</td>
+<td class="gt_row gt_right">3.309788</td>
+<td class="gt_row gt_right">0.9044015</td>
+<td class="gt_row gt_right">10.46042</td>
+<td class="gt_row gt_right">25.68876</td></tr>
+    <tr><td class="gt_row gt_right">7.3</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">glassy</td>
+<td class="gt_row gt_center">black</td>
+<td class="gt_row gt_left">R11</td>
+<td class="gt_row gt_right">281</td>
+<td class="gt_row gt_right">284.4737</td>
+<td class="gt_row gt_right">2.9104269</td>
+<td class="gt_row gt_right">284.57048</td>
+<td class="gt_row gt_right">8.337302</td>
+<td class="gt_row gt_right">4.812376</td>
+<td class="gt_row gt_right">0.9851114</td>
+<td class="gt_row gt_right">67.16529</td>
+<td class="gt_row gt_right">59.63308</td></tr>
+    <tr><td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R12</td>
+<td class="gt_row gt_right">524</td>
+<td class="gt_row gt_right">525.8947</td>
+<td class="gt_row gt_right">1.9684441</td>
+<td class="gt_row gt_right">525.94449</td>
+<td class="gt_row gt_right">11.362166</td>
+<td class="gt_row gt_right">5.789071</td>
+<td class="gt_row gt_right">0.9956479</td>
+<td class="gt_row gt_right">229.77212</td>
+<td class="gt_row gt_right">115.57917</td></tr>
+    <tr><td class="gt_row gt_right">8.6</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R1A</td>
+<td class="gt_row gt_right">497</td>
+<td class="gt_row gt_right">501.2500</td>
+<td class="gt_row gt_right">2.9984998</td>
+<td class="gt_row gt_right">502.32876</td>
+<td class="gt_row gt_right">11.107301</td>
+<td class="gt_row gt_right">5.666947</td>
+<td class="gt_row gt_right">0.9945360</td>
+<td class="gt_row gt_right">183.01554</td>
+<td class="gt_row gt_right">115.04680</td></tr>
+    <tr><td class="gt_row gt_right">8.6</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R1B</td>
+<td class="gt_row gt_right">577</td>
+<td class="gt_row gt_right">579.6000</td>
+<td class="gt_row gt_right">2.2526890</td>
+<td class="gt_row gt_right">580.24471</td>
+<td class="gt_row gt_right">11.965009</td>
+<td class="gt_row gt_right">5.812676</td>
+<td class="gt_row gt_right">0.9953007</td>
+<td class="gt_row gt_right">212.79743</td>
+<td class="gt_row gt_right">129.04718</td></tr>
+    <tr><td class="gt_row gt_right">8.6</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R2</td>
+<td class="gt_row gt_right">608</td>
+<td class="gt_row gt_right">609.4062</td>
+<td class="gt_row gt_right">1.5321223</td>
+<td class="gt_row gt_right">610.17688</td>
+<td class="gt_row gt_right">12.296746</td>
+<td class="gt_row gt_right">5.850938</td>
+<td class="gt_row gt_right">0.9955702</td>
+<td class="gt_row gt_right">225.74143</td>
+<td class="gt_row gt_right">133.85232</td></tr>
+    <tr><td class="gt_row gt_right">12.7</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R3</td>
+<td class="gt_row gt_right">566</td>
+<td class="gt_row gt_right">567.5517</td>
+<td class="gt_row gt_right">1.6446664</td>
+<td class="gt_row gt_right">568.36545</td>
+<td class="gt_row gt_right">11.819663</td>
+<td class="gt_row gt_right">5.788769</td>
+<td class="gt_row gt_right">0.9953827</td>
+<td class="gt_row gt_right">216.57487</td>
+<td class="gt_row gt_right">122.16253</td></tr>
+    <tr><td class="gt_row gt_right">12.7</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R4</td>
+<td class="gt_row gt_right">643</td>
+<td class="gt_row gt_right">644.2857</td>
+<td class="gt_row gt_right">1.4737632</td>
+<td class="gt_row gt_right">644.75628</td>
+<td class="gt_row gt_right">12.645710</td>
+<td class="gt_row gt_right">5.718854</td>
+<td class="gt_row gt_right">0.9940234</td>
+<td class="gt_row gt_right">167.31991</td>
+<td class="gt_row gt_right">137.19651</td></tr>
+    <tr><td class="gt_row gt_right">12.7</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R5</td>
+<td class="gt_row gt_right">624</td>
+<td class="gt_row gt_right">624.2069</td>
+<td class="gt_row gt_right">0.5163104</td>
+<td class="gt_row gt_right">624.78554</td>
+<td class="gt_row gt_right">12.367463</td>
+<td class="gt_row gt_right">5.966462</td>
+<td class="gt_row gt_right">0.9962834</td>
+<td class="gt_row gt_right">269.06381</td>
+<td class="gt_row gt_right">137.21126</td></tr>
+    <tr><td class="gt_row gt_right">12.7</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">altered</td>
+<td class="gt_row gt_center">chocolate4</td>
+<td class="gt_row gt_left">R6</td>
+<td class="gt_row gt_right">523</td>
+<td class="gt_row gt_right">527.2857</td>
+<td class="gt_row gt_right">3.1338410</td>
+<td class="gt_row gt_right">527.52112</td>
+<td class="gt_row gt_right">11.340777</td>
+<td class="gt_row gt_right">5.711816</td>
+<td class="gt_row gt_right">0.9948403</td>
+<td class="gt_row gt_right">193.80933</td>
+<td class="gt_row gt_right">115.90757</td></tr>
+    <tr><td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">carbonate</td>
+<td class="gt_row gt_center">darkkhaki</td>
+<td class="gt_row gt_left">R7</td>
+<td class="gt_row gt_right">435</td>
+<td class="gt_row gt_right">436.7838</td>
+<td class="gt_row gt_right">1.7397113</td>
+<td class="gt_row gt_right">438.10995</td>
+<td class="gt_row gt_right">10.011218</td>
+<td class="gt_row gt_right">5.557851</td>
+<td class="gt_row gt_right">0.9939838</td>
+<td class="gt_row gt_right">166.21652</td>
+<td class="gt_row gt_right">110.12229</td></tr>
+    <tr><td class="gt_row gt_right">13.5</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">glassy</td>
+<td class="gt_row gt_center">black</td>
+<td class="gt_row gt_left">R8</td>
+<td class="gt_row gt_right">424</td>
+<td class="gt_row gt_right">428.1379</td>
+<td class="gt_row gt_right">3.0460370</td>
+<td class="gt_row gt_right">428.53605</td>
+<td class="gt_row gt_right">10.245312</td>
+<td class="gt_row gt_right">5.295582</td>
+<td class="gt_row gt_right">0.9910943</td>
+<td class="gt_row gt_right">112.28782</td>
+<td class="gt_row gt_right">91.16232</td></tr>
+    <tr><td class="gt_row gt_right">13.7</td>
+<td class="gt_row gt_center">rock</td>
+<td class="gt_row gt_center">glassy</td>
+<td class="gt_row gt_center">black</td>
+<td class="gt_row gt_left">R9</td>
+<td class="gt_row gt_right">296</td>
+<td class="gt_row gt_right">300.5652</td>
+<td class="gt_row gt_right">3.3753169</td>
+<td class="gt_row gt_right">300.44067</td>
+<td class="gt_row gt_right">8.397187</td>
+<td class="gt_row gt_right">4.348445</td>
+<td class="gt_row gt_right">0.9517400</td>
+<td class="gt_row gt_right">20.72112</td>
+<td class="gt_row gt_right">63.39469</td></tr>
   </tbody>
   
   
-</table></div>
-<div id="analyse-and-plot" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Analyse and plot</h3>
+</table>
+</div>
+<div id="analyse-and-plot" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Analyse and plot<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#analyse-and-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We now have a tidy data frame with sample information and a variety of diversity indices.</p>
 <ul>
 <li><p>Using the Shannon index as the measure of diversity - can you construct a figure to show the diversity differences between treatments?</p></li>
@@ -959,22 +959,22 @@ Firstly we can take this information and use <code>join</code> functions to atta
 </ul>
 </div>
 </div>
-<div id="beta-diversity" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Beta diversity</h2>
-<div id="heatmaps" class="section level3" number="4.5.1">
-<h3><span class="header-section-number">4.5.1</span> Heatmaps</h3>
+<div id="beta-diversity" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Beta diversity<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#beta-diversity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="heatmaps" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Heatmaps<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#heatmaps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Heatmaps are basically false colour images where cells in the matrix with high relative values are coloured differently from those with low relative values. Heatmaps can range from very simple blocks of colour with lists along 2 sides, or they can include information about hierarchical clustering, and/or values of other covariates of interest.</p>
 <p>We will make a simple heatmap here, but a common addition might be a dendrogram - a phylogenetic tree to indicate how closely related different</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-1" aria-hidden="true" tabindex="-1"></a>ps_top20 <span class="ot">&lt;-</span> <span class="fu">prune_taxa</span>(<span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">taxa_sums</span>(ps),<span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]), ps) <span class="do">## subset to include only the top 20 most abundant ASVs</span></span>
-<span id="cb56-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_heatmap</span>(ps_top20,<span class="st">&quot;MDS&quot;</span>,<span class="at">distance =</span> <span class="st">&quot;bray&quot;</span>, <span class="do">## here we are setting up the parameters for the heat map</span></span>
-<span id="cb56-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">sample.label=</span><span class="st">&quot;char&quot;</span>, <span class="do">## set the x axis to display by sample</span></span>
-<span id="cb56-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">low=</span><span class="st">&quot;purple&quot;</span>,   <span class="do">## set the color for low abundance OTUs</span></span>
-<span id="cb56-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb56-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">high=</span><span class="st">&quot;darkorange&quot;</span>) <span class="do">## set the color for high abundance OTUs</span></span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-1" aria-hidden="true" tabindex="-1"></a>ps_top20 <span class="ot">&lt;-</span> <span class="fu">prune_taxa</span>(<span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">taxa_sums</span>(ps),<span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]), ps) <span class="do">## subset to include only the top 20 most abundant ASVs</span></span>
+<span id="cb57-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_heatmap</span>(ps_top20,<span class="st">&quot;MDS&quot;</span>,<span class="at">distance =</span> <span class="st">&quot;bray&quot;</span>, <span class="do">## here we are setting up the parameters for the heat map</span></span>
+<span id="cb57-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">sample.label=</span><span class="st">&quot;char&quot;</span>, <span class="do">## set the x axis to display by sample</span></span>
+<span id="cb57-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">low=</span><span class="st">&quot;purple&quot;</span>,   <span class="do">## set the color for low abundance OTUs</span></span>
+<span id="cb57-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">high=</span><span class="st">&quot;darkorange&quot;</span>) <span class="do">## set the color for high abundance OTUs</span></span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 </div>
-<div id="multidimensional-analysis" class="section level3" number="4.5.2">
-<h3><span class="header-section-number">4.5.2</span> Multidimensional analysis</h3>
+<div id="multidimensional-analysis" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Multidimensional analysis<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#multidimensional-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Often in ecological research, we are interested not only in comparing univariate descriptors of communities, like diversity (above), but also in how the constituent species — or the composition — changes from one community to the next.</p>
 <p>One common tool to do this is non-metric multidimensional scaling, or NMDS. The goal of NMDS is to collapse information from multiple dimensions (e.g, from multiple communities, sites, etc.) into just a few, so that they can be visualized and interpreted.</p>
 <p>Consider a single axis representing the abundance of a single species. Along this axis, we can plot the communities in which this species appears, based on its abundance within each.</p>
@@ -982,8 +982,8 @@ Firstly we can take this information and use <code>join</code> functions to atta
 <p>Keep going and imagine how many axes we would have to produce!!!!</p>
 <p>The goal of NMDS is to represent the original position of communities in multidimensional space as accurately as possible using a reduced number of dimensions that can be easily plotted and visualized (and to spare your thinker).</p>
 <p>NMDS does not use the absolute abundances of species in communities, but rather their rank orders. The use of ranks omits some of the issues associated with using absolute distance (e.g., sensitivity to transformation), and as a result is a flexible technique</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-1" aria-hidden="true" tabindex="-1"></a>    <span class="do">### Ordination using built in functions in phyoseq (calls vegan)    </span></span>
-<span id="cb57-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-2" aria-hidden="true" tabindex="-1"></a>ord.nmds.bray <span class="ot">&lt;-</span> <span class="fu">ordinate</span>(ps, <span class="at">method=</span><span class="st">&quot;NMDS&quot;</span>,<span class="at">k=</span><span class="dv">2</span>, <span class="at">distance=</span><span class="st">&quot;bray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb58-1" aria-hidden="true" tabindex="-1"></a>    <span class="do">### Ordination using built in functions in phyoseq (calls vegan)    </span></span>
+<span id="cb58-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb58-2" aria-hidden="true" tabindex="-1"></a>ord.nmds.bray <span class="ot">&lt;-</span> <span class="fu">ordinate</span>(ps, <span class="at">method=</span><span class="st">&quot;NMDS&quot;</span>,<span class="at">k=</span><span class="dv">2</span>, <span class="at">distance=</span><span class="st">&quot;bray&quot;</span>)</span></code></pre></div>
 <pre><code>## Square root transformation
 ## Wisconsin double standardization
 ## Run 0 stress 0.04869473 
@@ -1036,27 +1036,27 @@ Firstly we can take this information and use <code>join</code> functions to atta
 <p>The goal of NMDS is to represent the original position of communities in multidimensional space as accurately as possible using a reduced number of dimensions that can be easily plotted and visualized (and to spare your thinker).</p>
 <p>NMDS does not use the absolute abundances of species in communities, but rather their rank orders. The use of ranks omits some of the issues associated with using absolute distance (e.g., sensitivity to transformation), and as a result is a flexible technique</p>
 <p>We can use the function plot.ordination to use our NMDS scaling to position our samples on a ggplot</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb59-1" aria-hidden="true" tabindex="-1"></a>ord1<span class="ot">&lt;-</span><span class="fu">plot_ordination</span>(ps, ord.nmds.bray, <span class="at">color=</span><span class="st">&quot;char&quot;</span>, <span class="at">title=</span><span class="st">&quot;Bray NMDS&quot;</span>)</span>
-<span id="cb59-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb59-2" aria-hidden="true" tabindex="-1"></a>ord1</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
-<p>And we can add customisations to improve the plot</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-1" aria-hidden="true" tabindex="-1"></a>ord1 <span class="sc">+</span> <span class="fu">stat_ellipse</span>(<span class="at">type=</span><span class="st">&quot;norm&quot;</span>,</span>
-<span id="cb60-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">geom=</span><span class="st">&quot;polygon&quot;</span>,</span>
-<span id="cb60-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">fill=</span>char),</span>
-<span id="cb60-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha=</span><span class="fl">0.3</span>,</span>
-<span id="cb60-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
-<span id="cb60-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>, <span class="fu">aes</span>(<span class="at">fill=</span>char), <span class="at">colour=</span><span class="st">&quot;white&quot;</span>, <span class="at">stroke=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb60-7"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-1" aria-hidden="true" tabindex="-1"></a>ord1<span class="ot">&lt;-</span><span class="fu">plot_ordination</span>(ps, ord.nmds.bray, <span class="at">color=</span><span class="st">&quot;char&quot;</span>, <span class="at">title=</span><span class="st">&quot;Bray NMDS&quot;</span>)</span>
+<span id="cb60-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-2" aria-hidden="true" tabindex="-1"></a>ord1</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p>And we can add customisations to improve the plot</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-1" aria-hidden="true" tabindex="-1"></a>ord1 <span class="sc">+</span> <span class="fu">stat_ellipse</span>(<span class="at">type=</span><span class="st">&quot;norm&quot;</span>,</span>
+<span id="cb61-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">geom=</span><span class="st">&quot;polygon&quot;</span>,</span>
+<span id="cb61-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">aes</span>(<span class="at">fill=</span>char),</span>
+<span id="cb61-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">alpha=</span><span class="fl">0.3</span>,</span>
+<span id="cb61-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>, <span class="fu">aes</span>(<span class="at">fill=</span>char), <span class="at">colour=</span><span class="st">&quot;white&quot;</span>, <span class="at">stroke=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb61-7"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 </div>
 </div>
-<div id="question" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Question</h2>
+<div id="question" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Question<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#question" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We have now produced several different visualisations and analyses of the microbiome communities from these deep sea samples.
 What do you think are the most important or interesting findings here?</p>
 </div>
-<div id="summary-3" class="section level2" number="4.7">
-<h2><span class="header-section-number">4.7</span> Summary</h2>
+<div id="summary-3" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Summary<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is a <em>very</em> brief introduction to using <strong>big</strong> data. Hopefully you can see that many of the command line tools, data cleaning and analysis and visualisation you have been practising prepare you for Big Data Biology.</p>
 <p>In this example, in order to have generated and processed this data, you would have needed to know</p>
 <ul>
@@ -1077,11 +1077,10 @@ What do you think are the most important or interesting findings here?</p>
         </div>
       </div>
 <a href="ngs-sequence-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exercises-in-understanding.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1100,6 +1099,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1120,6 +1120,10 @@ gitbook.start({
 "text": null
 },
 "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
