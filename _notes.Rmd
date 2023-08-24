@@ -1,0 +1,14 @@
+---
+title: "notes"
+author: "Douglas Yu"
+date: "2023-08-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+explanation for how to publish a bookdown project to github.io
+https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
+
