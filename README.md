@@ -1,3 +1,1 @@
-# myrepoR
-testing second setup
-making a change form rstudio
+BIO-6013A Bioinformatics Github.io
