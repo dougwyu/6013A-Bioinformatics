@@ -1,6 +1,6 @@
 --- 
-title: "Introduction to Bioinformatics - 6013A"
-author: "Philip Leftwich"
+title: "BIO-6013A/7004A, Bioinformatics Skills I and II"
+author: "Philip Leftwich, Ellen Bell, Douglas Yu"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -9,7 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics - with one reproducible example analysing microbiome sequencing data"
+description: "This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics"
 always_allow_html: true
 
 ---
@@ -20,7 +20,7 @@ This is a very short introduction to some of the processes and tools we use when
 
 This is not meant to be anywhere near comprehensive, you will be shown a few of the fundamentals, and one walkthrough of a single bioinformatics 'pipeline'. 
 
-The *main* difference between Bioinformatics and the data analysis you have done before is the **size** of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.
+One of the *main* differences between Bioinformatics and the data analysis you have done before is the **size** of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.
 
 Handling **big data** means you need to know how to operate on a supercomputer so we will be learning a little bit of Linux, processing **big** data into **small** data and then exporting into R to make some more amazing data visuals and interpret our findings!
 
