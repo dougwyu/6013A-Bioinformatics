@@ -19,7 +19,6 @@ summary
 terms
 commands
 special-characters
-summary-1
 stretch-yourself---optional-extras-to-try-a-couple-of-other-skills
 creation
 ngs-sequence-analysis
@@ -40,7 +39,7 @@ overview
 assign-taxonomy
 standard-goods
 functions-list
-summary-2
+summary-1
 introduction-to-statistical-analysis-of-the-microbiome-data
 important-files
 phyloseq
@@ -51,7 +50,7 @@ beta-diversity
 heatmaps
 multidimensional-analysis
 question
-summary-3
+summary-2
 exercises-in-understanding
 exercise-one
 critical-analysis-of-a-figure
