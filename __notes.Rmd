@@ -12,3 +12,11 @@ knitr::opts_chunk$set(echo = TRUE)
 explanation for how to publish a bookdown project to github.io
 https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
 
+how to edit and publish
+edit *.Rmd files
+git commit and push those changes.  this is only for version control of the *.Rmd files
+go to index.Rmd
+click on the knit button, which will "Knit to gitbook" because of the yaml in index.Rmd
+This will cause changes to html files in the /docs directory.
+git commit and push those changes. in about a minute, the dougwyu.github.io pages will change.
+
