@@ -183,16 +183,16 @@ Just to be awkward, Posit Cloud actually has us working in a different location 
 knitr::include_graphics("images/file_system_structure.png")
 ```
 
-We tell the command line where files and directories are located by providing their address, their "path". If we use the `pwd` command (for print working directory), we can find out what the path is for the directory we are sitting in.
+We tell the command line where files and directories are located by pre-pending the file name with the list of directories that hold them, known as the file's "path". If we use the `pwd` command (for print working directory), we can find out what the path is for the directory we are sitting in. Our working directory is also visible to the left of the \$ in the command line
 
 ```{bash}
     pwd
 ```
 
-And if we use the `ls` command (for list), we can see what directories and files are in the current directory we are sitting in.
+And if we use the `ls -l` command (for list), we can see what directories and files are in the current directory we are sitting in. (Note the `-l` argument) (also, try `ls –help`)
 
 ```{bash}
-    ls
+    ls -l
 ```
 
 > **Note**
@@ -215,15 +215,15 @@ There are two ways to specify the path (address) of the file we want to do somet
 
 What we are actually doing here is using a relative path to specify where the "example.txt" file is located. This is because the command line **automatically looks** in the current working directory if we don't specify anything else about its location.
 
-We can also run the same command on the same file using an **absolute path** - note Rstudio cloud has a slightly unique set-up in that we start from a folder designated cloud:
+We can also run the same command on the same file using an **absolute path** - note Posit Cloud has a slightly unique set-up in that we start from a folder called cloud:
 
 ```{bash}
     head /cloud/project/unix_intro/example.txt
 ```
 
-The previous two commands both point to the same file right now. But the first way, head example.txt, will only work if we are entering it while "sitting" in the directory that holds that file, while the second way will work no matter where we happen to be in the computer.
+The previous two commands both point to the same file right now. **But the first way, `head example.txt`, will only work if we are "sitting" in the directory that holds that file, while the second way will work no matter where we happen to be in the computer.**
 
-It is **important to always think about where** we are in the computer when working at the command line. One of the most common errors/easiest mistakes to make is trying to do something to a file that isn't where we think it is. Let's run head on the "example.txt" file again, and then let's try it on another file: "notes.txt":
+It is **important to always think about where we are in the computer** when working at the command line. One of the most common errors/easiest mistakes to make is trying to do something to a file that isn't where we think it is. Let's run head on the "example.txt" file again, and then let's try it on another file: "notes.txt":
 
 ```{bash}
 head example.txt
@@ -287,7 +287,7 @@ Moving around the computer like this might feel a bit cumbersome and frustrating
 
 ## Summary
 
-While maybe not all that exciting, these things really are the foundation needed to start utilizing the command line -- which then gives us the capability to use lots of tools that only work at a command line, manipulate large files rapidly, access and work with remote computers, and more! These are the fundamental tools that every scientist needs to work with **big data**.
+While maybe not all that exciting, these commands really are the foundation needed to start utilizing the command line -- which then gives us the capability to use lots of tools that only work at a command line, manipulate large files rapidly access and work with remote computers, and more! These are the fundamental tools that every scientist needs to work with **big data**.
 
 ### Terms
 
@@ -325,9 +325,7 @@ knitr::kable(terms, booktabs = TRUE,
   kableExtra::kable_styling()
 ```
 
-## Summary
-
-You won't get used to operating in bash, or moving around directories using just the command line in a single session. So if you think you are interested in developing your bioinformatic skills, spend some time practising.
+In a single session, you won't get used to operating in bash, or moving around directories using just the command line. So if you think you are interested in developing your bioinformatic skills, spend some time practising.
 
 Here is a link to a couple of extended tutorials you can bookmark if you want to explore this further:
 
