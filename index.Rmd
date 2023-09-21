@@ -9,6 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
+output_dir: "book-output"
 description: "This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics"
 always_allow_html: true
 ---
