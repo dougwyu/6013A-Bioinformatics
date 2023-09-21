@@ -329,7 +329,7 @@ In a single session, you won't get used to operating in bash, or moving around d
 
 Here is a link to a couple of extended tutorials you can bookmark if you want to explore this further:
 
-<https://datacarpentry.org/shell-genomics/01-introduction/index.html>
+<https://datacarpentry.org/shell-genomics/index.html>
 
 ## Stretch yourself - optional extras to try a couple of other skills
 
