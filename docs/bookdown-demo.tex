@@ -5,16 +5,19 @@
 \documentclass[
 ]{book}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -33,14 +36,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Introduction to Bioinformatics - 5023Y},
-  pdfauthor={Philip Leftwich},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -52,13 +47,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -66,7 +61,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -75,7 +70,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -181,17 +176,24 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\usepackage{amsmath}
 \usepackage{caption}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={BIO-6013A/7004A, Bioinformatics Skills I and II},
+  pdfauthor={Philip Leftwich, Ellen Bell, Douglas Yu},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{Introduction to Bioinformatics - 5023Y}
-\author{Philip Leftwich}
-\date{2022-11-29}
+\title{BIO-6013A/7004A, Bioinformatics Skills I and II}
+\author{Philip Leftwich, Ellen Bell, Douglas Yu}
+\date{2023-09-21}
 
 \begin{document}
 \maketitle
@@ -205,11 +207,19 @@
 
 This is a very short introduction to some of the processes and tools we use when working in bioinformatics.
 
-This is not meant to be anywhere near comprehensive, you will be shown a few of the fundamentals, and one walkthrough of a single bioinformatics `pipeline'.
+This is not meant to be anywhere near comprehensive; you will be shown a few of the fundamentals, and one walk-through of a single bioinformatics `pipeline'.
 
-The \emph{main} difference between Bioinformatics and the data analysis you have done before is the \textbf{size} of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.
+One of the \emph{main} differences between Bioinformatics and the data analysis you have done before is the \textbf{size} of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.
 
 Handling \textbf{big data} means you need to know how to operate on a supercomputer so we will be learning a little bit of Linux, processing \textbf{big} data into \textbf{small} data and then exporting into R to make some more amazing data visuals and interpret our findings!
+
+This bookdown project is hosted here:
+
+\url{https://github.com/dougwyu/6013A-Bioinformatics}
+
+and is deployed here:
+
+\url{https://dougwyu.github.io/6013A-Bioinformatics/index.html}
 
 \textbf{DON'T} worry if you don't understand everything
 
@@ -227,7 +237,7 @@ UNIX is a computer operating system. It was first developed in 1969 at Bell Labs
 
 Unix is proprietary software, whereas Linux is \emph{basically} free and open-source Unix.
 
-The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of ``unix-Like'' systems.
+The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of ``unix-like'' systems.
 
 \hypertarget{some-terms}{%
 \subsection{Some terms}\label{some-terms}}
@@ -240,7 +250,7 @@ Here are some terms worth knowing, don't worry about memorising them, it can jus
 \midrule
 shell & what we use to talk to the computer; anything where you are pointing and clicking with a mouse is a Graphical User Interface (GUI) shell; something with text only is a Command Line Interface (CLI) shell\\
 command line & a text-based environment capable of taking input and providing output\\
-Terminal & A program that runs a shell\\
+terminal & A program that runs a shell\\
 Unix & a family of operating systems (we also use the term “Unix-like” because one of the most popular operating systems derived from Unix is specifically named as not being Unix)\\
 Linux & a "Unix-like" OS\\
 \addlinespace
@@ -252,26 +262,26 @@ flag & a way to set options for a function, a specific type of argument usually 
 \begin{quote}
 \textbf{Note}
 
-You should be very familiar with using a GUI (RStudio), but remember we have spent a lot of time working with files and directories using the the command line (CLI) in R. This is useful practice, because most supercomputers lack a GUI, you must work entirely using the command line.
+You should be familiar with using a GUI (Windows and macOS are GUIs), but to program a computer, you need to use a CLI (command line interface).
 \end{quote}
 
 \hypertarget{why-learn-unix}{%
 \section{Why Learn Unix?}\label{why-learn-unix}}
 
-Most sequencing data files are large, and require a lot of RAM to process. As a result most of the work Bioinformaticians do is not hosted on their own computers, instead they ``remote-connect'' to high performance supercomputers or cluster computers. Almost all of these high performance computers use ``Unix-like'' operatings systems, the most common of which is Linux.
+Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they ``remote-connect'' to high performance supercomputers or cluster computers. Almost all of these high performance computers use ``Unix-like'' operatings systems, the most common of which is Linux.
 
-As stated above Linux is free (so no expensive licenses), open-source so lots of developers, its also well known for being stable, secure, reliable and efficient.
+As stated above, Linux is free and open-source so lots of developers. It's also well known for being stable, secure, reliable, and efficient.
 
-You already have some experience with using a Linux OS - every time you log into RStudio Cloud you are connecting to a supercomputer that runs on Linux. Normally we do not interact directly with the OS, instead we use R and RStudio directly.
+Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit make it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)
 
-But when you click on the RStudio Terminal it provides direct access to a command-line where we can execute commands and functions directly in Linux.
+When you click on the RStudio's Terminal tab, it provides direct access to a command-line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio's GUI back to the Linux CLI).
 
 This allows us to start using programs other than R, and potentially use multiple programs \& programming languages to work together.
 
 \begin{quote}
 \textbf{Note}
 
-This series of practicals is designed for you to have a first introduction to Bioinformatics, it's about exposure, not memorising or mastering anything. Don't worry about the details!
+This series of practicals is designed for you to have a first introduction to Bioinformatics. It's about \textbf{exposure}, not memorising or mastering anything. Don't worry about the details!
 \end{quote}
 
 \hypertarget{getting-started}{%
@@ -280,8 +290,9 @@ This series of practicals is designed for you to have a first introduction to Bi
 Before we get started we need a terminal to work in.
 
 \begin{itemize}
+\tightlist
 \item
-  Open the Bioinformatics RStudio Cloud Project in the 5023Y workspace
+  Open the Bioinformatics RStudio Cloud Project in the BIO-6013A workspace
 \item
   Click on the \texttt{Terminal} tab next to \texttt{Console} in the bottom-left pane of the RStudio GUI, this opens a command-line \emph{Shell}
 \end{itemize}
@@ -297,7 +308,7 @@ Before we get started we need a terminal to work in.
 
 \begin{itemize}
 \item
-  This is our ``command line'' where we will be typing all of our commands. We type our commands in \texttt{bash}
+  This is our ``command line'' where we will be typing all of our commands. We type our commands in a language called \texttt{bash}
 \item
   The \$ is where you start typing from, left of this it tells you what folder you are currently in (\texttt{working\ directory})
 \item
@@ -309,7 +320,7 @@ Before we get started we need a terminal to work in.
 
 \begin{itemize}
 \item
-  Just like in R spaces are special, spaces break things apart, as a rule it is therefore better to have functions and file names with dashes (-) or underscores (\_) - e.g.~``draft\_v3.txt'' is preferred to ``draft v3.txt''.
+  Spaces are special, spaces break things apart, as a rule it is therefore better to have functions and file names with dashes (-) or underscores (\_) - e.g.~``draft\_v3.txt'' is preferred to ``draft v3.txt''.
 \item
   The general syntax on the command line is: \texttt{command\ argument}. Again this is very similar to R except we don't use brackets e.g.~in R we are used to \texttt{command(argument)}
 \item
@@ -337,7 +348,7 @@ We can also ask for the output for a particular timezone using the \texttt{TZ} f
 
 \begin{Shaded}
 \begin{Highlighting}[]
-    \VariableTok{TZ=}\NormalTok{Europe/London }\FunctionTok{date}
+    \VariableTok{TZ}\OperatorTok{=}\NormalTok{Europe/London }\FunctionTok{date}
 \end{Highlighting}
 \end{Shaded}
 
@@ -356,11 +367,11 @@ We will start by typing in an instruction to download data from an online data r
 
 \begin{itemize}
 \item
-  curl is a command line tool for transferring data to and from the server here we will use this to download data from an online repository.
+  \texttt{curl} is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository.
 \item
-  tar will \emph{unpack} the data from a compressed file format
+  \texttt{tar} will \emph{unpack} the data from a compressed file format
 \item
-  cd change the directory so we \emph{land} in the new folder we have made
+  \texttt{cd} changes the directory so we \emph{land} in the new folder we have made
 \end{itemize}
 
 \begin{Shaded}
@@ -380,7 +391,7 @@ last line to change directory doesn't run until you hit enter
 \hypertarget{more-functions}{%
 \subsection{More functions}\label{more-functions}}
 
-Unlike date, most commands require arguments and won't work without them. head is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:
+Unlike date, most commands require arguments and won't work without them. \texttt{head} is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -418,20 +429,20 @@ How would we know we needed the -n flag for that? There are a few ways to find o
 \end{Highlighting}
 \end{Shaded}
 
-Again this is very similar to the logic in which R commands are strucutred e.g.~\texttt{??ggplot()} The synatx is similar even if the specific icons or arguments are different.
+Again this is very similar to the logic in which R commands are structured e.g.~\texttt{??ggplot()} The syntax is similar even if the specific icons or arguments are different.
 
 Remember just like with R, one of your best friends is Google! As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!
 
 \hypertarget{unix-file-structure}{%
 \section{Unix File Structure}\label{unix-file-structure}}
 
-There are two special locations in all Unix-based systems: the ``root'' location and the current user's ``home'' location. ``Root'' is where the address system of the computer starts; ``home'' is usally where the current user's location starts.
+There are two special locations in all Unix-based systems: the ``root'' location and the current user's ``home'' location. ``Root'' is where the address system of the computer starts; ``home'' is usually where the current user's location starts.
 
 Just to be awkward RStudio Cloud actually has us working in a different location ``Cloud'', which is underneath Root but separate to home which would be in the ``Users'' folder.
 
 \begin{center}\includegraphics[width=0.8\linewidth]{images/file_system_structure} \end{center}
 
-We tell the command line where files and directories are located by providing their address, their ``path''. If we use the pwd command (for print working directory), we can find out what the path is for the directory we are sitting in.
+We tell the command line where files and directories are located by providing their address, their ``path''. If we use the \texttt{pwd} command (for print working directory), we can find out what the path is for the directory we are sitting in.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -439,7 +450,7 @@ We tell the command line where files and directories are located by providing th
 \end{Highlighting}
 \end{Shaded}
 
-And if we use the ls command (for list), we can see what directories and files are in the current directory we are sitting in.
+And if we use the \texttt{ls} command (for list), we can see what directories and files are in the current directory we are sitting in.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -450,7 +461,7 @@ And if we use the ls command (for list), we can see what directories and files a
 \begin{quote}
 \textbf{Note}
 
-Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (nice-click and point interface), all commands have to be submitted through the terminal. So you would have to get used to navigating directories with typed commands, and it's useful to know what the standard hierarchy is.
+Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (nice-click and point interface), and all commands have to be submitted through the terminal. So you would have to get used to navigating directories with typed commands, and it's useful to know what the standard hierarchy is.
 \end{quote}
 
 \hypertarget{absolute-vs-relative-file-paths}{%
@@ -499,7 +510,7 @@ It is \textbf{important to always think about where} we are in the computer when
 \end{Highlighting}
 \end{Shaded}
 
-Here the head command works fine on ``example.txt'', but we get an error message when we call it on ``notes.txt'' telling us no such file or directory. If we run the ls command to list the contents of the current working directory, we can see the computer is absolutely right -- spoiler alert: it usually is -- and there is no file here named ``notes.txt''.
+Here the head command works fine on ``example.txt'', but we get an error message when we call it on ``notes.txt'' telling us no such file or directory. If we run the \texttt{ls} command to list the contents of the current working directory, we can see the computer is absolutely right -- spoiler alert: it usually is -- and there is no file here named ``notes.txt''.
 
 The ls command by default operates on the current working directory if we don't specify any location, but we can tell it to list the contents of a different directory by providing it as a positional argument:
 
@@ -942,7 +953,7 @@ Here's a little one-liner to look at what fraction of reads were retained in eac
 
 \begin{Shaded}
 \begin{Highlighting}[]
-    \ExtensionTok{paste}\NormalTok{ samples }\OperatorTok{\textless{}(}\FunctionTok{grep} \StringTok{"passing"}\NormalTok{ cutadapt\_primer\_trimming\_stats.txt }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f3} \AttributeTok{{-}d} \StringTok{"("} \KeywordTok{|} \FunctionTok{tr} \AttributeTok{{-}d} \StringTok{")"}\OperatorTok{)} \OperatorTok{\textless{}(}\FunctionTok{grep} \StringTok{"filtered"}\NormalTok{ cutadapt\_primer\_trimming\_stats.txt }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f3} \AttributeTok{{-}d} \StringTok{"("} \KeywordTok{|} \FunctionTok{tr} \AttributeTok{{-}d} \StringTok{")"}\OperatorTok{)}
+    \FunctionTok{paste}\NormalTok{ samples }\OperatorTok{\textless{}(}\FunctionTok{grep} \StringTok{"passing"}\NormalTok{ cutadapt\_primer\_trimming\_stats.txt }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f3} \AttributeTok{{-}d} \StringTok{"("} \KeywordTok{|} \FunctionTok{tr} \AttributeTok{{-}d} \StringTok{")"}\OperatorTok{)} \OperatorTok{\textless{}(}\FunctionTok{grep} \StringTok{"filtered"}\NormalTok{ cutadapt\_primer\_trimming\_stats.txt }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f3} \AttributeTok{{-}d} \StringTok{"("} \KeywordTok{|} \FunctionTok{tr} \AttributeTok{{-}d} \StringTok{")"}\OperatorTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1439,8 +1450,7 @@ Firstly we can take this information and use \texttt{join} functions to attach i
 \end{Highlighting}
 \end{Shaded}
 
-\captionsetup[table]{labelformat=empty,skip=1pt}
-\begin{longtable}{rccclrrrrrrrrr}
+\begin{longtable}{rllllrrrrrrrrr}
 \toprule
 temp & type & char & color & Sample & Observed & Chao1 & se.chao1 & ACE & se.ACE & Shannon & Simpson & InvSimpson & Fisher \\ 
 \midrule
@@ -1460,7 +1470,7 @@ NA & rock & altered & chocolate4 & R12 & 524 & 525.8947 & 1.9684441 & 525.94449 
 NA & rock & carbonate & darkkhaki & R7 & 435 & 436.7838 & 1.7397113 & 438.10995 & 10.011218 & 5.557851 & 0.9939838 & 166.21652 & 110.12229 \\ 
 13.5 & rock & glassy & black & R8 & 424 & 428.1379 & 3.0460370 & 428.53605 & 10.245312 & 5.295582 & 0.9910943 & 112.28782 & 91.16232 \\ 
 13.7 & rock & glassy & black & R9 & 296 & 300.5652 & 3.3753169 & 300.44067 & 8.397187 & 4.348445 & 0.9517400 & 20.72112 & 63.39469 \\ 
- \bottomrule
+\bottomrule
 \end{longtable}
 
 \hypertarget{analyse-and-plot}{%
@@ -1525,43 +1535,42 @@ NMDS does not use the absolute abundances of species in communities, but rather 
 \begin{verbatim}
 ## Square root transformation
 ## Wisconsin double standardization
-## Run 0 stress 0.04869473 
+## Run 0 stress 0.04867492 
 ## Run 1 stress 0.1099067 
-## Run 2 stress 0.0495053 
-## Run 3 stress 0.04788148 
+## Run 2 stress 0.04950531 
+## Run 3 stress 0.0478815 
 ## ... New best solution
-## ... Procrustes: rmse 0.01819983  max resid 0.05251424 
-## Run 4 stress 0.05216696 
-## Run 5 stress 0.04950527 
-## Run 6 stress 0.05218153 
-## Run 7 stress 0.04789994 
-## ... Procrustes: rmse 0.003538871  max resid 0.01139184 
-## Run 8 stress 0.04346718 
+## ... Procrustes: rmse 0.01735633  max resid 0.04949979 
+## Run 4 stress 0.05217466 
+## Run 5 stress 0.04950526 
+## Run 6 stress 0.05218679 
+## Run 7 stress 0.04790457 
+## ... Procrustes: rmse 0.004483867  max resid 0.0144702 
+## Run 8 stress 0.04346734 
 ## ... New best solution
-## ... Procrustes: rmse 0.05055473  max resid 0.1276931 
-## Run 9 stress 0.04346707 
+## ... Procrustes: rmse 0.05045851  max resid 0.1276191 
+## Run 9 stress 0.04346708 
 ## ... New best solution
-## ... Procrustes: rmse 0.0008269613  max resid 0.002619479 
+## ... Procrustes: rmse 0.0009578011  max resid 0.00303463 
 ## ... Similar to previous best
-## Run 10 stress 0.05221919 
-## Run 11 stress 0.05217172 
-## Run 12 stress 0.04346703 
-## ... New best solution
-## ... Procrustes: rmse 4.244008e-05  max resid 0.0001341823 
+## Run 10 stress 0.05218798 
+## Run 11 stress 0.05217395 
+## Run 12 stress 0.04346719 
+## ... Procrustes: rmse 8.416633e-05  max resid 0.0002654936 
 ## ... Similar to previous best
-## Run 13 stress 0.04346731 
-## ... Procrustes: rmse 0.0008768875  max resid 0.002778816 
+## Run 13 stress 0.04346746 
+## ... Procrustes: rmse 0.001022653  max resid 0.003240814 
 ## ... Similar to previous best
-## Run 14 stress 0.04866373 
-## Run 15 stress 0.04788183 
-## Run 16 stress 0.04866042 
+## Run 14 stress 0.04863562 
+## Run 15 stress 0.04788185 
+## Run 16 stress 0.04865743 
 ## Run 17 stress 0.04346729 
-## ... Procrustes: rmse 0.0008654347  max resid 0.002742929 
+## ... Procrustes: rmse 0.0009283786  max resid 0.002942205 
 ## ... Similar to previous best
-## Run 18 stress 0.04788425 
+## Run 18 stress 0.04788299 
 ## Run 19 stress 0.0521657 
-## Run 20 stress 0.05216982 
-## *** Solution reached
+## Run 20 stress 0.05216659 
+## *** Best solution repeated 4 times
 \end{verbatim}
 
 You should see each iteration of the NMDS until a solution is reached (i.e., stress was minimized after some number of reconfigurations of the points in 2 dimensions). You can increase the number of default iterations using the argument trymax=. which may help alleviate issues of non-convergence. If high stress is your problem, increasing the number of dimensions to k=3 might also help.
