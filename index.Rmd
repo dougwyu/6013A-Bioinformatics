@@ -1,4 +1,4 @@
---- 
+---
 title: "BIO-6013A/7004A, Bioinformatics Skills I and II"
 author: "Philip Leftwich, Ellen Bell, Douglas Yu"
 date: "`r Sys.Date()`"
@@ -11,28 +11,25 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 description: "This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics"
 always_allow_html: true
-
 ---
 
 # Introduction
 
-This is a very short introduction to some of the processes and tools we use when working in bioinformatics. 
+This is a very short introduction to some of the processes and tools we use when working in bioinformatics.
 
-This is not meant to be anywhere near comprehensive; you will be shown a few of the fundamentals, and one walk-through of a single bioinformatics 'pipeline'. 
+This is not meant to be anywhere near comprehensive; you will be shown a few of the fundamentals, and one walk-through of a single bioinformatics 'pipeline'.
 
 One of the *main* differences between Bioinformatics and the data analysis you have done before is the **size** of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.
 
 Handling **big data** means you need to know how to operate on a supercomputer so we will be learning a little bit of Linux, processing **big** data into **small** data and then exporting into R to make some more amazing data visuals and interpret our findings!
 
+This bookdown project is hosted here:
 
-
-
+<https://dougwyu.github.io/6013A-Bioinformatics/index.html>
 
 **DON'T** worry if you don't understand everything
 
-**DO** ask lots of questions! 
-
-
+**DO** ask lots of questions!
 
 ```{r include=FALSE}
 library(tidyverse)
@@ -47,6 +44,3 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=FALSE)
 ```{r klippy, echo=FALSE, eval=TRUE, include=TRUE}
 klippy::klippy(c('r', 'bash'), position = c('top', 'right'), tooltip_message = 'copy to clipboard', tooltip_success = 'Copied!')
 ```
-
-
-
