@@ -113,6 +113,8 @@ We will start by typing in an instruction to download data from an online data r
 
 -   `cd` changes the directory so we *land* in the new folder we have made
 
+Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, you can find the shortcut by opening Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu.
+
 ```{bash}
     curl -L -o unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746
     tar -xzvf unix_intro.tar.gz && rm unix_intro.tar.gz

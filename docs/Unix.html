@@ -398,19 +398,21 @@ Figure 2.1: Here is an example of the Terminal tab, right next to the R console
 Figure 2.2: It should look like this:
 </p>
 </div>
-<p>More information on using the date function (here)[<a href="https://www.geeksforgeeks.org/date-command-linux-examples/" class="uri">https://www.geeksforgeeks.org/date-command-linux-examples/</a>]</p>
+<p>More information on using the date function is <a href="https://www.geeksforgeeks.org/date-command-linux-examples/" class="uri">here</a>.</p>
 <p>We can also ask for the output for a particular timezone using the <code>TZ</code> function and <code>date</code></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="Unix.html#cb2-1" tabindex="-1"></a>    <span class="va">TZ</span><span class="op">=</span>Europe/London <span class="fu">date</span></span></code></pre></div>
 <p>Or we can ask the computer what the date will be next Tuesday…</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="Unix.html#cb3-1" tabindex="-1"></a>    <span class="fu">date</span> <span class="at">--date</span><span class="op">=</span><span class="st">&quot;next tue&quot;</span></span></code></pre></div>
+<p>Note how we use the <code>command</code> <code>argument</code> structure here. <code>date</code> is the command, and <code>--date="next tue"</code> is the argument that causes the <code>date</code> command to modify its output. This argument is optional, as you have seen. Often, commands have required arguments.</p>
 <div id="downloading-data" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Downloading data<a href="Unix.html#downloading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it:</p>
+<p>We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it.</p>
 <ul>
 <li><p><code>curl</code> is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository.</p></li>
 <li><p><code>tar</code> will <em>unpack</em> the data from a compressed file format</p></li>
 <li><p><code>cd</code> changes the directory so we <em>land</em> in the new folder we have made</p></li>
 </ul>
+<p>Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, you can find the shortcut by opening Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="Unix.html#cb4-1" tabindex="-1"></a>    <span class="ex">curl</span> <span class="at">-L</span> <span class="at">-o</span> unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746</span>
 <span id="cb4-2"><a href="Unix.html#cb4-2" tabindex="-1"></a>    <span class="fu">tar</span> <span class="at">-xzvf</span> unix_intro.tar.gz <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> unix_intro.tar.gz</span>
 <span id="cb4-3"><a href="Unix.html#cb4-3" tabindex="-1"></a>    <span class="bu">cd</span> unix_intro</span></code></pre></div>
