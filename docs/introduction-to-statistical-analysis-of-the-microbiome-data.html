@@ -326,12 +326,12 @@ In previous sections we worked with microbiome generated data, but ran through s
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb53-1" tabindex="-1"></a>taxonomy <span class="sc">%&gt;%</span> </span>
 <span id="cb53-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb53-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sample, <span class="at">y=</span>Abundance, <span class="at">fill=</span>class))<span class="sc">+</span></span>
 <span id="cb53-3"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb53-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-67-1.png" width="672" />
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-68-1.png" width="672" />
 The ability to discriminate between more than say a dozen colors in a single plot is a limitation of the stacked bar plot - so we have filtered out less abundant reads (&lt;5%). We run the risk that we might miss something important here, so its important to visualise the data in different ways.</p>
 <p>There are a total of 10 Bacterial classes (at greater than 5% abundance).</p>
 <p>Let’s generate boxplots according to <code>char</code> and facet these according to Bacterial <code>class</code>. This will allow us to compare how different bacterial classes appear to change in relative abundance between samples.</p>
 <p>Try and produce something similar to the plot below</p>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <div id="box">
 <details>
 <summary>
@@ -1075,7 +1075,7 @@ Firstly we can take this information and use <code>join</code> functions to atta
 <span id="cb57-4"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-4" tabindex="-1"></a>             <span class="at">sample.label=</span><span class="st">&quot;char&quot;</span>, <span class="do">## set the x axis to display by sample</span></span>
 <span id="cb57-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-5" tabindex="-1"></a>             <span class="at">low=</span><span class="st">&quot;purple&quot;</span>,   <span class="do">## set the color for low abundance OTUs</span></span>
 <span id="cb57-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb57-6" tabindex="-1"></a>             <span class="at">high=</span><span class="st">&quot;darkorange&quot;</span>) <span class="do">## set the color for high abundance OTUs</span></span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 </div>
 <div id="multidimensional-analysis" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Multidimensional analysis<a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#multidimensional-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1143,7 +1143,7 @@ Firstly we can take this information and use <code>join</code> functions to atta
 <p>We can use the function plot.ordination to use our NMDS scaling to position our samples on a ggplot</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-1" tabindex="-1"></a>ord1<span class="ot">&lt;-</span><span class="fu">plot_ordination</span>(ps, ord.nmds.bray, <span class="at">color=</span><span class="st">&quot;char&quot;</span>, <span class="at">title=</span><span class="st">&quot;Bray NMDS&quot;</span>)</span>
 <span id="cb60-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb60-2" tabindex="-1"></a>ord1</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <p>And we can add customisations to improve the plot</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-1" tabindex="-1"></a>ord1 <span class="sc">+</span> <span class="fu">stat_ellipse</span>(<span class="at">type=</span><span class="st">&quot;norm&quot;</span>,</span>
 <span id="cb61-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-2" tabindex="-1"></a>                    <span class="at">geom=</span><span class="st">&quot;polygon&quot;</span>,</span>
@@ -1152,7 +1152,7 @@ Firstly we can take this information and use <code>join</code> functions to atta
 <span id="cb61-5"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-5" tabindex="-1"></a>                    <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
 <span id="cb61-6"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-6" tabindex="-1"></a>     <span class="fu">geom_point</span>(<span class="at">pch=</span><span class="dv">21</span>, <span class="fu">aes</span>(<span class="at">fill=</span>char), <span class="at">colour=</span><span class="st">&quot;white&quot;</span>, <span class="at">stroke=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb61-7"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb61-7" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 </div>
 </div>
 <div id="question" class="section level2 hasAnchor" number="4.6">

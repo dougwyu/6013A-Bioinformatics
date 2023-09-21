@@ -266,8 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Unix is very likely the most fundamental skillset we can develop for bioinformatics (and much more than bioinformatics). Many of the most common and powerful bioinformatics approaches happen in this text-based environment, and having a solid foundation here can make everything we’re trying to learn and do much easier. This is a short introductory tutorial to help us get from being completely new to Unix up to being friendly with it 🙂</p>
 <div id="what-is-unixlinux" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> What is Unix/Linux?<a href="Unix.html#what-is-unixlinux" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language <code>C</code>.</p>
-<p>Unix is proprietary software, whereas Linux is <em>basically</em> free and open-source Unix.</p>
+<p>UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language <code>C</code>. Unix is proprietary software, whereas Linux is <em>basically</em> free and open-source Unix.</p>
 <p>The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of “unix-like” systems.</p>
 <div id="some-terms" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Some terms<a href="Unix.html#some-terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -350,11 +349,11 @@ a way to set options for a function, a specific type of argument usually precede
 </div>
 <div id="why-learn-unix" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Why Learn Unix?<a href="Unix.html#why-learn-unix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they “remote-connect” to high performance supercomputers or cluster computers. Almost all of these high performance computers use “Unix-like” operatings systems, the most common of which is Linux.</p>
-<p>As stated above, Linux is free and open-source so lots of developers. It’s also well known for being stable, secure, reliable, and efficient.</p>
-<p>Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit make it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)</p>
-<p>When you click on the RStudio’s Terminal tab, it provides direct access to a command-line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio’s GUI back to the Linux CLI).</p>
-<p>This allows us to start using programs other than R, and potentially use multiple programs &amp; programming languages to work together.</p>
+<p>Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they “remote-connect” to high performance supercomputers or cluster computers. Almost all of these high performance computers use “Unix-like” operating systems, the most common of which is Linux.</p>
+<p>As stated above, Linux is free and open-source so there are lots of developers. It’s also well known for being stable, secure, reliable, and efficient.</p>
+<p>Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit makes it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)</p>
+<p>When you click on RStudio’s Terminal tab, it provides direct access to a command line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio’s GUI back to the Linux CLI).</p>
+<p>This allows us to use programs other than R, and potentially use multiple programs &amp; programming languages to work together.</p>
 <blockquote>
 <p><strong>Note</strong></p>
 <p>This series of practicals is designed for you to have a first introduction to Bioinformatics. It’s about <strong>exposure</strong>, not memorising or mastering anything. Don’t worry about the details!</p>
@@ -382,8 +381,8 @@ Figure 2.1: Here is an example of the Terminal tab, right next to the R console
 <div id="a-few-foundational-rules" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> A few foundational rules<a href="Unix.html#a-few-foundational-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>Spaces are special, spaces break things apart, as a rule it is therefore better to have functions and file names with dashes (-) or underscores (_) - e.g. “draft_v3.txt” is preferred to “draft v3.txt”.</p></li>
-<li><p>The general syntax on the command line is: <code>command argument</code>. Again this is very similar to R except we don’t use brackets e.g. in R we are used to <code>command(argument)</code></p></li>
+<li><p>Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (_) where you want space to be- e.g. “draft_v3.txt” is preferred to “draft v3.txt”.</p></li>
+<li><p>The general syntax on the command line is: <code>command argument</code>. This is very similar to R except we don’t use brackets e.g. in R we are used to <code>command(argument)</code></p></li>
 <li><p>Arguments can be <strong>optional</strong> e.g. if their is a default argument you may not have to write anything. Some functions <em>require</em> that arguments are specified. Again this is just like R.</p></li>
 </ul>
 </div>
@@ -393,6 +392,12 @@ Figure 2.1: Here is an example of the Terminal tab, right next to the R console
 <p><code>date</code> is a command that prints out the date and time. Copy and paste this command into your terminal</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="Unix.html#cb1-1" tabindex="-1"></a>    <span class="fu">date</span></span></code></pre></div>
 <p>This prints out the date/time in UTC</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="images/date_on_command_line.png" alt="It should look like this:" width="80%" />
+<p class="caption">
+Figure 2.2: It should look like this:
+</p>
+</div>
 <p>More information on using the date function (here)[<a href="https://www.geeksforgeeks.org/date-command-linux-examples/" class="uri">https://www.geeksforgeeks.org/date-command-linux-examples/</a>]</p>
 <p>We can also ask for the output for a particular timezone using the <code>TZ</code> function and <code>date</code></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="Unix.html#cb2-1" tabindex="-1"></a>    <span class="va">TZ</span><span class="op">=</span>Europe/London <span class="fu">date</span></span></code></pre></div>
