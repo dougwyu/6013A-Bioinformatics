@@ -129,7 +129,9 @@ Check each command line has run, in the example above you might find that the fi
 
 ### More functions
 
-Unlike date, most commands require arguments and won't work without them. `head` is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:
+Before the next step, make sure that you are in the `unix_intro/` directory. You should see `unix_intro$` in the command line.
+
+Unlike `date`, most commands require arguments and won't work without them. `head` is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:
 
 ```{bash}
     head example.txt
@@ -156,16 +158,18 @@ Sometimes we need to specify the input file by putting something in front of it 
 There are also optional arguments for the head command. The default for head is to print the first 10 lines of a file. We can change that by specifying the -n flag, followed by how many lines we want:
 
 ```{bash}
-    head -n 5 example.txt
+    head -n 20 example.txt
 ```
 
-How would we know we needed the -n flag for that? There are a few ways to find out. Many standard Unix commands and other programs will have built-in help menus that we can access by providing --help as the only argument:
+How would we know we needed the `-n` flag for that? There are a few ways to find out. Many standard Unix commands and other programs will have built-in help menus that we can access by providing --help as the only argument:
 
 ```{bash}
     head --help
 ```
 
-Again this is very similar to the logic in which R commands are structured e.g. `??ggplot()` The syntax is similar even if the specific icons or arguments are different.
+Well, at it happens, the command `head` does not have a help menu, but it still gives you some help when you try.
+
+Again this is very similar to the logic in which R commands are structured e.g. `?ggplot` The syntax is similar even if the specific icons or arguments are different.
 
 Remember just like with R, one of your best friends is Google! As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!
 
@@ -173,7 +177,7 @@ Remember just like with R, one of your best friends is Google! As you get famili
 
 There are two special locations in all Unix-based systems: the "root" location and the current user's "home" location. "Root" is where the address system of the computer starts; "home" is usually where the current user's location starts.
 
-Just to be awkward RStudio Cloud actually has us working in a different location "Cloud", which is underneath Root but separate to home which would be in the "Users" folder.
+Just to be awkward, Posit Cloud actually has us working in a different location "Cloud", which is underneath Root but separate to home which would be in the "Users" folder.
 
 ```{r, eval=TRUE,echo=FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
 knitr::include_graphics("images/file_system_structure.png")
@@ -193,7 +197,7 @@ And if we use the `ls` command (for list), we can see what directories and files
 
 > **Note**
 >
-> Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (nice-click and point interface), and all commands have to be submitted through the terminal. So you would have to get used to navigating directories with typed commands, and it's useful to know what the standard hierarchy is.
+> Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (a click and point interface), and all commands have to be submitted through the terminal. So you have to get used to navigating directories with typed commands, and it's useful to know what the standard hierarchy is and where you happen to be at any given moment.
 
 ## Absolute vs relative file paths
 
