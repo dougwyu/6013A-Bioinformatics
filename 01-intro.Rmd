@@ -12,14 +12,14 @@ UNIX is a computer operating system. It was first developed in 1969 at Bell Labs
 
 Unix is proprietary software, whereas Linux is *basically* free and open-source Unix.
 
-The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of "unix-Like" systems.
+The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of "unix-like" systems.
 
 ### Some terms
 
 Here are some terms worth knowing, don't worry about memorising them, it can just be useful to have these to refer to in the future.
 
 ```{r, echo=FALSE, eval=TRUE}
-terms <- read_csv("data/terms-1.csv", skip_empty_rows = TRUE) 
+terms <- readr::read_csv("data/terms-1.csv", skip_empty_rows = TRUE) 
 
 knitr::kable(terms, booktabs = TRUE,
              col.names = c("Term", "What it is"),
@@ -30,7 +30,7 @@ knitr::kable(terms, booktabs = TRUE,
 
 > **Note**
 >
-> You should be familiar with using a GUI (Windows and macOS), but to program a computer, you need to use the command line interface.
+> You should be familiar with using a GUI (Windows and macOS are GUIs), but to program a computer, you need to use a CLI (command line interface).
 
 ## Why Learn Unix?
 
@@ -38,9 +38,9 @@ Most sequencing data files are large and require a lot of computer memory (RAM) 
 
 As stated above, Linux is free and open-source so lots of developers. It's also well known for being stable, secure, reliable, and efficient.
 
-Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of that, the company Posit make it possible to run RStudio, which is a GUI that runs the statistical program called R. (Confusing? Yes.)
+Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit make it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)
 
-When you click on the RStudio's Terminal tab, it provides direct access to a command-line where we can execute commands and functions directly in Linux.
+When you click on the RStudio's Terminal tab, it provides direct access to a command-line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio's GUI back to the Linux CLI).
 
 This allows us to start using programs other than R, and potentially use multiple programs & programming languages to work together.
 
@@ -59,7 +59,7 @@ Before we get started we need a terminal to work in.
 knitr::include_graphics("images/terminal.png")
 ```
 
--   This is our "command line" where we will be typing all of our commands. We type our commands in `bash`
+-   This is our "command line" where we will be typing all of our commands. We type our commands in a language called `bash`
 
 -   The \$ is where you start typing from, left of this it tells you what folder you are currently in (`working directory`)
 
@@ -67,7 +67,7 @@ knitr::include_graphics("images/terminal.png")
 
 ## A few foundational rules
 
--   Just like in R spaces are special, spaces break things apart, as a rule it is therefore better to have functions and file names with dashes (-) or underscores (\_) - e.g. "draft_v3.txt" is preferred to "draft v3.txt".
+-   Spaces are special, spaces break things apart, as a rule it is therefore better to have functions and file names with dashes (-) or underscores (\_) - e.g. "draft_v3.txt" is preferred to "draft v3.txt".
 
 -   The general syntax on the command line is: `command argument`. Again this is very similar to R except we don't use brackets e.g. in R we are used to `command(argument)`
 
@@ -91,7 +91,6 @@ We can also ask for the output for a particular timezone using the `TZ` function
 
 ```{bash}
     TZ=Europe/London date
-
 ```
 
 Or we can ask the computer what the date will be next Tuesday...
@@ -104,11 +103,11 @@ Or we can ask the computer what the date will be next Tuesday...
 
 We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it:
 
--   curl is a command line tool for transferring data to and from the server here we will use this to download data from an online repository.
+-   `curl` is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository.
 
--   tar will *unpack* the data from a compressed file format
+-   `tar` will *unpack* the data from a compressed file format
 
--   cd change the directory so we *land* in the new folder we have made
+-   `cd` changes the directory so we *land* in the new folder we have made
 
 ```{bash}
     curl -L -o unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746
@@ -124,7 +123,7 @@ Check each command line has run, in the example above you might find that the fi
 
 ### More functions
 
-Unlike date, most commands require arguments and won't work without them. head is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:
+Unlike date, most commands require arguments and won't work without them. `head` is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:
 
 ```{bash}
     head example.txt
@@ -160,13 +159,13 @@ How would we know we needed the -n flag for that? There are a few ways to find o
     head --help
 ```
 
-Again this is very similar to the logic in which R commands are strucutred e.g. `??ggplot()` The synatx is similar even if the specific icons or arguments are different.
+Again this is very similar to the logic in which R commands are structured e.g. `??ggplot()` The syntax is similar even if the specific icons or arguments are different.
 
 Remember just like with R, one of your best friends is Google! As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!
 
 ## Unix File Structure
 
-There are two special locations in all Unix-based systems: the "root" location and the current user's "home" location. "Root" is where the address system of the computer starts; "home" is usally where the current user's location starts.
+There are two special locations in all Unix-based systems: the "root" location and the current user's "home" location. "Root" is where the address system of the computer starts; "home" is usually where the current user's location starts.
 
 Just to be awkward RStudio Cloud actually has us working in a different location "Cloud", which is underneath Root but separate to home which would be in the "Users" folder.
 
@@ -174,13 +173,13 @@ Just to be awkward RStudio Cloud actually has us working in a different location
 knitr::include_graphics("images/file_system_structure.png")
 ```
 
-We tell the command line where files and directories are located by providing their address, their "path". If we use the pwd command (for print working directory), we can find out what the path is for the directory we are sitting in.
+We tell the command line where files and directories are located by providing their address, their "path". If we use the `pwd` command (for print working directory), we can find out what the path is for the directory we are sitting in.
 
 ```{bash}
     pwd
 ```
 
-And if we use the ls command (for list), we can see what directories and files are in the current directory we are sitting in.
+And if we use the `ls` command (for list), we can see what directories and files are in the current directory we are sitting in.
 
 ```{bash}
     ls
@@ -188,7 +187,7 @@ And if we use the ls command (for list), we can see what directories and files a
 
 > **Note**
 >
-> Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (nice-click and point interface), all commands have to be submitted through the terminal. So you would have to get used to navigating directories with typed commands, and it's useful to know what the standard hierarchy is.
+> Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (nice-click and point interface), and all commands have to be submitted through the terminal. So you would have to get used to navigating directories with typed commands, and it's useful to know what the standard hierarchy is.
 
 ## Absolute vs relative file paths
 
@@ -224,7 +223,7 @@ head example.txt
 head notes.txt
 ```
 
-Here the head command works fine on "example.txt", but we get an error message when we call it on "notes.txt" telling us no such file or directory. If we run the ls command to list the contents of the current working directory, we can see the computer is absolutely right -- spoiler alert: it usually is -- and there is no file here named "notes.txt".
+Here the head command works fine on "example.txt", but we get an error message when we call it on "notes.txt" telling us no such file or directory. If we run the `ls` command to list the contents of the current working directory, we can see the computer is absolutely right -- spoiler alert: it usually is -- and there is no file here named "notes.txt".
 
 The ls command by default operates on the current working directory if we don't specify any location, but we can tell it to list the contents of a different directory by providing it as a positional argument:
 
@@ -283,7 +282,7 @@ While maybe not all that exciting, these things really are the foundation needed
 ### Terms
 
 ```{r, echo=FALSE, eval=TRUE}
-terms <- read_csv("data/terms.csv", skip_empty_rows = TRUE) 
+terms <- readr::read_csv("data/terms.csv", skip_empty_rows = TRUE) 
 
 knitr::kable(terms, booktabs = TRUE,
              col.names = c("Term", "What it is"),
@@ -295,7 +294,7 @@ knitr::kable(terms, booktabs = TRUE,
 ### Commands
 
 ```{r, echo=FALSE, eval=TRUE}
-terms <- read_csv("data/commands.csv", skip_empty_rows = TRUE) 
+terms <- readr::read_csv("data/commands.csv", skip_empty_rows = TRUE) 
 
 knitr::kable(terms, booktabs = TRUE,
              col.names = c("Command", "What it is"),
@@ -307,7 +306,7 @@ knitr::kable(terms, booktabs = TRUE,
 ### Special characters
 
 ```{r, echo=FALSE, eval=TRUE}
-terms <- read_csv("data/characters.csv", skip_empty_rows = TRUE) 
+terms <- readr::read_csv("data/characters.csv", skip_empty_rows = TRUE) 
 
 knitr::kable(terms, booktabs = TRUE,
              col.names = c("Command", "What it is"),
