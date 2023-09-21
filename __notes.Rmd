@@ -15,12 +15,9 @@ https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
 how to edit and publish
 edit *.Rmd files
 git commit and push those changes.  this is only for version control of the *.Rmd files
-go to index.Rmd
-click on the knit button, which will "Knit to gitbook" because of the yaml in index.Rmd
-This will cause changes to html files in the /docs directory.
-git commit and push those changes. in about a minute, the dougwyu.github.io pages will change.
-
-open question:  how do i push changes to the files in the data/ directory?  i edited and pushed terms-1.csv, but the file has not updated on github.io
+go to the Build tab and click on arrow next to Build Book and click on bookdown::gitbook
+This will cause changes to files in the /docs directory.
+git commit and push those changes. In about a minute, the dougwyu.github.io pages will change.
 
 ```{r}
 # install.packages("remotes")
