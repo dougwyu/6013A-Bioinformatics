@@ -87,7 +87,7 @@ This prints out the date/time in UTC
 knitr::include_graphics("images/date_on_command_line.png")
 ```
 
-More information on using the date function (here)[<https://www.geeksforgeeks.org/date-command-linux-examples/>]
+More information on using the date function is [here](https://www.geeksforgeeks.org/date-command-linux-examples/){.uri}.
 
 We can also ask for the output for a particular timezone using the `TZ` function and `date`
 
@@ -101,9 +101,11 @@ Or we can ask the computer what the date will be next Tuesday...
     date --date="next tue"
 ```
 
+Note how we use the `command` `argument` structure here. `date` is the command, and `--date="next tue"` is the argument that causes the `date` command to modify its output. This argument is optional, as you have seen. Often, commands have required arguments.
+
 ### Downloading data
 
-We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it:
+We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it.
 
 -   `curl` is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository.
 
