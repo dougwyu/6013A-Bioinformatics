@@ -35,26 +35,26 @@ knitr::kable(terms, booktabs = TRUE,
 
 ## Why Learn Unix?
 
-Most sequencing data files are large, and require a lot of RAM to process. As a result most of the work Bioinformaticians do is not hosted on their own computers, instead they "remote-connect" to high performance supercomputers or cluster computers. Almost all of these high performance computers use "Unix-like" operatings systems, the most common of which is Linux.
+Most sequencing data files are large, and require a lot of RAM to process. As a result most of the work that bioinformaticians do is not hosted on their own computers. Instead, they "remote-connect" to high performance supercomputers or cluster computers. Almost all of these high performance computers use "Unix-like" operatings systems, the most common of which is Linux.
 
-As stated above Linux is free (so no expensive licenses), open-source so lots of developers, its also well known for being stable, secure, reliable and efficient.
+As stated above, Linux is free (so no expensive licenses), open-source so lots of developers. It's also well known for being stable, secure, reliable, and efficient.
 
-You already have some experience with using a Linux OS - every time you log into RStudio Cloud you are connecting to a supercomputer that runs on Linux. Normally we do not interact directly with the OS, instead we use R and RStudio directly.
+You already have some experience with using a Linux OS - every time you log into RStudio.cloud you are connecting to a supercomputer that runs Linux. Normally we do not interact directly with the OS, instead we use R and RStudio directly.
 
-But when you click on the RStudio Terminal it provides direct access to a command-line where we can execute commands and functions directly in Linux.
+But when you click on the RStudio's Terminal tab, it provides direct access to a command-line where we can execute commands and functions directly in Linux.
 
 This allows us to start using programs other than R, and potentially use multiple programs & programming languages to work together.
 
 > **Note**
 >
-> This series of practicals is designed for you to have a first introduction to Bioinformatics, it's about exposure, not memorising or mastering anything. Don't worry about the details!
+> This series of practicals is designed for you to have a first introduction to Bioinformatics. It's about exposure, not memorising or mastering anything. Don't worry about the details!
 
 
 ## Getting started
 
 Before we get started we need a terminal to work in.
 
--   Open the Bioinformatics RStudio Cloud Project in the 5023Y workspace
+-   Open the Bioinformatics RStudio Cloud Project in the BIO-6013A workspace
 
 -   Click on the `Terminal` tab next to `Console` in the bottom-left pane of the RStudio GUI, this opens a command-line *Shell*
 
