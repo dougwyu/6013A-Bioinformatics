@@ -20,3 +20,4 @@ click on the knit button, which will "Knit to gitbook" because of the yaml in in
 This will cause changes to html files in the /docs directory.
 git commit and push those changes. in about a minute, the dougwyu.github.io pages will change.
 
+open question:  how do i push changes to the files in the data/ directory?  i edited and pushed terms-1.csv, but the file has not updated on github.io
