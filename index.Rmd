@@ -25,6 +25,10 @@ Handling **big data** means you need to know how to operate on a supercomputer s
 
 This bookdown project is hosted here:
 
+<https://github.com/dougwyu/6013A-Bioinformatics>
+
+and is deployed here:
+
 <https://dougwyu.github.io/6013A-Bioinformatics/index.html>
 
 **DON'T** worry if you don't understand everything
