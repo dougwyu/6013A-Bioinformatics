@@ -8,9 +8,7 @@ Unix is very likely the most fundamental skillset we can develop for bioinformat
 
 ## What is Unix/Linux?
 
-UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language `C`.
-
-Unix is proprietary software, whereas Linux is *basically* free and open-source Unix.
+UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language `C`. Unix is proprietary software, whereas Linux is *basically* free and open-source Unix.
 
 The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of "unix-like" systems.
 
@@ -34,15 +32,15 @@ knitr::kable(terms, booktabs = TRUE,
 
 ## Why Learn Unix?
 
-Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they "remote-connect" to high performance supercomputers or cluster computers. Almost all of these high performance computers use "Unix-like" operatings systems, the most common of which is Linux.
+Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they "remote-connect" to high performance supercomputers or cluster computers. Almost all of these high performance computers use "Unix-like" operating systems, the most common of which is Linux.
 
-As stated above, Linux is free and open-source so lots of developers. It's also well known for being stable, secure, reliable, and efficient.
+As stated above, Linux is free and open-source so there are lots of developers. It's also well known for being stable, secure, reliable, and efficient.
 
-Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit make it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)
+Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit makes it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)
 
-When you click on the RStudio's Terminal tab, it provides direct access to a command-line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio's GUI back to the Linux CLI).
+When you click on RStudio's Terminal tab, it provides direct access to a command line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio's GUI back to the Linux CLI).
 
-This allows us to start using programs other than R, and potentially use multiple programs & programming languages to work together.
+This allows us to use programs other than R, and potentially use multiple programs & programming languages to work together.
 
 > **Note**
 >
@@ -67,9 +65,9 @@ knitr::include_graphics("images/terminal.png")
 
 ## A few foundational rules
 
--   Spaces are special, spaces break things apart, as a rule it is therefore better to have functions and file names with dashes (-) or underscores (\_) - e.g. "draft_v3.txt" is preferred to "draft v3.txt".
+-   Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (\_) where you want space to be- e.g. "draft_v3.txt" is preferred to "draft v3.txt".
 
--   The general syntax on the command line is: `command argument`. Again this is very similar to R except we don't use brackets e.g. in R we are used to `command(argument)`
+-   The general syntax on the command line is: `command argument`. This is very similar to R except we don't use brackets e.g. in R we are used to `command(argument)`
 
 -   Arguments can be **optional** e.g. if their is a default argument you may not have to write anything. Some functions *require* that arguments are specified. Again this is just like R.
 
@@ -84,6 +82,10 @@ We will perform a very simple function and get a flavour of the similarities and
 ```
 
 This prints out the date/time in UTC
+
+```{r, eval=TRUE,echo=FALSE, fig.cap='It should look like this:', out.width='80%', fig.asp=.75, fig.align='center'}
+knitr::include_graphics("images/date_on_command_line.png")
+```
 
 More information on using the date function (here)[<https://www.geeksforgeeks.org/date-command-linux-examples/>]
 
