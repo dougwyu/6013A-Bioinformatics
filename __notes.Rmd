@@ -32,3 +32,10 @@ BiocManager::install(c("GenomicFeatures", "AnnotationDbi"))
 BiocManager::install(c("phyloseq"))
 ```
 
+
+```{r install packages, eval=FALSE}
+remotes::install_bioc("Biostrings")  
+remotes::install_github("mhahsler/rBLAST")  
+install.packages("taxonomizr")
+#install.packages("seqinr")  
+```

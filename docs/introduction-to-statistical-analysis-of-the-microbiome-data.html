@@ -1089,48 +1089,47 @@ Firstly we can take this information and use <code>join</code> functions to atta
 <span id="cb58-2"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#cb58-2" tabindex="-1"></a>ord.nmds.bray <span class="ot">&lt;-</span> <span class="fu">ordinate</span>(ps, <span class="at">method=</span><span class="st">&quot;NMDS&quot;</span>,<span class="at">k=</span><span class="dv">2</span>, <span class="at">distance=</span><span class="st">&quot;bray&quot;</span>)</span></code></pre></div>
 <pre><code>## Square root transformation
 ## Wisconsin double standardization
-## Run 0 stress 0.04867492 
-## Run 1 stress 0.04788345 
+## Run 0 stress 0.04876711 
+## Run 1 stress 0.0478881 
 ## ... New best solution
-## ... Procrustes: rmse 0.01662005  max resid 0.04687317 
-## Run 2 stress 0.04346754 
+## ... Procrustes: rmse 0.01962282  max resid 0.05788082 
+## Run 2 stress 0.04346713 
 ## ... New best solution
-## ... Procrustes: rmse 0.05209189  max resid 0.1292782 
-## Run 3 stress 0.05216651 
-## Run 4 stress 0.04346746 
+## ... Procrustes: rmse 0.05294335  max resid 0.1316673 
+## Run 3 stress 0.05216743 
+## Run 4 stress 0.04346694 
 ## ... New best solution
-## ... Procrustes: rmse 0.001312409  max resid 0.004158759 
+## ... Procrustes: rmse 0.0006780791  max resid 0.00214874 
 ## ... Similar to previous best
-## Run 5 stress 0.05216631 
-## Run 6 stress 0.043467 
-## ... New best solution
-## ... Procrustes: rmse 0.0009482444  max resid 0.003004205 
+## Run 5 stress 0.05216581 
+## Run 6 stress 0.04346719 
+## ... Procrustes: rmse 0.0007087703  max resid 0.002245378 
 ## ... Similar to previous best
-## Run 7 stress 0.04788208 
-## Run 8 stress 0.0521791 
-## Run 9 stress 0.04346745 
-## ... Procrustes: rmse 0.0009405081  max resid 0.0029803 
+## Run 7 stress 0.04788334 
+## Run 8 stress 0.0521974 
+## Run 9 stress 0.04346725 
+## ... Procrustes: rmse 0.0002716831  max resid 0.0008608955 
 ## ... Similar to previous best
-## Run 10 stress 0.04346717 
-## ... Procrustes: rmse 0.0001470793  max resid 0.0004659216 
+## Run 10 stress 0.04346722 
+## ... Procrustes: rmse 0.0007270828  max resid 0.002303399 
 ## ... Similar to previous best
-## Run 11 stress 0.0478815 
-## Run 12 stress 0.04346715 
-## ... Procrustes: rmse 0.0001188875  max resid 0.0003744225 
+## Run 11 stress 0.04788122 
+## Run 12 stress 0.04346737 
+## ... Procrustes: rmse 0.0008170537  max resid 0.00258799 
 ## ... Similar to previous best
-## Run 13 stress 0.04788299 
-## Run 14 stress 0.04346706 
-## ... Procrustes: rmse 0.0006692542  max resid 0.002120223 
+## Run 13 stress 0.04788857 
+## Run 14 stress 0.04346726 
+## ... Procrustes: rmse 0.0002764093  max resid 0.0008758307 
 ## ... Similar to previous best
-## Run 15 stress 0.05217906 
-## Run 16 stress 0.05217252 
-## Run 17 stress 0.04346745 
-## ... Procrustes: rmse 0.000318604  max resid 0.001009156 
+## Run 15 stress 0.05217513 
+## Run 16 stress 0.05218083 
+## Run 17 stress 0.04346707 
+## ... Procrustes: rmse 0.0006085415  max resid 0.001927705 
 ## ... Similar to previous best
 ## Run 18 stress 0.1096243 
-## Run 19 stress 0.05584213 
+## Run 19 stress 0.05584216 
 ## Run 20 stress 0.04950525 
-## *** Best solution repeated 6 times</code></pre>
+## *** Best solution repeated 7 times</code></pre>
 <p>You should see each iteration of the NMDS until a solution is reached (i.e., stress was minimized after some number of reconfigurations of the points in 2 dimensions). You can increase the number of default iterations using the argument trymax=. which may help alleviate issues of non-convergence. If high stress is your problem, increasing the number of dimensions to k=3 might also help.</p>
 <p>Often in ecological research, we are interested not only in comparing univariate descriptors of communities, like diversity (above), but also in how the constituent species — or the composition — changes from one community to the next.</p>
 <p>One common tool to do this is non-metric multidimensional scaling, or NMDS. The goal of NMDS is to collapse information from multiple dimensions (e.g, from multiple communities, sites, etc.) into just a few, so that they can be visualized and interpreted.</p>
