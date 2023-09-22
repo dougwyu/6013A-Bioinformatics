@@ -11,8 +11,16 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-explanation for how to publish a bookdown project to github.io
-https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
+This bookdown project is hosted here:
+<https://github.com/dougwyu/6013A-Bioinformatics>
+
+and is deployed here:
+<https://dougwyu.github.io/6013A-Bioinformatics/index.html>
+
+```{r}
+git2r::repository(here::here())
+```
+
 
 how to edit and publish
 edit *.Rmd files
@@ -21,8 +29,13 @@ go to the Build tab and click on arrow next to Build Book and click on bookdown:
 This will cause changes to files in the /docs directory.
 git commit and push those changes. In about a minute, the dougwyu.github.io pages will change.
 
+explanation for how to publish a bookdown project to github.io
+https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
+
+
+
+Reference code chunk for installing some of the more obscure R packages
 ```{r}
-# install.packages("remotes")
 remotes::install_github("rlesur/klippy")
 
 if (!require("BiocManager", quietly = TRUE))
