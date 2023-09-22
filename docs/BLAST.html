@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 BLAST | BIO-6013A/7004A, Bioinformatics Skills I and II</title>
+  <meta name="description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 BLAST | BIO-6013A/7004A, Bioinformatics Skills I and II" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 BLAST | BIO-6013A/7004A, Bioinformatics Skills I and II" />
+  
+  <meta name="twitter:description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics" />
+  
+
+<meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
+
+
+<meta name="date" content="2023-09-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Unix.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIO-6013A Bioinformatics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="Unix.html"><a href="Unix.html"><i class="fa fa-check"></i><b>2</b> Unix</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="Unix.html"><a href="Unix.html#what-is-unixlinux"><i class="fa fa-check"></i><b>2.1</b> What is Unix/Linux?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="Unix.html"><a href="Unix.html#some-terms"><i class="fa fa-check"></i><b>2.1.1</b> Some terms</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Unix.html"><a href="Unix.html#why-learn-unix"><i class="fa fa-check"></i><b>2.2</b> Why Learn Unix?</a></li>
+<li class="chapter" data-level="2.3" data-path="Unix.html"><a href="Unix.html#getting-started"><i class="fa fa-check"></i><b>2.3</b> Getting started</a></li>
+<li class="chapter" data-level="2.4" data-path="Unix.html"><a href="Unix.html#a-few-foundational-rules"><i class="fa fa-check"></i><b>2.4</b> A few foundational rules</a></li>
+<li class="chapter" data-level="2.5" data-path="Unix.html"><a href="Unix.html#lets-get-started"><i class="fa fa-check"></i><b>2.5</b> Let’s get started</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="Unix.html"><a href="Unix.html#downloading-data"><i class="fa fa-check"></i><b>2.5.1</b> Downloading data</a></li>
+<li class="chapter" data-level="2.5.2" data-path="Unix.html"><a href="Unix.html#more-functions"><i class="fa fa-check"></i><b>2.5.2</b> More functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="Unix.html"><a href="Unix.html#unix-file-structure"><i class="fa fa-check"></i><b>2.6</b> Unix File Structure</a></li>
+<li class="chapter" data-level="2.7" data-path="Unix.html"><a href="Unix.html#absolute-vs-relative-file-paths"><i class="fa fa-check"></i><b>2.7</b> Absolute vs relative file paths</a></li>
+<li class="chapter" data-level="2.8" data-path="Unix.html"><a href="Unix.html#moving-around"><i class="fa fa-check"></i><b>2.8</b> Moving around</a></li>
+<li class="chapter" data-level="2.9" data-path="Unix.html"><a href="Unix.html#summary"><i class="fa fa-check"></i><b>2.9</b> Summary</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="Unix.html"><a href="Unix.html#terms"><i class="fa fa-check"></i><b>2.9.1</b> Terms</a></li>
+<li class="chapter" data-level="2.9.2" data-path="Unix.html"><a href="Unix.html#commands"><i class="fa fa-check"></i><b>2.9.2</b> Commands</a></li>
+<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters"><i class="fa fa-check"></i><b>2.9.3</b> Special characters</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="Unix.html"><a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills"><i class="fa fa-check"></i><b>2.10</b> Stretch yourself - optional extras to try a couple of other skills</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="Unix.html"><a href="Unix.html#creation"><i class="fa fa-check"></i><b>2.10.1</b> Creation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="BLAST.html"><a href="BLAST.html"><i class="fa fa-check"></i><b>3</b> BLAST</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="BLAST.html"><a href="BLAST.html#getting-started-1"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="BLAST.html"><a href="BLAST.html#directories-and-their-structure"><i class="fa fa-check"></i><b>3.2</b> Directories and their structure</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="BLAST.html"><a href="BLAST.html#moving-around-foldersdirectories"><i class="fa fa-check"></i><b>3.2.1</b> Moving around folders/directories</a></li>
+<li class="chapter" data-level="3.2.2" data-path="BLAST.html"><a href="BLAST.html#paths"><i class="fa fa-check"></i><b>3.2.2</b> Paths</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="BLAST.html"><a href="BLAST.html#file-types"><i class="fa fa-check"></i><b>3.3</b> File types</a></li>
+<li class="chapter" data-level="3.4" data-path="BLAST.html"><a href="BLAST.html#basic-local-alignment-search-tool-blast"><i class="fa fa-check"></i><b>3.4</b> Basic Local Alignment Search Tool (BLAST)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="BLAST.html"><a href="BLAST.html#making-a-blast-database"><i class="fa fa-check"></i><b>3.4.1</b> Making a BLAST database</a></li>
+<li class="chapter" data-level="3.4.2" data-path="BLAST.html"><a href="BLAST.html#finding-a-query"><i class="fa fa-check"></i><b>3.4.2</b> Finding a query</a></li>
+<li class="chapter" data-level="3.4.3" data-path="BLAST.html"><a href="BLAST.html#blastp"><i class="fa fa-check"></i><b>3.4.3</b> BLASTp</a></li>
+<li class="chapter" data-level="3.4.4" data-path="BLAST.html"><a href="BLAST.html#blastn-and-blastx"><i class="fa fa-check"></i><b>3.4.4</b> BLASTn and BLASTx</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="BLAST.html"><a href="BLAST.html#formative-quiz"><i class="fa fa-check"></i><b>3.5</b> Formative quiz</a></li>
+<li class="chapter" data-level="3.6" data-path="BLAST.html"><a href="BLAST.html#before-you-leave"><i class="fa fa-check"></i><b>3.6</b> Before you leave</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIO-6013A/7004A, Bioinformatics Skills I and II</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="BLAST" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> BLAST<a href="BLAST.html#BLAST" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Here we will start to build a bioinformatics skill set, using the command line.</p>
+<div id="getting-started-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Getting started<a href="BLAST.html#getting-started-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>These bioinformatics workshops will be run through RStudio Cloud, you will need to make a free account <a href="https://rstudio.cloud/">here</a> and join the workspace <code>BIO 6013A</code> <a href="https://rstudio.cloud/spaces/299793/join?access_code=LOpV0oLUk_feSeJSBUUJLOq-qZs7D-gnI2e-3fY3">here</a>. Once you have signed up you will see that you have two spaces;</p>
+<ul>
+<li>Your Workspace</li>
+<li>BIO 6013A</li>
+</ul>
+<p>Make sure you are in the class workspace.</p>
+<p>Open the project marked as <strong>blast_workshop</strong></p>
+<p>Once you are in the workshop it should look something like this;</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
+<img src="images/R_studio_project.png" alt="Screen for when you first login to RStudio Cloud" width="90%" />
+<p class="caption">
+Figure 3.1: Your blast workshop project in RStudio Cloud
+</p>
+</div>
+<p>Lets take a moment to go over some terminology.</p>
+<ul>
+<li><strong>Unix</strong> - An operating system analogous with Windows.</li>
+<li><strong>Shell</strong> - This is the interface we use to talk to the computer. If we are able to use the mouse to point and click we are using a Graphical User Interface (GUI). If we are only using text we are using a Command Line Interface (CLI). We will be using a CLI in these workshops.</li>
+<li><strong>Command-line and/or Terminal</strong> - A text based environment for typing commands directly into a computers operating system</li>
+<li><strong>bash</strong> - a commonly used programming language used in Unix command-line environments</li>
+</ul>
+<p>Make sure that the the tab in the left panel is set to <strong>Terminal</strong> and NOT Console. You will be running commands in the Terminal.</p>
+</div>
+<div id="directories-and-their-structure" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Directories and their structure<a href="BLAST.html#directories-and-their-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Working with text based interfaces, where you are writing and running commands, means that we need to have some understanding of the underlying computer architecture. You need to have some appreciation for how files are organised within folders/directories and why its important to know which directory you are working from.</p>
+<p>Under <strong>Files</strong> in the bottom right panel of your screen you will see a file with the ending .Rproj. This is an R project file which tells R where you are working in the server. It means that R will automatically treat your project location as the <strong>working directory</strong>. If you wish to access files in any of the listed <strong>folders/directories</strong> you will need to tell R the <strong>path</strong> that it needs to follow in order to access these files. We have just covered some key words so lets have a look at what some of them mean now.</p>
+<div id="moving-around-foldersdirectories" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Moving around folders/directories<a href="BLAST.html#moving-around-foldersdirectories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Look in the ‘files’ tab in the panel to the bottom right. You should have three folders stored there, called;</p>
+<ul>
+<li>data</li>
+<li>plots</li>
+<li>project_setup</li>
+</ul>
+<p>You can move around folders/directories in the command line, and its good be be comfortable doing this. Make sure you are in the <code>Terminal</code> tab in the panel to the bottom left and type;</p>
+<pre><code>ls</code></pre>
+<p>Hit <strong>Enter</strong></p>
+<p>The <code>ls</code> command is shorthand for list. The terminal should return something that looks like this;</p>
+<pre><code>/cloud/project$ ls
+data  plots  project.Rproj  project_setup</code></pre>
+<p>So you can see your three directories. You can move between directories within the Terminal by using the <code>cd</code> command (<code>cd</code> is shorthand for change directory). Lets go and have a look at the files held within <code>data</code>. Use for following command;</p>
+<pre><code>cd data/</code></pre>
+<p>now use;</p>
+<pre><code>ls</code></pre>
+<p>The terminal should return something that looks like this;</p>
+<pre><code>/cloud/project/data$ ls
+blast  databases  query  refseq</code></pre>
+<p>So you can see that you can use commands like <code>ls</code> and <code>cd</code> to move around your directories. Note - if you want to move back up a directory level you can use the <code>cd ..</code> to do so. Use <code>cd, ls and cd ..</code> to explore the directories available to you in your project.</p>
+</div>
+<div id="paths" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Paths<a href="BLAST.html#paths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So hopefully you are getting comfortable moving between directories in the terminal. Here I will briefly introduce you to paths. Type in the following so that everyone is in the same location;</p>
+<pre><code>cd /cloud/project</code></pre>
+<p>If you want to enter some commands from this location that use the <code>mouse.1.protein.faa</code> file stored in the <code>refseq</code> directory you will need to provide a path for the location that file. These paths can either be absolute or relative.</p>
+<p>Relative paths provide a pathway from your current directory (in this case <code>/cloud/project</code>). So to get to the directory where your <code>mouse.1.protein.faa</code> file is you could use the following path;</p>
+<pre><code>data/refseq</code></pre>
+<p>However if you are already in the <code>databases</code> directory, this path wont work because your computer will be looking for directories it cant see. This is where absolute paths come in useful.</p>
+<p>Absolute paths specify the location of a file or directory in relation to your root directory <code>/</code> (the top most directory in a hierarchy). So it doesn’t matter which directory you are currently in, the pathway will work. In this case the absolute path would be;</p>
+<pre><code>/cloud/project/data/refseq</code></pre>
+<p>Have a go at using both absolute and relative paths with the <code>cd</code> command to move around your directories.</p>
+</div>
+</div>
+<div id="file-types" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> File types<a href="BLAST.html#file-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When we look at sequence data there are a number of file types that you will regularly come into contact with. The most common of these however are .fastq and .fasta files. Here we will have a look at some key features and differences of these file types.</p>
+<p>Fastq files are a used as a data storage file for the output from next generation sequencers, such as those used for Illumina sequencing. The structure of a .fastq file is very uniform, each sequence has four lines dedicated to it.</p>
+<ul>
+<li>Line 1 - begins with an ‘@’ character and is followed by an identifier and optional description. For example it may contain informaiton about the sequencer, the flow cell, index number etc.</li>
+<li>Line 2 - is the raw sequence</li>
+<li>Line 3 - a ‘+’ character and sometimes a repeat of line 1</li>
+<li>Line 4 - computer readable information relating to the quality for the sequence in line 2. This must have the same number of characters as the sequence</li>
+</ul>
+<p>An example of three sequences from an Illumina sequencer in .fastq format is shown below;</p>
+<pre><code>@NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT
+GCATGTCTCTAGTTCCGGAACCAAAATCTCCTCCACCCACTCTGCGTCCTGCTGACTATAGGAGATAAAGGCGTCATAGCAGAGGGTGGCGCCTCCTTGGTGCACCGCCGGCTTTCGCTTCGCCTTAAACCAGGCGACGGACATTTTCAGG
++
+AAAAAEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAEEEEEEEEEAEEEEEEEEEEEEEEAAEEEEEEEEEAAEE&lt;AEEEEEEEEEEEEEEEEEEAEEEEEEE&lt;EA
+@NB501793:9:H77L2BGX2:1:11101:24170:10019 1:N:0:ATCACGAT
+GCATGTCAACATCATTCTTGTTTTGTTAGAGCCACTACCTACATATCTTATCCCTTCCAAGTACTACCAGCTAAAGGCAATGATACATGC
++
+AAAAAEA/EEEE/EEEEEEEEEEEAEEEEEEEEEEEEEEEEEEEEEAEAEAEEEAEEEEEEEEEEEEEEAEEE/EEEEEEAE/E/AEEAE
+@NB501793:9:H77L2BGX2:1:11101:7027:14110 1:N:0:ATCACGAT
+GCATGTGATGTTGTGTTTTTGTACTCTCCTCTCACTTTGTCCAAAGTGAGTGGTGTCATTATGAGTTGTATTTTGCTAACCACCAGAGACTAACACGAGGGCTGGACAACATCATTCTAGTTTTGTTAGAGCCACTACCTACATATC
++
+AAA/AEEEEEEEEEEEEEEEEAEAAEEEEAAEEEEEEE/EEEAEEEEA/EE6EEEEEEEEEEEE6EE/EAEEE/EEEAAEAEEE/EEEEEE6EEEAE/&lt;EAEEEEEE/EEAEEAE&lt;E//AE&lt;&lt;/EAEA//&lt;&lt;&lt;A6AE/EEEE/A/EA</code></pre>
+<p>Fasta files are a text based file format for representing either nucleotide or amino acid sequences. These can be produced from .fastq files. Each sequence in .fasta format comes with a header line which is marked by a ‘&gt;’ character prefix. Information following the ‘&gt;’ should contain a sequence identifier and optional description of the sequence.</p>
+<p>An example of three sequences from an Illumina sequencer in .fasta format is shown below, you may notice that these are the same sequences as shown previoursly in the .fastq example;</p>
+<pre><code>&gt;NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT
+CTCTAGTTCCGGAACCAAAATCTCCTCCACCCACTCTGCGTCCTGCTGACTATAGGAGATAAAGGCGTCATAGCAGAGGGTGGCGCCTCCTTGGTGCACCGCCGGCTTTCGCTTCGCCTTAAACCAGGCGACGGACATTTTCAGG
+&gt;NB501793:9:H77L2BGX2:1:11101:24170:10019 1:N:0:ATCACGAT
+CAACATCATTCTTGTTTTGTTAGAGCCACTACCTACATATCTTATCCCTTCCAAGTACTACCAGCTAAAGGCAATGATACATGC
+&gt;NB501793:9:H77L2BGX2:1:11101:7027:14110 1:N:0:ATCACGAT
+GATGTTGTGTTTTTGTACTCTCCTCTCACTTTGTCCAAAGTGAGTGGTGTCATTATGAGTTGTATTTTGCTAACCACCAGAGACTAACACGAGGGCTGGACAACATCATTCTAGTTTTGTTAGAGCCACTACCTACATATC</code></pre>
+<p>Now, lets have a look at your data. The <code>/cloud/project/data/refseq</code> directory contains files downloaded from the NCBI Reference Sequence project. These files comprise a set of transcript and protein sequences for the mouse and zebrafish model systems and were downloaded from the <a href="https://ftp.ncbi.nlm.nih.gov/refseq/">NCBI</a>.</p>
+<p>Use your new found command line tools to move into the <code>refseq</code> directory. When you run <code>ls</code> you should see the following;</p>
+<pre><code>/cloud/project/data/refseq$ ls
+mouse.1.protein.faa  mouse.1.rna.fna  zebrafish.1.protein.faa  zebrafish.1.rna.fna</code></pre>
+<p>Use the <code>head</code> command to have a look at the first few lines of each of the four files stored in <code>refseq</code>. An example of the <code>head</code> commands usage is as follows;</p>
+<pre><code>head mouse.1.protein.faa </code></pre>
+<p>What differences do you notice about the four files? Do you think these are examples of .fastq or .fasta files?</p>
+<p>You might have noticed that their are two file suffixes (or file extensions) across these four files <strong>.faa</strong> and <strong>.fna</strong>. These file extensions can tell you quite a lot about the content of the file. Can you work out what these file extensions might be telling you?</p>
+</div>
+<div id="basic-local-alignment-search-tool-blast" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Basic Local Alignment Search Tool (BLAST)<a href="BLAST.html#basic-local-alignment-search-tool-blast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The acronym BLAST stands for Basic Local Alignment Search Tool, it is a very versatile and useful program, frequently used in bioinformatic analysis. In essence it compares nucleotide or protein sequences to a database and uses statistics to calculate the significance of the similarities between hits. It has a range of uses; including assisting in the identification of sequences and assessing evolutionary relationships between sequences. There are different types of BLAST that work with nucleotide or amino acid input sequences.</p>
+<p>You have probably uploaded sequences to the NCBI website and used their BLAST tool from a web browser before, this can compare your query sequence against the entirety of GenBank. Here we will be looking at how to run BLAST from the command line against a local database.</p>
+<div id="making-a-blast-database" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Making a BLAST database<a href="BLAST.html#making-a-blast-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In order to run BLAST we will need to make some suitable BLAST databases. Initially we will be using sequences from our mouse refseq files as queries to blast against databases made from our zebrafish refseq files. So lets convert our refseq zebrafish files into blast databases. Run the following command in the terminal;</p>
+<pre><code>makeblastdb -in /cloud/project/data/refseq/zebrafish.1.rna.fna -dbtype nucl -out /cloud/project/data/databases/zebrafish.1.rna</code></pre>
+<p>Take a moment to break down this command. You are essentially calling a function <code>makeblastdb</code>, you have told it which files you want to input using <code>-in pathway/file</code> and told it where this file is located via the path. You have also given instructions on what type of database you wish to produce (i.e. a nucleotide database) using <code>-dbtype nucl</code> and given instructions on where you want this database to be stored using <code>-out pathway/file_prefix</code>.</p>
+<p>Use the <code>cd</code> and <code>ls</code> commands to go to <code>/cloud/project/data/databases/</code>. Have a look at the new files stored there. There should be three and they should have <code>.nhr</code>, <code>.nin</code>, <code>.nsq</code> file extensions.</p>
+<p>Now try and make a similar data base for the <code>zebrafish.1.protein.faa</code> refseq file. You will need to instruct <code>makeblastdb</code> to make a <code>prot</code> (protein) database instead of a <code>nucl</code> database. Check your results in <code>/cloud/project/data/databases/</code>. Once again there should be three files and they should have <code>.phr</code>, <code>.pin</code> and <code>.psq</code> file extensions.</p>
+</div>
+<div id="finding-a-query" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Finding a query<a href="BLAST.html#finding-a-query" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So hopefully you have a protein and nucleotide database prepared. Now we need to find a suitable query. We could use an entire mouse refseq file. But that would take a long time. Lets take a single entry from the mouse protein refseq file instead. To do this in the command line we can use <code>awk</code>, this is a scripting language used for the manipulation of data. In bioinformatics it is frequently used for filtering sequence files. For now, I would like you to use the <code>awk</code> command below, this will copy lines 5 and 6 of the <code>mouse.1.protein.faa</code> file and paste them in a new file called <code>mouse.1.protein.1.faa</code> in the <code>query</code> directory.</p>
+<pre><code>awk &#39;NR==5 , NR==6&#39;  /cloud/project/data/refseq/mouse.1.protein.faa &gt; /cloud/project/data/query/mouse.1.protein.1.faa</code></pre>
+<p>Use <code>head</code> to look at the contents of the <code>mouse.1.protein.1.faa</code> file in the <code>query</code> directory. Hopefully it should look something like this;</p>
+<pre><code>&gt;YP_220552.1 cytochrome c oxidase subunit I (mitochondrion) [Mus musculus domesticus]
+MFINRWLFSTNHKDIGTLYLLFGAWAGMVGTALSILIRAELGQPGALLGDDQIYNVIVTAHAFVMIFFMVMPMMIGGFGNWLVPLMIGAPDMAFPRMNNMSFWLLPPSFLLLLASSMVEAGAGTGWTVYPPLAGNLAHAGASVDLTIFSLHLAGVSSILGAINFITTIINMKPPAMTQYQTPLFVWSVLITAVLLLLSLPVLAAGITMLLTDRNLNTTFFDPAGGGDPILYQHLFWFFGHPEVYILILPGFGIISHVVTYYSGKKEPFGYMGMVWAMMSIGFLGFIVWAHHMFTVGLDVDTRAYFTSATMIIAIPTGVKVFSWLATLHGGNIKWSPAMLWALGFIFLFTVGGLTGIVLSNSSLDIVLHDTYYVVAHFHYVLSMGAVFAIMAGFVHWFPLFSGFTLDDTWAKAHFAIMFVGVNMTFFPQHFLGLSGMPRRYSDYPDAYTTWNTVSSMGSFISLTAVLIMIFMIWEAFASKREVMSVSYASTNLEWLHGCPPPYHTFEEPTYVKVK</code></pre>
+<blockquote>
+<p>Note that the refseq .fasta file has been formatted so that each entry has two lines, one for header, one for sequence. This means that we are able to simply pull out sequence entries based on line number. Odd numbered lines will be headers and even numbered lines will be sequences.</p>
+</blockquote>
+</div>
+<div id="blastp" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> BLASTp<a href="BLAST.html#blastp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that we have prepared a query and database we can start to run some BLASTs. We have our query is from the protein refseq files, so we will run a BLASTp against the protein zebrafish database. Try running the following command;</p>
+<pre><code>blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt</code></pre>
+<p>Take a look at the default output from this BLAST search, use:</p>
+<pre><code>less /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt </code></pre>
+<p>Type <code>Enter</code> to scroll through the file and <code>q</code> when you’re ready to quit. You will see that this defaut output contains a lot of information, including information relating to significant database hits, significance scores and alignments. We only have three hits here, so its easy enough to process in this format, but sometimes you may have much larger outputs, in this case a tabular format is much more desirable. Try running the following command;</p>
+<pre><code>blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.2.tsv -outfmt 6</code></pre>
+<p>Use <code>less</code> to have a look at this new presentation of information. This is a tabular format, which is much easier to process quickly especially when you are looking at large data sets. I have pasted the output you should be looking at below with the column headers added. You can read all about <a href="https://www.metagenomics.wiki/tools/blast/blastn-output-format-6">output format 6 here</a>.</p>
+<pre><code>qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
+YP_220552.1 NP_059333.1 88.132  514 61  0   1   514 1   514 0.0 877
+YP_220552.1 XP_021326074.1  31.818  66  32  2   427 482 16  78  6.7 29.3
+YP_220552.1 NP_001373511.1  31.818  66  32  2   427 482 48  110 7.5 29.6</code></pre>
+<p>The problem with output format 6 is that you cant easily see the sequence description for the best hit, this could be really useful. But you do have a sequence identifier. You could rerun BLAST with the default output. But that could be extremely time consuming with large data sets. A better solution might be to search and extract the relavent information from the original refseq file. For this we can use grep. Grep is an essential unix command and can be extremely useful for quick file searching. Try running the following command;</p>
+<pre><code>grep -n &quot;NP_059333.1&quot; /cloud/project/data/refseq/zebrafish.1.protein.faa &gt; /cloud/project/data/NP_059333.1_zebrafish.txt</code></pre>
+<p>Here we are asking grep to look for lines containing the sequence identifier for the top hit in our BLASTp search, i.e. <code>"NP_059333.1"</code>, in our refseq zebrafish protein fasta file. Once found it <code>grep</code> will then copy and paste matching lines into a new text file within the <code>data</code> directory. The <code>-n</code> flag tells <code>grep</code> to also report the line number.</p>
+<p>Navigate to this newly made text file and use either <code>less</code> or <code>head</code> to view it. Compare the header information from our query and the top hit from our blast database. Do the results make sense?</p>
+</div>
+<div id="blastn-and-blastx" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> BLASTn and BLASTx<a href="BLAST.html#blastn-and-blastx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Try repeating the process with a new query. Use <code>awk</code> to extract lines 4121 and 4122 from the mouse nucleotide refseq files. Then use<code>blastn</code> to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use <code>grep</code> to extract the top hit from the zebrafish rna refseq file.</p>
+<p>Now you are confident with BLASTp and BLASTn we can start to have a look at BLASTx. Blastx is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so for all three possible codons and for both forward and reverse complement) and blasts the results against a protein database.</p>
+<p>You have been given an unknown nucleotide sequence from a Corydoras catfish species, <code>/cloud/project/data/query/unknown_cory.fasta</code>. Use the <code>blastx</code> and <code>grep</code> commands to try to work out what gene it most closely matches in zebrafish.</p>
+</div>
+</div>
+<div id="formative-quiz" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Formative quiz<a href="BLAST.html#formative-quiz" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the Genomes, Genes and Genomics blackboard page, Workshops and Practicals, Bioinformatics workshops to find the quiz.</p>
+</div>
+<div id="before-you-leave" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Before you leave<a href="BLAST.html#before-you-leave" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Today we have been building the beginnings of a bioinformatics toolkit. We have taken a look at .fastq and .fasta files and have started developing tips and tricks for working in the command line and using commonly used commands, packages and languages, including;</p>
+<ul>
+<li>Bash</li>
+<li>Awk</li>
+<li>Grep</li>
+<li>Blast</li>
+</ul>
+<p>To continue developing these skills there are some really awesome resources available with Astro Bio Mike at <a href="https://astrobiomike.github.io/">Happy Belly Bioinformatics</a></p>
+<p>One last thing, please to logout of RStudio Cloud before you leave.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Unix.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02_BLAST.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

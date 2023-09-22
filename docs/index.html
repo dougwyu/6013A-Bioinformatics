@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2023-09-21" />
+<meta name="date" content="2023-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -178,64 +178,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10.1" data-path="Unix.html"><a href="Unix.html#creation"><i class="fa fa-check"></i><b>2.10.1</b> Creation</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html"><i class="fa fa-check"></i><b>3</b> NGS sequence analysis</a>
+<li class="chapter" data-level="3" data-path="BLAST.html"><a href="BLAST.html"><i class="fa fa-check"></i><b>3</b> BLAST</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#background-on-high-throughput-sequencing"><i class="fa fa-check"></i><b>3.1</b> Background on high throughput sequencing</a></li>
-<li class="chapter" data-level="3.2" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#some-terms-1"><i class="fa fa-check"></i><b>3.2</b> Some terms</a></li>
-<li class="chapter" data-level="3.3" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-data"><i class="fa fa-check"></i><b>3.3</b> The data</a>
+<li class="chapter" data-level="3.1" data-path="BLAST.html"><a href="BLAST.html#getting-started-1"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="BLAST.html"><a href="BLAST.html#directories-and-their-structure"><i class="fa fa-check"></i><b>3.2</b> Directories and their structure</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#fastq"><i class="fa fa-check"></i><b>3.3.1</b> FASTQ?</a></li>
+<li class="chapter" data-level="3.2.1" data-path="BLAST.html"><a href="BLAST.html#moving-around-foldersdirectories"><i class="fa fa-check"></i><b>3.2.1</b> Moving around folders/directories</a></li>
+<li class="chapter" data-level="3.2.2" data-path="BLAST.html"><a href="BLAST.html#paths"><i class="fa fa-check"></i><b>3.2.2</b> Paths</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#the-pipeline"><i class="fa fa-check"></i><b>3.4</b> The Pipeline</a></li>
-<li class="chapter" data-level="3.5" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#removing-primers"><i class="fa fa-check"></i><b>3.5</b> Removing Primers</a>
+<li class="chapter" data-level="3.3" data-path="BLAST.html"><a href="BLAST.html#file-types"><i class="fa fa-check"></i><b>3.3</b> File types</a></li>
+<li class="chapter" data-level="3.4" data-path="BLAST.html"><a href="BLAST.html#basic-local-alignment-search-tool-blast"><i class="fa fa-check"></i><b>3.4</b> Basic Local Alignment Search Tool (BLAST)</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#loops"><i class="fa fa-check"></i><b>3.5.1</b> Loops</a></li>
+<li class="chapter" data-level="3.4.1" data-path="BLAST.html"><a href="BLAST.html#making-a-blast-database"><i class="fa fa-check"></i><b>3.4.1</b> Making a BLAST database</a></li>
+<li class="chapter" data-level="3.4.2" data-path="BLAST.html"><a href="BLAST.html#finding-a-query"><i class="fa fa-check"></i><b>3.4.2</b> Finding a query</a></li>
+<li class="chapter" data-level="3.4.3" data-path="BLAST.html"><a href="BLAST.html#blastp"><i class="fa fa-check"></i><b>3.4.3</b> BLASTp</a></li>
+<li class="chapter" data-level="3.4.4" data-path="BLAST.html"><a href="BLAST.html#blastn-and-blastx"><i class="fa fa-check"></i><b>3.4.4</b> BLASTn and BLASTx</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dada2"><i class="fa fa-check"></i><b>3.6</b> DADA2</a></li>
-<li class="chapter" data-level="3.7" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#quality-trimmingfiltering"><i class="fa fa-check"></i><b>3.7</b> Quality trimming/filtering</a></li>
-<li class="chapter" data-level="3.8" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#dereplication"><i class="fa fa-check"></i><b>3.8</b> Dereplication</a></li>
-<li class="chapter" data-level="3.9" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#asvs"><i class="fa fa-check"></i><b>3.9</b> ASV’s</a></li>
-<li class="chapter" data-level="3.10" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#merging-reads"><i class="fa fa-check"></i><b>3.10</b> Merging reads</a></li>
-<li class="chapter" data-level="3.11" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#count-table"><i class="fa fa-check"></i><b>3.11</b> Count table</a></li>
-<li class="chapter" data-level="3.12" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#overview"><i class="fa fa-check"></i><b>3.12</b> Overview</a></li>
-<li class="chapter" data-level="3.13" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#assign-taxonomy"><i class="fa fa-check"></i><b>3.13</b> Assign taxonomy</a></li>
-<li class="chapter" data-level="3.14" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#standard-goods"><i class="fa fa-check"></i><b>3.14</b> Standard goods</a></li>
-<li class="chapter" data-level="3.15" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#functions-list"><i class="fa fa-check"></i><b>3.15</b> Functions list</a></li>
-<li class="chapter" data-level="3.16" data-path="ngs-sequence-analysis.html"><a href="ngs-sequence-analysis.html#summary-1"><i class="fa fa-check"></i><b>3.16</b> Summary</a></li>
+<li class="chapter" data-level="3.5" data-path="BLAST.html"><a href="BLAST.html#formative-quiz"><i class="fa fa-check"></i><b>3.5</b> Formative quiz</a></li>
+<li class="chapter" data-level="3.6" data-path="BLAST.html"><a href="BLAST.html#before-you-leave"><i class="fa fa-check"></i><b>3.6</b> Before you leave</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html"><i class="fa fa-check"></i><b>4</b> Introduction to Statistical Analysis of the microbiome data</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#important-files"><i class="fa fa-check"></i><b>4.1</b> Important files</a></li>
-<li class="chapter" data-level="4.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#phyloseq"><i class="fa fa-check"></i><b>4.2</b> Phyloseq</a></li>
-<li class="chapter" data-level="4.3" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#relative-abundance-of-bacteria-by-taxonomic-class"><i class="fa fa-check"></i><b>4.3</b> Relative abundance of bacteria by taxonomic Class</a></li>
-<li class="chapter" data-level="4.4" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#alpha-diversity---community-richness"><i class="fa fa-check"></i><b>4.4</b> Alpha diversity - community richness</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#analyse-and-plot"><i class="fa fa-check"></i><b>4.4.1</b> Analyse and plot</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#beta-diversity"><i class="fa fa-check"></i><b>4.5</b> Beta diversity</a>
-<ul>
-<li class="chapter" data-level="4.5.1" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#heatmaps"><i class="fa fa-check"></i><b>4.5.1</b> Heatmaps</a></li>
-<li class="chapter" data-level="4.5.2" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#multidimensional-analysis"><i class="fa fa-check"></i><b>4.5.2</b> Multidimensional analysis</a></li>
-</ul></li>
-<li class="chapter" data-level="4.6" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#question"><i class="fa fa-check"></i><b>4.6</b> Question</a></li>
-<li class="chapter" data-level="4.7" data-path="introduction-to-statistical-analysis-of-the-microbiome-data.html"><a href="introduction-to-statistical-analysis-of-the-microbiome-data.html#summary-2"><i class="fa fa-check"></i><b>4.7</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html"><i class="fa fa-check"></i><b>5</b> Exercises in understanding</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-one"><i class="fa fa-check"></i><b>5.1</b> Exercise one</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#critical-analysis-of-a-figure"><i class="fa fa-check"></i><b>5.1.1</b> Critical analysis of a figure</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-two"><i class="fa fa-check"></i><b>5.2</b> Exercise two</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#produce-a-figure-legend"><i class="fa fa-check"></i><b>5.2.1</b> Produce a figure legend</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#exercise-three"><i class="fa fa-check"></i><b>5.3</b> Exercise three</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="exercises-in-understanding.html"><a href="exercises-in-understanding.html#compare-your-analysis-against-the-published-paper"><i class="fa fa-check"></i><b>5.3.1</b> Compare your analysis against the published paper</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -259,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">BIO-6013A/7004A, Bioinformatics Skills I and II</h1>
 <p class="author"><em>Philip Leftwich, Ellen Bell, Douglas Yu</em></p>
-<p class="date"><em>2023-09-21</em></p>
+<p class="date"><em>2023-09-22</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
