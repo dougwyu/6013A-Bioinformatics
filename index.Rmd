@@ -18,34 +18,44 @@ always_allow_html: true
 
 This is a very short introduction to some of the processes and tools we use when working in bioinformatics.
 
-This is not meant to be anywhere near comprehensive; you will be shown a few Unix fundamentals and one walk-through of a single bioinformatics task:  using BLAST to identify DNA and 
+This is not meant to be anywhere near comprehensive; you will be shown a few Unix fundamentals and one walk-through of a single bioinformatics task:  using BLAST to identify nucleotide (DNA) and protein sequences.
 
-One of the *main* differences between Bioinformatics and the data analysis you have done before is the **size** of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.
+One of the main differences between Bioinformatics and the data analysis you have done before is the **size** of the data. Bioinformatics usually deals with sequencing data, which has large file sizes (measured in gigabytes and terabytes).
 
-Handling **big data** means you need to know how to operate on a supercomputer so we will be learning a little bit of Linux, processing **big** data into **small** data and then exporting into R to make some more amazing data visuals and interpret our findings!
-
-Here we will start to build a bioinformatics skill set, using the command line.
+Handling **big data** means you need to know how to operate on a remote computing cluster, so we will be learning a little bit of how to use a Unix-OS computer.
 
 ## Getting started 
 
-These bioinformatics workshops will be run through RStudio Cloud, you will need to make a free account [here](https://rstudio.cloud/) and join the workspace `BIO 6013A` [here](https://rstudio.cloud/spaces/299793/join?access_code=LOpV0oLUk_feSeJSBUUJLOq-qZs7D-gnI2e-3fY3). Once you have signed up you will see that you have two spaces;
+These bioinformatics workshops will be run through RStudio Cloud, you will need to make a free account at [posit.cloud](https://posit.cloud/) and join the workspace `BIO 6013A` with this link:
+
+[https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ](https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ). 
+
+Once you have signed up you will see two spaces:
 
 * Your Workspace
-* BIO 6013A
+* BIO-6013A
 
-Make sure you are in the class workspace. 
-
-Open the project marked as __blast_workshop__
-
-Once you are in the workshop it should look something like this;
-
-```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Screen for when you first login to RStudio Cloud", fig.cap ="Your blast workshop project in RStudio Cloud"}
-knitr::include_graphics("images/R_studio_project.png")
+```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Screen for when you first login to Posit Cloud", fig.cap ="Screen for when you first login to Posit Cloud"}
+knitr::include_graphics("images/posit_workspaces.png")
 ```
 
+Click on `6013A-Bioinformatics Skills I and II`:
 
+```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Click on the 6013A-Bioinformatics Skills I and II workspace", fig.cap ="Click on the 6013A-Bioinformatics Skills I and II workspace link"}
+knitr::include_graphics("images/Assignment_link.png")
+```
 
+Once you are in the workshop, it should look something like this.
 
+```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Default RStudio workspace", fig.cap ="Default RStudio workspace"}
+knitr::include_graphics("images/default_rstudio.png")
+```
+
+I strongly suggest that you go to Tools/Global Options and customise the workspace to look like this:
+
+```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Customisation of the RStudio workspace", fig.cap ="Customisation of the RStudio workspace"}
+knitr::include_graphics("images/customise_workspace.png")
+```
 
 **DON'T** worry if you don't understand everything
 

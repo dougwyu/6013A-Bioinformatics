@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2023-09-22" />
+<meta name="date" content="2023-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -222,29 +222,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">BIO-6013A/7004A, Bioinformatics Skills I and II</h1>
 <p class="author"><em>Philip Leftwich, Ellen Bell, Douglas Yu</em></p>
-<p class="date"><em>2023-09-22</em></p>
+<p class="date"><em>2023-09-23</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This is a very short introduction to some of the processes and tools we use when working in bioinformatics.</p>
-<p>This is not meant to be anywhere near comprehensive; you will be shown a few Unix fundamentals and one walk-through of a single bioinformatics task: using BLAST to identify DNA and</p>
-<p>One of the <em>main</em> differences between Bioinformatics and the data analysis you have done before is the <strong>size</strong> of the data. Bioinformatics usually deals with sequencing data, and this data has large file sizes.</p>
-<p>Handling <strong>big data</strong> means you need to know how to operate on a supercomputer so we will be learning a little bit of Linux, processing <strong>big</strong> data into <strong>small</strong> data and then exporting into R to make some more amazing data visuals and interpret our findings!</p>
-<p>Here we will start to build a bioinformatics skill set, using the command line.</p>
+<p>This is not meant to be anywhere near comprehensive; you will be shown a few Unix fundamentals and one walk-through of a single bioinformatics task: using BLAST to identify nucleotide (DNA) and protein sequences.</p>
+<p>One of the main differences between Bioinformatics and the data analysis you have done before is the <strong>size</strong> of the data. Bioinformatics usually deals with sequencing data, which has large file sizes (measured in gigabytes and terabytes).</p>
+<p>Handling <strong>big data</strong> means you need to know how to operate on a remote computing cluster, so we will be learning a little bit of how to use a Unix-OS computer.</p>
 <div id="getting-started" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Getting started<a href="index.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>These bioinformatics workshops will be run through RStudio Cloud, you will need to make a free account <a href="https://rstudio.cloud/">here</a> and join the workspace <code>BIO 6013A</code> <a href="https://rstudio.cloud/spaces/299793/join?access_code=LOpV0oLUk_feSeJSBUUJLOq-qZs7D-gnI2e-3fY3">here</a>. Once you have signed up you will see that you have two spaces;</p>
+<p>These bioinformatics workshops will be run through RStudio Cloud, you will need to make a free account at <a href="https://posit.cloud/">posit.cloud</a> and join the workspace <code>BIO 6013A</code> with this link:</p>
+<p><a href="https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ">https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ</a>.</p>
+<p>Once you have signed up you will see two spaces:</p>
 <ul>
 <li>Your Workspace</li>
-<li>BIO 6013A</li>
+<li>BIO-6013A</li>
 </ul>
-<p>Make sure you are in the class workspace.</p>
-<p>Open the project marked as <strong>blast_workshop</strong></p>
-<p>Once you are in the workshop it should look something like this;</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="images/R_studio_project.png" alt="Screen for when you first login to RStudio Cloud" width="90%" />
+<img src="images/posit_workspaces.png" alt="Screen for when you first login to Posit Cloud" width="90%" />
 <p class="caption">
-Figure 1.1: Your blast workshop project in RStudio Cloud
+Figure 1.1: Screen for when you first login to Posit Cloud
+</p>
+</div>
+<p>Click on <code>6013A-Bioinformatics Skills I and II</code>:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="images/Assignment_link.png" alt="Click on the 6013A-Bioinformatics Skills I and II workspace" width="90%" />
+<p class="caption">
+Figure 1.2: Click on the 6013A-Bioinformatics Skills I and II workspace link
+</p>
+</div>
+<p>Once you are in the workshop, it should look something like this.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="images/default_rstudio.png" alt="Default RStudio workspace" width="90%" />
+<p class="caption">
+Figure 1.3: Default RStudio workspace
+</p>
+</div>
+<p>I strongly suggest that you go to Tools/Global Options and customise the workspace to look like this:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="images/customise_workspace.png" alt="Customisation of the RStudio workspace" width="90%" />
+<p class="caption">
+Figure 1.4: Customisation of the RStudio workspace
 </p>
 </div>
 <p><strong>DON’T</strong> worry if you don’t understand everything</p>
@@ -316,6 +335,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

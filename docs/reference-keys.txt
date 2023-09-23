@@ -1,8 +1,11 @@
 fig:unnamed-chunk-1
-fig:unnamed-chunk-5
-fig:unnamed-chunk-7
-fig:unnamed-chunk-37
-fig:unnamed-chunk-38
+fig:unnamed-chunk-2
+fig:unnamed-chunk-3
+fig:unnamed-chunk-4
+fig:unnamed-chunk-8
+fig:unnamed-chunk-10
+fig:unnamed-chunk-40
+fig:unnamed-chunk-41
 introduction
 getting-started
 Unix

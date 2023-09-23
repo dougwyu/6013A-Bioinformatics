@@ -167,7 +167,7 @@ How would we know we needed the `-n` flag for that? There are a few ways to find
     head --help
 ```
 
-Well, at it happens, the command `head` does not have a help menu, but it still gives you some help when you try.
+Well, as it happens, the command `head` does not have a help menu, but it still gives you some help when you try.
 
 Again this is very similar to the logic in which R commands are structured e.g. `?ggplot` The syntax is similar even if the specific icons or arguments are different.
 
@@ -238,11 +238,13 @@ Here the head command works fine on "example.txt", but we get an error message w
 The ls command by default operates on the current working directory if we don't specify any location, but we can tell it to list the contents of a different directory by providing it as a positional argument:
 
 ```{bash}
-    ls
+    ls -lF
 ```
 
+By running ls without each argument, can you understand what the -l and -F arguments are doing?
+
 ```{bash}
-    ls experiment
+    ls -lF experiment
 ```
 
 We can see the file we were looking for is located in the subdirectory called "experiment". Here is how we can run head on "notes.txt" by specifying an accurate relative path to that file:
@@ -264,7 +266,7 @@ We can also move into the directory containing the file we want to work with by 
 ```
 
 ```{bash}
-    ls
+    ls -lF
 ```
 
 ```{bash}
@@ -349,10 +351,11 @@ pwd
 
 <details>
 
-<summary>**Make a new directory called Code - Click here for Answer**</summary>
+<summary>**Make a new directory called TEST inside unix_intro/ - Click here for Answer**</summary>
 
 ```{bash}
-mkdir Code
+cd /cloud/project/unix_intro/
+mkdir TEST
 ```
 
 </details>
@@ -362,22 +365,22 @@ mkdir Code
 <summary>**Check this folder has been created using a list function**</summary>
 
 ```{bash}
-ls
+ls -lF
 ```
 
 </details>
 
-Note that I used a relative file path to create the Code directory - but I could have also specified an absolute filepath to generate that folder in whatever location I want.
+Note that I used a relative file path to create the TEST/ directory (because I first navigated to the location where i want the TEST/ directory) - but I could have also specified an absolute filepath to generate that folder in whatever location I want.
 
 There are a few ways to make new files on the command line. The simplest is to generate a blank file with the `touch` command followed by the path (relative or absolute) to the file you want to create
 
 <details>
 
-<summary>**Make a new file called data-science-class.txt - Click here for Answer**</summary>
+<summary>**Make a new text file inside the TEST/ directory, called data-science-class.txt - Click here for Answer**</summary>
 
 ```{bash}
-touch data-science-class.txt
-ls -l
+touch TEST/data-science-class.txt
+ls -lF TEST/
 ```
 
 *Note here I could just use ls to list all files and folders in a directory, but if i set the flag `-l` then it will produce a **l**ong list of files.*
