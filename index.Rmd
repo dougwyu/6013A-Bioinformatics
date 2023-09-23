@@ -30,7 +30,8 @@ These bioinformatics workshops will be run through RStudio Cloud, you will need 
 
 [https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ](https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ). 
 
-Once you have signed up you will see two spaces:
+1. First make an account on posit.cloud
+2. Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces:
 
 * Your Workspace
 * BIO-6013A
