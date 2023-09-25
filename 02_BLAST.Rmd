@@ -329,7 +329,7 @@ head /cloud/project/data/NP_001124065.1_zebrafish.txt
 
 ## Formative quiz
 
-Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the Genomes, Genes and Genomics blackboard page, Workshops and Practicals, Bioinformatics workshops to find the quiz.
+Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the module Blackboard page: **Practicals/Bioinformatics Practical Weeks 1 and 2/Bioinformatics Workshop 1 Quiz - BLAST**.
 
 ## Before you leave
 
