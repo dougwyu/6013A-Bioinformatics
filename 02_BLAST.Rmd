@@ -109,7 +109,7 @@ Relative paths provide a pathway from your current directory (in this case `/clo
 data/refseq
 ```
 
-However if you are already in the `databases` directory, this path wont work because your computer will be looking for directories it cant see. This is where absolute paths come in useful.
+However if you are already in the `databases` directory, this path won't work because your computer will be looking for directories it can't see. This is where absolute paths come in useful.
 
 Absolute paths specify the location of a file or directory in relation to your root directory `/` (the top most directory in a hierarchy). So it doesn't matter which directory you are currently in, the pathway will work. In this case the absolute path would be;
 
