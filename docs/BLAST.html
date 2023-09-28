@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2023-09-25" />
+<meta name="date" content="2023-09-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -232,8 +232,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="directories-and-their-structure" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Directories and their structure<a href="BLAST.html#directories-and-their-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Working with text-based interfaces, where you are writing and running commands, means that we need to have some understanding of how files are organised within directories (“folders”) and why it’s important to know which directory you are working in. Basically, you cannot open a file by pointing at it in a window. You need to write down the address to the file, which is known as the file’s <em>path</em>. To do that, you need to have a starting point for the path.</p>
-<p>Under <strong>Files</strong> in the bottom right panel of your screen you will see a file with the ending .Rproj. This is an R project file which tells R your starting point for navigating directories. It means that R will automatically treat the directory with the .Rproj file as the <strong>working directory</strong>. If you wish to access files outside of the working directory, you need to tell the program the <strong>file path</strong> that to the file(s).</p>
-<p>Look at the top of the File panel. You will</p>
+<p>Under <strong>Files</strong> in the bottom right panel of your screen you will see a file with the ending .Rproj. This is an R project file which tells R your starting point for navigating directories. It means that R will automatically treat the directory with the .Rproj file as the <strong>working directory</strong>. If you wish to access files outside of the working directory, you need to tell the program the <strong>file path</strong> to the file(s).</p>
+<p>Look at the top of the File panel. You will see the file path to whatever directory is active in the File tab.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-40"></span>
 <img src="images/Cloud_project.png" alt="The current directory in this image is /Cloud/project/images/, where the final / indicates that images/ is a directory, not a file. In Posit.cloud, /cloud is the 'root' directory. If a file's path is written out all the way from the root, it is known as the absolute path, e.g. /cloud/project/images/ascii.png" width="80%" />
 <p class="caption">
@@ -242,13 +242,19 @@ Figure 3.1: The current directory in this image is /Cloud/project/images/, where
 </div>
 <div id="moving-around-foldersdirectories" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Moving around folders/directories<a href="BLAST.html#moving-around-foldersdirectories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Look in the ‘files’ tab in the panel to the bottom right. You should have three folders stored there, called;</p>
+<p>Look in the ‘files’ tab in the panel to the bottom right. You should have two directories stored there, called;</p>
 <ul>
-<li>data</li>
-<li>plots</li>
-<li>project_setup</li>
+<li>code/</li>
+<li>data/</li>
 </ul>
-<p>You can move around folders/directories in the command line, and it’s good to be comfortable doing this. Make sure you are in the <code>Terminal</code> tab in the panel to the bottom left and go to the <code>/cloud/project</code> directory with the <code>cd</code> command. (<code>cd</code> is shorthand for change directory, and remember to hit <strong>enter</strong>).</p>
+<p>plus some individual files, which are used during programming</p>
+<ul>
+<li>.gitignore</li>
+<li>.Rhistory</li>
+<li>project.Rproj</li>
+</ul>
+<p>(If you don’t see these files, click on the word “project” in “Cloud &gt; project”, and you should get there.)</p>
+<p>You can move around folders/directories <strong>in the command line</strong>, and it’s good to be comfortable doing this. Make sure you are in the <code>Terminal</code> tab in the panel to the bottom left and go to the <code>/cloud/project</code> directory with the <code>cd</code> command. (<code>cd</code> is shorthand for change directory, and remember to hit <strong>enter</strong>).</p>
 <pre><code>cd /cloud/project</code></pre>
 <p>Because we use <code>/cloud/</code> at the beginning, we are using the absolute path to the <code>project/</code> directory. Now list the files in this directory.</p>
 <pre><code>ls -lF</code></pre>

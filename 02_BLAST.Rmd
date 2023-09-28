@@ -37,7 +37,6 @@ plus some individual files, which are used during programming
 -   .gitignore
 -   .Rhistory
 -   project.Rproj
--   
 
 (If you don't see these files, click on the word "project" in "Cloud \> project", and you should get there.)
 
