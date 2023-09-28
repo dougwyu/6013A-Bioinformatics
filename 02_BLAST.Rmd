@@ -17,9 +17,9 @@ Make sure that the the tab in the left panel is set to **Terminal** and NOT Cons
 
 Working with text-based interfaces, where you are writing and running commands, means that we need to have some understanding of how files are organised within directories ("folders") and why it's important to know which directory you are working in. Basically, you cannot open a file by pointing at it in a window. You need to write down the address to the file, which is known as the file's *path*. To do that, you need to have a starting point for the path.
 
-Under **Files** in the bottom right panel of your screen you will see a file with the ending .Rproj. This is an R project file which tells R your starting point for navigating directories. It means that R will automatically treat the directory with the .Rproj file as the **working directory**. If you wish to access files outside of the working directory, you need to tell the program the **file path** that to the file(s).
+Under **Files** in the bottom right panel of your screen you will see a file with the ending .Rproj. This is an R project file which tells R your starting point for navigating directories. It means that R will automatically treat the directory with the .Rproj file as the **working directory**. If you wish to access files outside of the working directory, you need to tell the program the **file path** to the file(s).
 
-Look at the top of the File panel. You will
+Look at the top of the File panel. You will see the file path to whatever directory is active in the File tab.
 
 ```{r, eval=TRUE, echo=FALSE, fig.cap="The current directory in this image is /Cloud/project/images/, where the final / indicates that images/ is a directory, not a file. In Posit.cloud, /cloud is the 'root' directory. If a file's path is written out all the way from the root, it is known as the absolute path, e.g. /cloud/project/images/ascii.png", out.width='80%', fig.asp=.75, fig.align='center'}
 knitr::include_graphics("images/Cloud_project.png")
@@ -27,13 +27,21 @@ knitr::include_graphics("images/Cloud_project.png")
 
 ### Moving around folders/directories
 
-Look in the 'files' tab in the panel to the bottom right. You should have three folders stored there, called;
+Look in the 'files' tab in the panel to the bottom right. You should have two directories stored there, called;
 
--   data
--   plots
--   project_setup
+-   code/
+-   data/
 
-You can move around folders/directories in the command line, and it's good to be comfortable doing this. Make sure you are in the `Terminal` tab in the panel to the bottom left and go to the `/cloud/project` directory with the `cd` command. (`cd` is shorthand for change directory, and remember to hit **enter**).
+plus some individual files, which are used during programming
+
+-   .gitignore
+-   .Rhistory
+-   project.Rproj
+-   
+
+(If you don't see these files, click on the word "project" in "Cloud \> project", and you should get there.)
+
+You can move around folders/directories **in the command line**, and it's good to be comfortable doing this. Make sure you are in the `Terminal` tab in the panel to the bottom left and go to the `/cloud/project` directory with the `cd` command. (`cd` is shorthand for change directory, and remember to hit **enter**).
 
 ```         
 cd /cloud/project
