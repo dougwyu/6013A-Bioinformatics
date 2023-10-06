@@ -37,10 +37,11 @@ plus some individual files, which are used during programming
 -   .gitignore
 -   .Rhistory
 -   project.Rproj
+-   
 
 (If you don't see these files, click on the word "project" in "Cloud \> project", and you should get there.)
 
-You can move around folders/directories **in the command line**, and it's good to be comfortable doing this. Make sure you are in the `Terminal` tab in the panel to the bottom left and go to the `/cloud/project` directory with the `cd` command. (`cd` is shorthand for change directory, and remember to hit **enter**).
+You can move around folders/directories **in the command line**, and it's good to be comfortable doing this. Make sure you are in the `Terminal` tab in the panel to the bottom left and go to the `/cloud/project` directory with the `cd` command. (`cd`is shorthand for change directory, and remember to hit **enter**).
 
 ```         
 cd /cloud/project
@@ -101,20 +102,20 @@ So hopefully you are getting comfortable moving between directories in the termi
 cd /cloud/project/
 ```
 
-If you want to enter some commands from this location that use the `mouse.1.protein.faa` file stored in the `refseq` directory you will need to provide a path for the location that file. These paths can either be absolute or relative.
+If you want to enter some commands from this location that use the `mouse.1.protein.faa` file stored in the `refseq`directory you will need to provide a path for the location that file. These paths can either be absolute or relative.
 
 Relative paths provide a pathway from your current directory (in this case `/cloud/project/`). So to get to the directory where your `mouse.1.protein.faa` file is you could use the following path;
 
 ```         
-data/refseq
+cd data/refseq
 ```
 
 However if you are already in the `databases` directory, this path won't work because your computer will be looking for directories it can't see. This is where absolute paths come in useful.
 
-Absolute paths specify the location of a file or directory in relation to your root directory `/` (the top most directory in a hierarchy). So it doesn't matter which directory you are currently in, the pathway will work. In this case the absolute path would be;
+Absolute paths specify the location of a file or directory in relation to your root directory `/` (the top most directory in a hierarchy). So it doesn't matter which directory you are currently in, the pathway will work. In this case the absolute path is
 
 ```         
-/cloud/project/data/refseq
+cd /cloud/project/data/refseq
 ```
 
 Have a go at using both absolute and relative paths with the `cd` command to move around your directories.
@@ -130,7 +131,7 @@ Fastq files are used as a data storage file for the output from Illumina sequenc
 -   Line 3 - a '+' character (and sometimes a repeat of line 1)
 -   Line 4 - computer readable information relating to the quality for the sequence in line 2. There is the same number of characters as the sequence. The letters indicate the probability of error and are known as phred scores, coded as ASCII characters
 
-An example of three sequences from an Illumina sequencer in .fastq format is shown below. The `A` phred ASCII code translates to a phred score of 32, which means that there is a $1/1585$ probability that the nucleotide `G` is incorrect (see <https://en.wikipedia.org/wiki/Phred_quality_score> and <https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm>)
+An example of three sequences from an Illumina sequencer in fastq format is shown below. The `A` phred ASCII code translates to a phred score of 32, which means that there is a $1/1585$ probability that the nucleotide `G` is incorrect (see <https://en.wikipedia.org/wiki/Phred_quality_score> and <https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm>)
 
 ```         
 @NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT
@@ -190,21 +191,21 @@ You might have previously uploaded sequences to the NCBI website and used their 
 
 In order to run BLAST, we first need to make some suitable BLAST databases. Initially we will be using sequences from our mouse refseq files as queries to "*blast against"* databases made from our zebrafish refseq files. So let's convert our refseq zebrafish files into blast databases. Run the following command in the terminal;
 
-```         
+``` bash
+{bash}
+cd /cloud/project
+
 makeblastdb -in /cloud/project/data/refseq/zebrafish.1.rna.fna -dbtype nucl -title zebrafish.1.rna -out /cloud/project/data/databases/zebrafish.1.rna
 ```
 
-Take a moment to break down this command. The command is `makeblastdb`. The first argument `-in` tells`makeblastdb` which file(s) you want to turn into a database. You chose to indicate the file with an absolute pathname, which means that you can run the command from anywhere in the computer. You have also given instructions on what type of database you wish to produce (i.e. a nucleotide database) using the argument `-dbtype nucl` and finally indicated where you want the output database to be stored, using the argument `-out pathway/file_prefix`.
+Take a moment to break down this command. The command is `makeblastdb`. The first argument `-in` tells`makeblastdb`which file(s) you want to turn into a database. You chose to indicate the file with an absolute pathname, which means that you can run the command from anywhere in the computer. You have also given instructions on what type of database you wish to produce (i.e. a nucleotide database) using the argument `-dbtype nucl` and finally indicated where you want the output database to be stored, using the argument `-out pathway/file_prefix`.
 
 Note that one of things you have to think about constantly is file naming. My preference is for longer filenames that explain what a file contains and what happened to it.
 
 Sometimes it helps to write and read a command *vertically* so that you can see all the arguments (debugging is easier too). Unfortunately, you can't copy and paste the command like this.
 
 ```{bash}
-makeblastdb -in /cloud/project/data/refseq/zebrafish.1.rna.fna 
-            -dbtype nucl 
-            -title zebrafish.1.rna 
-            -out /cloud/project/data/databases/zebrafish.1.rna
+makeblastdb -in /cloud/project/data/refseq/zebrafish.1.rna.fna -dbtype nucl -title zebrafish.1.rna -out /cloud/project/data/databases/zebrafish.1.rna
 ```
 
 After running the command, use the `cd` and `ls` commands to go to `/cloud/project/data/databases/` and have a look at the new files stored there. There should be three files all starting with `zebrafish.1.rna`, and they should have `.nhr`, `.nin`, `.nsq` file extensions. This is just how BLAST likes to store its databases.
@@ -215,9 +216,11 @@ Now try and make a similar database for the `zebrafish.1.protein.faa` refseq fil
 
 <summary>**Q. What is the command? - Click here for Answer**</summary>
 
-```         
+```{bash}
 makeblastdb -in /cloud/project/data/refseq/zebrafish.1.protein.faa -dbtype prot -title zebrafish.1.protein -out /cloud/project/data/databases/zebrafish.1.protein
 ```
+
+</details>
 
 ### Finding a query
 
@@ -227,8 +230,8 @@ Instead, let's take a single entry from the mouse protein refseq file instead. T
 
 For now, I would like you to use the `awk` command below; this will copy lines 5 and 6 of the `mouse.1.protein.faa` file and paste them in a new file called `mouse.1.protein.1.faa` in the `query` directory.
 
-```         
-awk 'NR==5 , NR==6'  /cloud/project/data/refseq/mouse.1.protein.faa > /cloud/project/data/query/mouse.1.protein.1.faa
+```{bash}
+awk 'NR==5 , NR==6' /cloud/project/data/refseq/mouse.1.protein.faa > /cloud/project/data/query/mouse.1.protein.1.faa
 ```
 
 Use `head` to look at the contents of the `mouse.1.protein.1.faa` file in the `query` directory. It should look like this;
@@ -238,29 +241,31 @@ Use `head` to look at the contents of the `mouse.1.protein.1.faa` file in the `q
 MFINRWLFSTNHKDIGTLYLLFGAWAGMVGTALSILIRAELGQPGALLGDDQIYNVIVTAHAFVMIFFMVMPMMIGGFGNWLVPLMIGAPDMAFPRMNNMSFWLLPPSFLLLLASSMVEAGAGTGWTVYPPLAGNLAHAGASVDLTIFSLHLAGVSSILGAINFITTIINMKPPAMTQYQTPLFVWSVLITAVLLLLSLPVLAAGITMLLTDRNLNTTFFDPAGGGDPILYQHLFWFFGHPEVYILILPGFGIISHVVTYYSGKKEPFGYMGMVWAMMSIGFLGFIVWAHHMFTVGLDVDTRAYFTSATMIIAIPTGVKVFSWLATLHGGNIKWSPAMLWALGFIFLFTVGGLTGIVLSNSSLDIVLHDTYYVVAHFHYVLSMGAVFAIMAGFVHWFPLFSGFTLDDTWAKAHFAIMFVGVNMTFFPQHFLGLSGMPRRYSDYPDAYTTWNTVSSMGSFISLTAVLIMIFMIWEAFASKREVMSVSYASTNLEWLHGCPPPYHTFEEPTYVKVK
 ```
 
-> Note that the refseq.fasta file has been formatted so that each entry has two lines, one for header, one for sequence. This means odd numbered lines are headers and even numbered lines are the corresponding sequences. Note that bioinformaticians have written lots of utility programs that let us query, extract, and edit sequence files and are easier to use than the base Unix programs like`awk`, `grep`, and `sed`. But even so, i have found myself using these programs from time to time.
+> Note that the refseq.fasta file has been formatted so that each entry has two lines, one for header, one for sequence. This means odd numbered lines are headers and even numbered lines are the corresponding sequences. Note that bioinformaticians have written lots of utility programs that let us query, extract, and edit sequence files and are easier to use than the base Unix programs like`awk`, `grep`, and `sed`. But even so, i often find myself using basic unix utility programs.
 
 ### BLASTp
 
 Now that we have prepared a query and database we can start to run some BLASTs. Our query is from the protein refseq files, so we will run `BLASTp` against the protein zebrafish database. Run the following command;
 
-```         
-blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt
+```{bash}
+blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt # it might help to see this command without the long pathnames and vertically # blastp # -query mouse.1.protein.1.faa # -db zebrafish.1.protein # -out mouse.1.protein.x.zebrafish.txt
 ```
 
 Take a look at the default output from this BLAST search, use:
 
-```         
+```{bash}
 less /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt 
 ```
 
 Type `Enter` to scroll through the file and `q` when you're ready to quit. You will see that this default output contains a lot of information, including information relating to significant database hits, significance scores and alignments. We only have three hits here, so its easy enough to process in this format, but sometimes you may have much larger outputs, in this case a tabular format is much more desirable. Try running the following command;
 
-```         
+(remember to have typed `q` to get out of the `less` command.
+
+```{bash}
 blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.2.tsv -outfmt 6
 ```
 
-Use `less` to have a look at this new presentation of information (remember to include the correct path). The output this time is a tabular format, which is much easier to process quickly especially when you are looking at large data sets. I have pasted the output you should be looking at below with the column headers added. You can read all about [output format 6 here](https://www.metagenomics.wiki/tools/blast/blastn-output-format-6).
+Use `head` to have a look at this new presentation of information (remember to include the correct path). The output this time is a tabular format, which is much easier to process quickly especially when you are looking at large data sets. I have pasted the output you should be looking at below with the column headers added. You can read all about [output format 6 here](https://www.metagenomics.wiki/tools/blast/blastn-output-format-6).
 
 ```         
 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
@@ -273,13 +278,13 @@ Your query sequence is YP_220552.1, and it matched three sequences in the protei
 
 See [here](https://www.metagenomics.wiki/tools/blast/evalue){.uri} for more details on evalue and bit scores.
 
-The problem with output format 6 is that you can't see any *additional* information about your reference sequence NP_059333.1. But since you now have the reference sequence identifier, you can search and extract the relevant information from the original refseq file. For this we can use `grep`, which is the Unix equivalent of the Find function in your word processor. Try the following command;
+The problem with output format 6 is that you can't see any *additional* information about your reference sequence NP_059333.1. But since you now have the reference sequence identifier, you can search and extract the relevant information from the original refseq file. For this we can use `grep`, which is the Unix equivalent of the Find function in your word processor. Try the following command:
 
-```         
+```{bash}
 grep -n "NP_059333.1" /cloud/project/data/refseq/zebrafish.1.protein.faa > /cloud/project/data/NP_059333.1_zebrafish.txt
 ```
 
-Here we are asking grep to look for lines containing the sequence identifier NP_059333.1 in our refseq zebrafish protein fasta file. Once found, `grep` puts those lines into a new text file within the `data` directory `NP_059333.1_zebrafish.txt`. The `-n` flag tells `grep` to also report the line number.
+Here we are asking `grep` to look for lines containing the sequence identifier NP_059333.1 in our refseq zebrafish protein fasta file. Once found, `grep` puts those lines into a new text file within the `data` directory `NP_059333.1_zebrafish.txt`. The `-n` flag tells `grep` to also report the line number.
 
 Navigate to this newly made text file and use either `less` or `head` to view it. Compare the header information from our query and the top hit from our blast database. Do the results make sense?
 
@@ -291,9 +296,11 @@ Navigate to this newly made text file and use either `less` or `head` to view it
 
 (Thus, the species is *Danio rerio*, which is the zebrafish.)
 
+</details>
+
 ### BLASTn and BLASTx
 
-Try repeating the process with a new query. Use `awk` to extract lines 4121 and 4122 from the mouse nucleotide refseq files (Q: how many sequences do you get when you extract 2 lines?). Then use `blastn` (not `blastp`) to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use `grep` to extract the top hit from the zebrafish RNA refseq file.
+Try repeating the process with a new query. Use `awk` to extract lines 4121 and 4122 from the mouse nucleotide refseq files (Q: how many sequences do you get when you extract 2 lines?). Then use `blastn` (not `blastp`!) to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use `grep` to extract the top hit from the zebrafish RNA refseq file.
 
 Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
 
@@ -304,7 +311,7 @@ You have been given an unknown nucleotide sequence from a *Corydoras* catfish sp
 <summary>**Q. You can click here for the code, but try to write it yourself first.**</summary>
 
 ```         
-# preceding some text with a hashtag tells programs like bash and R not to try to run the text as a command.
+# preceding text with a hashtag tells programs like bash and R not to try to run the text as a command.
 # mouse
 
 awk 'NR==4121, NR==4122' /cloud/project/data/refseq/mouse.1.rna.fna > /cloud/project/data/query/mouse.1.rna.query.fna
@@ -319,7 +326,7 @@ grep -n "NM_001347668.1" /cloud/project/data/refseq/zebrafish.1.rna.fna > /cloud
 head /cloud/project/data/NM_001347668.1_zebrafish.txt
 
 # 111407:>NM_001347668.1 Danio rerio thyroid hormone receptor interactor 12 (trip12), mRNA
-# in other words, the mouse nucleotide sequence is most similar to the zebrafish thyroid hormone receptor interactor 12 (trip12) gene, which gives you a strong clue as to the function of the mouse gene.
+# in other words, the mouse nucleotide sequence is most similar to the zebrafish thyroid hormone receptor interactor 12 (trip12) gene, which gives you a clue as to the function of the mouse gene.
 
 # Corydoras
 # with blastx, the query sequence is a nucleotide sequence, but the reference database is of amino acids (proteins)
@@ -334,9 +341,11 @@ grep -n "NP_001124065.1" /cloud/project/data/refseq/zebrafish.1.protein.faa > /c
 head /cloud/project/data/NP_001124065.1_zebrafish.txt
 ```
 
+</details>
+
 ## Formative quiz
 
-Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the module Blackboard page: **Practicals/Bioinformatics Practical Weeks 1 and 2/Bioinformatics Workshop 1 Quiz - BLAST**.
+Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the Genomes, Genes and Genomics blackboard page, Workshops and Practicals, Bioinformatics workshops to find the quiz.
 
 ## Before you leave
 
