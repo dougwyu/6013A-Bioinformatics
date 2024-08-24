@@ -22,15 +22,41 @@ git2r::repository(here::here())
 ```
 
 
-how to edit and publish
-edit *.Rmd files
-git commit and push those changes.  this is only for version control of the *.Rmd files
-go to the Build tab and click on arrow next to Build Book and click on bookdown::gitbook
-This will cause changes to files in the /docs directory.
-git commit and push those changes. In about a minute, the dougwyu.github.io pages will change.
+The code for the practical instructions is hosted on Doug's Github account at
 
-explanation for how to publish a bookdown project to github.io
+  https://github.com/dougwyu/6013A-Bioinformatics
+
+which was forked from Phil and Ellen's original version at
+
+  https://github.com/UEABIO/6013A-Bioinformatics
+
+I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my local Mac (in this directory).
+
+To edit, push to GitHub, and publish on github.io, do this:
+
+  1. open the project (click on 6013A-Bioinformatics.Rproj)
+  
+  2. edit *.Rmd files
+  	index.Rmd # Section 1
+  	01-intro.Rmd # Section 2
+  	02_BLAST.Rmd # Section 3
+  	
+  3. git commit and push those changes.  This is only for version control, i.e. this only pushes the changes to https://github.com/dougwyu/6013A-Bioinformatics
+  
+  4. go to the Build tab and click on arrow next to Build Book and click on bookdown::gitbook
+  
+  	This will cause changes to files in the /docs directory.
+  
+  5. git commit and push those changes. In about a minute, the dougwyu.github.io pages will change.
+
+
+An explanation for how to publish a bookdown project to github.io
 https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
+
+
+Use my Github account to sign into the correct Posit Cloud account for the class. 
+
+
 
 
 

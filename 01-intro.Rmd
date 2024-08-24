@@ -4,17 +4,15 @@
 klippy::klippy(c('r', 'bash'), position = c('top', 'right'), tooltip_message = 'copy to clipboard', tooltip_success = 'Copied!')
 ```
 
-Unix is very likely the most fundamental skillset we can develop for bioinformatics (and much more than bioinformatics). Many of the most common and powerful bioinformatics approaches happen in this text-based environment, and having a solid foundation here can make everything we're trying to learn and do much easier. This is a short introductory tutorial to help us get from being completely new to Unix up to being friendly with it 🙂
+Unix is very likely the most fundamental skillset we can develop for bioinformatics (and beyond bioinformatics). Many of the most common and powerful bioinformatics approaches happen in this text-based environment, and having a solid foundation here can make everything we're trying to learn and do much easier. This is a short introductory tutorial to help us get from being completely new to Unix up to being acquainted with it 🙂.
 
 ## What is Unix/Linux?
 
-UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language `C`. Unix is proprietary software, whereas Linux is *basically* free and open-source Unix.
-
-The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of "unix-like" systems.
+UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language `C`. Unix is proprietary software, whereas Linux is *basically* a free and open-source version of Unix. Most supercomputers run Linux. Operationally Linux is almost identical to Unix, and so we refer to it under the umbrella term of "unix-like" systems. The 'Li' in Linux is from the person who led its creation, Linus Torvalds.
 
 ### Some terms
 
-Here are some terms worth knowing, don't worry about memorising them, it can just be useful to have these to refer to in the future.
+Here are terms and concepts worth knowing.
 
 ```{r, echo=FALSE, eval=TRUE}
 terms <- readr::read_csv("data/terms-1.csv", skip_empty_rows = TRUE) 
@@ -28,19 +26,17 @@ knitr::kable(terms, booktabs = TRUE,
 
 > **Note**
 >
-> You should be familiar with using a GUI (Windows and macOS are GUIs), but to program a computer, you need to use a CLI (command line interface).
+> You are familiar with using a GUI (Windows, iOS, Android, and MacOS are all GUIs), but to program a computer, you need to use a CLI (command line interface).
 
 ## Why Learn Unix?
 
-Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they "remote-connect" to high performance supercomputers or cluster computers. Almost all of these high performance computers use "Unix-like" operating systems, the most common of which is Linux.
+Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they "remote-connect" to high performance supercomputers or computer clusters. Almost all of these high performance computers use "Unix-like" operating systems, the most common of which is Linux.
 
-As stated above, Linux is free and open-source so there are lots of developers. It's also well known for being stable, secure, reliable, and efficient.
+As stated above, Linux is free and open-source so there are lots of developers for it, which has helped Linux become stable, secure, reliable, and efficient.
 
-Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit makes it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)
+Today, you will get some experience with using a Linux OS. By logging into posit.cloud in your browser, you are connecting to the company Posit's supercomputer, which runs Linux, and on top of Linux, Posit lets you run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is an operating system with a CLI shell, on which the RStudio GUI-shell runs, to make it easier to run the **R language** CLI shell.)
 
-When you click on RStudio's Terminal tab, it provides direct access to a command line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio's GUI back to the Linux CLI).
-
-This allows us to use programs other than R, and potentially use multiple programs & programming languages to work together.
+When you click on RStudio's Terminal tab, you get access to a *Linux* CLI bash shell, where you can execute commands and functions directly in Linux. (yes, now you have gone from RStudio's GUI back to the Linux CLI). All these different shells give us the ability to use multiple programs & programming languages. 
 
 > **Note**
 >
@@ -50,8 +46,8 @@ This allows us to use programs other than R, and potentially use multiple progra
 
 Before we get started we need a terminal to work in.
 
--   Open the Bioinformatics RStudio Cloud Project in the BIO-6013A workspace
--   Click on the `Terminal` tab next to `Console` in the bottom-left pane of the RStudio GUI, this opens a command-line *Shell*
+-   Click on the `6013A-Bioinformatics Skills I and II`  RStudio Project in your `BIO-6013A` workspace
+-   Click on the `Terminal` tab next to `Console` tab in the RStudio GUI. This opens a command-line *Shell*
 
 ```{r, eval=TRUE,echo=FALSE, fig.cap='Here is an example of the Terminal tab, right next to the R console', out.width='80%', fig.asp=.75, fig.align='center'}
 knitr::include_graphics("images/terminal.png")
@@ -59,15 +55,15 @@ knitr::include_graphics("images/terminal.png")
 
 -   This is our "command line" where we will be typing all of our commands. We type our commands in a language called `bash`
 
--   The \$ is where you start typing from, left of this it tells you what folder you are currently in (`working directory`)
+-   The \$ is where you start typing from, left of this it tells your `working directory`, which is the folder you are currently in. 
 
--   If you need to, you can exit the Terminal and start a new session easily with options in RStudio
+-   If you need to, you can exit the Terminal and start a new session. 
 
 ## A few foundational rules
 
--   Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (\_) where you want space to be- e.g. "draft_v3.txt" is preferred to "draft v3.txt".
+-   Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (\_) where you want space to be. Thus, "draft_v3.txt" refers to one file, while "draft v3.txt" refers to *two* files:  draft and v3.txt.
 
--   The general syntax on the command line is: `command argument`. This is very similar to R except we don't use brackets e.g. in R we are used to `command(argument)`
+-   The general syntax on the bash command line is: `command argument`. Argument is a special term and it means all the extra text bits that customise your command. This is similar to R except we don't use brackets e.g. in R we put the arguments inside parentheses `command(argument)`
 
 -   Arguments can be **optional** e.g. if their is a default argument you may not have to write anything. Some functions *require* that arguments are specified. Again this is just like R.
 
@@ -75,66 +71,83 @@ knitr::include_graphics("images/terminal.png")
 
 We will perform a very simple function and get a flavour of the similarities and differences to working in `R`.
 
-`date` is a command that prints out the date and time. Copy and paste this command into your terminal
+`date` is a command that prints out the date and time. Type `date` into your terminal
 
-```{bash}
-    date
-```
-
-This prints out the date/time in UTC
+This prints out the date/time in UTC format
 
 ```{r, eval=TRUE,echo=FALSE, fig.cap='It should look like this:', out.width='80%', fig.asp=.75, fig.align='center'}
 knitr::include_graphics("images/date_on_command_line.png")
 ```
 
-More information on using the date function is [here](https://www.geeksforgeeks.org/date-command-linux-examples/){.uri}.
-
-We can also ask for the output for a particular timezone using the `TZ` function and `date`
+Now let's add an argument to the `date` command to ask for the date next Tuesday. `date` is the command, and `--date="next tue"` is the argument that causes the `date` command to modify its output. This argument is optional, as you have seen. Often, commands have required arguments.
 
 ```{bash}
-    TZ=Europe/London date
+date --date="next tue"
 ```
 
-Or we can ask the computer what the date will be next Tuesday...
+The `date` command can do lots of things. You can learn more about about it [here](https://www.geeksforgeeks.org/date-command-linux-examples/). #{.uri}
+
+Occasionally and alternatively, you set an *environmental* variable to get a command to function differently. For instance, we might want to tell the computer that we are in the London time zone. We do it this way:
 
 ```{bash}
-    date --date="next tue"
+TZ=Europe/London date
 ```
 
-Note how we use the `command` `argument` structure here. `date` is the command, and `--date="next tue"` is the argument that causes the `date` command to modify its output. This argument is optional, as you have seen. Often, commands have required arguments.
+and if we want to find the time in Paris
+
+```{bash}
+TZ=Europe/Paris date
+```
+
 
 ### Downloading data
 
-We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it.
+We will start by typing in an instruction to download data from an online data repository, unpack the contents, and inspect it.
 
--   `curl` is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository.
+-   `curl` is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository called Figshare, and the `-o` argument sets the filename of the downloaded file (i.e. you can choose what to name the downloaded file). 
 
--   `tar` will *unpack* the data from a compressed file format
+-   `tar` *unpacks* and *uncompresses* the data from a tarballed and compressed file format. A compressed file format (known as gzipped) makes a large file smaller for download. A tarball format makes many individual files appear as one single file. In this example, you have downloaded a whole directory with over a hundred individual files, and Figshare has tarballed and compressed the directory so that it is easy to download. You therefore need a command to *extract* the files from the tarball and *unzip* the files Can you guess which two arguments of the four here `tar -xzvf` tell the computer to do these two things? 
 
--   `cd` changes the directory so we *land* in the new folder we have made
+-   `rm` removes the original downloaded file, which you had called `unix_intro.tar.gz`
+
+-   after untarballing and extracting, we have a new directory called `unix_intro/`. Can you find it in the Files tab of RStudio? 
+
+- `ls -l` lists the files in the working directory, and the `-l` asks for a particular format that I like. Can you see the new directory called `unix_intro`?
+
+-   `cd` changes your working directory so we *land* in the new folder we have made. # When we write the name of a directory in Unix, we have the option to add a `/` at the end of the name. This slash is only decorative, but it's useful when you are reading bash scripts. 
 
 Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, you can find the shortcut by opening Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu.
 
 ```{bash}
-    curl -L -o unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746
-    tar -xzvf unix_intro.tar.gz && rm unix_intro.tar.gz
-    cd unix_intro
+curl -L -o unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746
+
+tar -xzvf unix_intro.tar.gz
+
+rm unix_intro.tar.gz
+
+ls -l 
+
+cd unix_intro/ 
 ```
 
 ```{block, type="rmdwarning"}
 
-Check each command line has run, in the example above you might find that the first two lines run, to download and unpack data, while the last line to change directory doesn't run until you hit enter
+Check each command line has run, in the example above you might find that the last line to change directory doesn't run until you hit enter inside the Terminal
 
 ```
 
 ### More functions
 
-Before the next step, make sure that you are in the `unix_intro/` directory. You should see `unix_intro$` in the command line.
+Before the next step, make sure that you are in the `unix_intro/` directory. **You should see `unix_intro$` in the command line.**
 
-Unlike `date`, most commands require arguments and won't work without them. `head` is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:
+Unlike `date`, most commands require arguments and won't work without them. `head` is a command that prints the first lines of a file, so of course it requires the filename:
 
 ```{bash}
-    head example.txt
+ls -l # do you see the file called example.txt?
+
+# if I precede a line with # (a hash), then bash knows to ignore it. This is how we can add comments inside a script
+
+head example.txt
 ```
 
 Here "example.txt" is the required argument, and in this case it is also what's known as a positional argument. Whether things need to be provided as positional arguments or not depends on how the command or program we are using was written.
@@ -158,13 +171,13 @@ Sometimes we need to specify the input file by putting something in front of it 
 There are also optional arguments for the head command. The default for head is to print the first 10 lines of a file. We can change that by specifying the -n flag, followed by how many lines we want:
 
 ```{bash}
-    head -n 20 example.txt
+head -n 20 example.txt
 ```
 
 How would we know we needed the `-n` flag for that? There are a few ways to find out. Many standard Unix commands and other programs will have built-in help menus that we can access by providing --help as the only argument:
 
 ```{bash}
-    head --help
+head --help
 ```
 
 Well, as it happens, the command `head` does not have a help menu, but it still gives you some help when you try.
@@ -186,13 +199,13 @@ knitr::include_graphics("images/file_system_structure.png")
 We tell the command line where files and directories are located by pre-pending the file name with the list of directories that hold them, known as the file's "path". If we use the `pwd` command (for print working directory), we can find out what the path is for the directory we are sitting in. Our working directory is also visible to the left of the \$ in the command line
 
 ```{bash}
-    pwd
+pwd
 ```
 
-And if we use the `ls -l` command (for list), we can see what directories and files are in the current directory we are sitting in. (Note the `-l` argument) (also, try `ls –help`)
+And if we use the `ls -l` command (for list), we can see what directories and files are in the current directory we are sitting in. (Note the `-l` argument) (also, try `ls –-help`) (that's 2 dashes in front of `help`)
 
 ```{bash}
-    ls -l
+ls -l
 ```
 
 > **Note**
@@ -210,7 +223,7 @@ There are two ways to specify the path (address) of the file we want to do somet
 -   A **relative path** is an address that starts from wherever we are currently sitting (the working directory). For example, let's look again at the head command we ran above:
 
 ```{bash}
-    head example.txt
+head example.txt
 ```
 
 What we are actually doing here is using a relative path to specify where the "example.txt" file is located. This is because the command line **automatically looks** in the current working directory if we don't specify anything else about its location.
@@ -218,7 +231,7 @@ What we are actually doing here is using a relative path to specify where the "e
 We can also run the same command on the same file using an **absolute path** - note Posit Cloud has a slightly unique set-up in that we start from a folder called cloud:
 
 ```{bash}
-    head /cloud/project/unix_intro/example.txt
+head /cloud/project/unix_intro/example.txt
 ```
 
 The previous two commands both point to the same file right now. **But the first way, `head example.txt`, will only work if we are "sitting" in the directory that holds that file, while the second way will work no matter where we happen to be in the computer.**
@@ -238,19 +251,19 @@ Here the head command works fine on "example.txt", but we get an error message w
 The ls command by default operates on the current working directory if we don't specify any location, but we can tell it to list the contents of a different directory by providing it as a positional argument:
 
 ```{bash}
-    ls -lF
+ls -lF
 ```
 
 By running ls without each argument, can you understand what the -l and -F arguments are doing?
 
 ```{bash}
-    ls -lF experiment
+ls -lF experiment
 ```
 
 We can see the file we were looking for is located in the subdirectory called "experiment". Here is how we can run head on "notes.txt" by specifying an accurate relative path to that file:
 
 ```{bash}
-    head experiment/notes.txt
+head experiment/notes.txt
 ```
 
 ## Moving around
@@ -258,19 +271,19 @@ We can see the file we were looking for is located in the subdirectory called "e
 We can also move into the directory containing the file we want to work with by using the `cd` command (**c**hange **d**irectory). This command takes a positional argument that is the path (address) of the directory we want to change into. This can be a relative path or an absolute path. Here we'll use the relative path of the subdirectory, "experiment", to change into it
 
 ```{bash}
-    cd experiment/
+cd experiment/
 ```
 
 ```{bash}
-    pwd
+pwd
 ```
 
 ```{bash}
-    ls -lF
+ls -lF
 ```
 
 ```{bash}
-    head notes.txt
+head notes.txt
 ```
 
 Great. But now how do we get **back "up"** to the directory above us? One way would be to provide an absolute path, like `cd /cloud/project/unix_intro`, but there is also a handy shortcut. `..` which are special characters that act as a relative path specifying "up" one level -- one directory -- from wherever we currently are.
@@ -278,7 +291,7 @@ Great. But now how do we get **back "up"** to the directory above us? One way wo
 So we can provide that as the positional argument to cd to get back to where we started:
 
 ```{bash}
-    cd ..
+cd ..
 ```
 
 Moving around the computer like this might feel a bit cumbersome and frustrating at first, but after spending a little time with it, you will get used to it, and it starts to feel more natural.
@@ -289,7 +302,7 @@ Moving around the computer like this might feel a bit cumbersome and frustrating
 
 ## Summary
 
-While maybe not all that exciting, these commands really are the foundation needed to start utilizing the command line -- which then gives us the capability to use lots of tools that only work at a command line, manipulate large files rapidly access and work with remote computers, and more! These are the fundamental tools that every scientist needs to work with **big data**.
+While maybe not all that exciting, these commands really are the foundation needed to start utilizing the command line -- which then gives us the capability to use lots of tools that only work at the command line to manipulate **big data** and to rapidly access and work with remote computers, and more!
 
 ### Terms
 
@@ -315,7 +328,7 @@ knitr::kable(terms, booktabs = TRUE,
   kableExtra::kable_styling()
 ```
 
-### Special characters
+### Special characters for the `cd` command
 
 ```{r, echo=FALSE, eval=TRUE}
 terms <- readr::read_csv("data/characters.csv", skip_empty_rows = TRUE) 
@@ -327,7 +340,7 @@ knitr::kable(terms, booktabs = TRUE,
   kableExtra::kable_styling()
 ```
 
-In a single session, you won't get used to operating in bash, or moving around directories using just the command line. So if you think you are interested in developing your bioinformatic skills, spend some time practising.
+In a single session, you won't get used to operating in bash, or moving around directories using just the command line. So if you think you are interested in developing your bioinformatic skills, carve out a chunk of time to practise.
 
 Here is a link to a couple of extended tutorials you can bookmark if you want to explore this further:
 
@@ -337,11 +350,11 @@ Here is a link to a couple of extended tutorials you can bookmark if you want to
 
 ### Creation
 
-I want to create a new directory to store some code files I'm going to write later, so I'll use `mkdir` to create a new directory called Code:
+I want to create a new directory, use `mkdir` to create a new directory called Code:
 
 <details>
 
-<summary>**Check you are in the `unix_intro` folder - Click here for Answer**</summary>
+<summary>**Check you are in the `unix_intro` folder - Click on the arrow for Answer**</summary>
 
 ```{bash}
 pwd
@@ -351,10 +364,11 @@ pwd
 
 <details>
 
-<summary>**Make a new directory called TEST inside unix_intro/ - Click here for Answer**</summary>
+<summary>**Make a new directory called TEST inside unix_intro/ - Click on the arrow for Answer**</summary>
 
 ```{bash}
 cd /cloud/project/unix_intro/
+
 mkdir TEST
 ```
 
@@ -380,6 +394,7 @@ There are a few ways to make new files on the command line. The simplest is to g
 
 ```{bash}
 touch TEST/data-science-class.txt
+
 ls -lF TEST/
 ```
 

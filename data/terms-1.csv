@@ -1,8 +1,6 @@
 Term,What it is
-shell,what we use to talk to the computer; anything where you are pointing and clicking with a mouse is a Graphical User Interface (GUI) shell; something with text only is a Command Line Interface (CLI) shell
-command line,a text-based environment capable of taking input and providing output
-terminal,A program that runs a shell
-Unix,a family of operating systems (we also use the term “Unix-like” because one of the most popular operating systems derived from Unix is specifically named as not being Unix)
-Linux,"a ""Unix-like"" OS"
-bash,the most common programming language used at a Unix command-line
-flag,"a way to set options for a function, a specific type of argument usually preceded by a -"
+shell,The environment in which we communicate with a computer. A shell where you are pointing and clicking with a mouse is a Graphical User Interface (GUI) shell. A shell with only text input and output is a Command Line Interface (CLI) shell. A CLI shell has an associated programming language.
+server,the computer where we host the data and programs that we are running. A server could be local, that is your own PC, or you could use a 'remote' server (a computer running in some other physical location), and you communicate with the remote server using your local PC. The reason to use a remote server is that they can be big computers that require a lot of power and cooling, which is most efficiently provided in specialised buildings. Another reason to use a remote server is that they can accommodate multiple users, and specialist administrators can be in charge of installing and maintaining one set of programs that are available to all users. 
+bash,the most common CLI shell used in unix-like OSs. the sh in bash stands for shell. You are using a combination GUI/CLI shell (called RStudio) running on your local PC to communicate with the Posit Cloud remote server, which runs R, bash, Python, C, and many, many programs that you link together with a series of commands, called a script. Thus, we say "We write bash scripts to run on the Linux server." 
+terminal,In the 1960s, the word terminal referred to TV+keyboard setups at the ends of long cables that were attached to a big "mainframe" computer, usually in another room in the same building. The word terminal means 'end'. Now that we use the internet to connect to remote servers, which could be a continent away, the terminal is just an app on your personal computer that runs a CLI shell (mimicking the old TV+keyboard setups). Inside the RStudio GUI shell running locally on your PC, you will open multiple Terminals to communicate with different Posit Cloud servers. 
+flag,a way to set options for a function, a specific type of argument usually preceded by a - (a dash)

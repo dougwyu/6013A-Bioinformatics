@@ -1,5 +1,4 @@
-﻿Term,What it is
-Characters,Meaning
-/,the computer’s root location
-~/,the user’s home location
-../,specifies a directory one level “above” the current working directory
+Term,What it is
+cd ~,go to your home directory
+cd ..,go to one level above current (working) directory
+ls -lF .,list files and directories in current directory. Normally, you don't have to include the `.` character, but this is to let you know the meaning of the `.` dot. Some commands need you to say that you want to work on a file in *this* directory, and you use the dot to indicate that. 

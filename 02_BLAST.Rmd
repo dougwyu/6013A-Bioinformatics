@@ -11,23 +11,23 @@ Lets take a moment to review some terminology.
 -   **Command-line and Terminal** - A text-based environment for sending commands to a computer's operating system or to an application. The terminal is the app that gives you access to the operating system's command line. It's called terminal because there literally used to be a tv screen at the end (terminus) of a cable from a mainframe computer.
 -   **bash** - a programming language used to run a series of Unix commands and programs that run on Unix. Bash scripts can be used to automated large amounts of bioinformatic work, and are known as pipelines.
 
-Make sure that the the tab in the left panel is set to **Terminal** and NOT Console. You will be running commands in the Terminal. (N.B. If RStudio goes to sleep and you resume it, RStudio will put you in the Console, not the Terminal, so you have to click on the Terminal tab to get back to the Terminal.)
+Make sure that you are working in the **Terminal**, where you will run commands in the bash language, and NOT in the Console, which is RStudio's name for a Terminal that runs the R language. You will be running commands in the Terminal. (N.B. If RStudio goes to sleep and you resume it, RStudio will put you in the Console, not the Terminal, so you have to click on the Terminal tab to get back to the Terminal.)
 
 ## Directories and their structure
 
 Working with text-based interfaces, where you are writing and running commands, means that we need to have some understanding of how files are organised within directories ("folders") and why it's important to know which directory you are working in. Basically, you cannot open a file by pointing at it in a window. You need to write down the address to the file, which is known as the file's *path*. To do that, you need to have a starting point for the path.
 
-Under **Files** in the bottom right panel of your screen you will see a file with the ending .Rproj. This is an R project file which tells R your starting point for navigating directories. It means that R will automatically treat the directory with the .Rproj file as the **working directory**. If you wish to access files outside of the working directory, you need to tell the program the **file path** to the file(s).
+Under **Files** in the bottom right panel of your screen you will see a file with the ending `.Rproj`. This is an R project file which tells R your starting point for navigating directories. It means that R will automatically treat the directory with the `.Rproj` file as the **working directory**. If you wish to access files outside of the working directory, you need to tell the program the **file path** to the file(s).
 
 Look at the top of the File panel. You will see the file path to whatever directory is active in the File tab.
 
-```{r, eval=TRUE, echo=FALSE, fig.cap="The current directory in this image is /Cloud/project/images/, where the final / indicates that images/ is a directory, not a file. In Posit.cloud, /cloud is the 'root' directory. If a file's path is written out all the way from the root, it is known as the absolute path, e.g. /cloud/project/images/ascii.png", out.width='80%', fig.asp=.75, fig.align='center'}
+  ```{r, eval=TRUE, echo=FALSE, fig.cap="The current directory in this image is `/cloud/project/images/`, where the final / here is used to indicate that `images/` is a directory, not a file. In Posit.cloud, `/cloud` is the 'root' directory. If a file's path is written out all the way from the root, it is known as the absolute path, e.g.` /cloud/project/images/ascii.png`", out.width='80%', fig.asp=.75, fig.align='center'}
 knitr::include_graphics("images/Cloud_project.png")
 ```
 
 ### Moving around folders/directories
 
-Look in the 'files' tab in the panel to the bottom right. You should have two directories stored there, called;
+Look in the 'Files' tab in the panel to the bottom right. You should have two directories stored there, called;
 
 -   code/
 -   data/
@@ -37,9 +37,9 @@ plus some individual files, which are used during programming
 -   .gitignore
 -   .Rhistory
 -   project.Rproj
--   
+-
 
-(If you don't see these files, click on the word "project" in "Cloud \> project", and you should get there.)
+(If you don't see these files, click on the word "project" in "Cloud \> project" near the top of the Files tab, and you should get there.)
 
 You can move around folders/directories **in the command line**, and it's good to be comfortable doing this. Make sure you are in the `Terminal` tab in the panel to the bottom left and go to the `/cloud/project` directory with the `cd` command. (`cd`is shorthand for change directory, and remember to hit **enter**).
 
@@ -65,10 +65,10 @@ drwxrwx--- 6 r574796 rstudio-user 4096 Sep 22 06:56 data/
 -rw-rw-r-- 1 r574796 rstudio-user  205 Sep 22 11:07 project.Rproj
 ```
 
-Let's go and have a look at the files held within `data`. Use following command;
+Let's go and have a look at the files held within `data/`. Use following command;
 
 ```         
-cd data/
+cd data  # or cd data/  either syntax works.
 ```
 
 now use
@@ -96,23 +96,23 @@ Use `cd, ls and cd ..` to explore the directories available to you in your proje
 
 ### Paths
 
-So hopefully you are getting comfortable moving between directories in the terminal. Here I will briefly introduce you to paths. Type in the following so that everyone is in the same location;
+So hopefully you are starting to get comfortable moving between directories in the terminal. Here I will briefly introduce you to paths. Type in the following so that everyone is in the same location;
 
 ```         
 cd /cloud/project/
 ```
 
-If you want to enter some commands from this location that use the `mouse.1.protein.faa` file stored in the `refseq`directory you will need to provide a path for the location that file. These paths can either be absolute or relative.
+If you want to enter some commands *from this location* that use the `mouse.1.protein.faa` file stored in the `refseq`directory, you will need to provide a path for the location of that file. These paths can either be absolute or relative.
 
-Relative paths provide a pathway from your current directory (in this case `/cloud/project/`). So to get to the directory where your `mouse.1.protein.faa` file is you could use the following path;
+Relative paths provide a pathway from your current directory (which is currently `/cloud/project/`). So to get to the directory where your `mouse.1.protein.faa` file is you could use the following path;
 
 ```         
 cd data/refseq
 ```
 
-However if you are already in the `databases` directory, this path won't work because your computer will be looking for directories it can't see. This is where absolute paths come in useful.
+However if you are currently, say, in the `databases/` directory, this path won't work because your computer will be looking for directories it can't see. This is where absolute paths come in useful.
 
-Absolute paths specify the location of a file or directory in relation to your root directory `/` (the top most directory in a hierarchy). So it doesn't matter which directory you are currently in, the pathway will work. In this case the absolute path is
+Absolute paths specify the location of a file or directory starting from your root directory (the topmost directory). So it doesn't matter which directory you are currently in, the absolute pathname will go to the right place. In this case the absolute path is
 
 ```         
 cd /cloud/project/data/refseq
@@ -122,16 +122,16 @@ Have a go at using both absolute and relative paths with the `cd` command to mov
 
 ## File types
 
-When we look at sequence data there are a number of file types that you will regularly come into contact with. The most common of these are .fastq and .fasta files. Here we will have a look at some key features and differences of these file types.
+When we look at sequence data there are a number of file types that you will regularly come into contact with. The most common of these are `.fastq` and `.fasta` files. Here we will have a look at some key features and differences of these file types.
 
-Fastq files are used as a data storage file for the output from Illumina sequencers. The structure of a .fastq file is very uniform, each DNA sequence has four lines dedicated to it.
+`Fastq` files are used as a data storage file for the output from Illumina sequencers. The structure of a `.fastq` file is very uniform. Each DNA sequence has four lines dedicated to it.
 
 -   Line 1 - begins with an '\@' character and is followed by an identifier and optional description. For example it may contain information about the sequencer, the flow cell, index number etc. The identifier is unique to each sequence.
 -   Line 2 - is the DNA sequence
 -   Line 3 - a '+' character (and sometimes a repeat of line 1)
--   Line 4 - computer readable information relating to the quality for the sequence in line 2. There is the same number of characters as the sequence. The letters indicate the probability of error and are known as phred scores, coded as ASCII characters
+-   Line 4 - computer-readable information relating to the quality for the sequence in line 2. There is the same number of quality characters as the sequence. The letters indicate the probability of error and are known as phred scores, coded as ASCII characters.
 
-An example of three sequences from an Illumina sequencer in fastq format is shown below. The `A` phred ASCII code translates to a phred score of 32, which means that there is a $1/1585$ probability that the nucleotide `G` is incorrect (see <https://en.wikipedia.org/wiki/Phred_quality_score> and <https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm>)
+An example of three sequences from an Illumina sequencer in fastq format is shown below. For example, the `A` phred ASCII code translates to a score of 32, which means that there is a $1/1585$ probability that the nucleotide `G` is incorrect (see <https://en.wikipedia.org/wiki/Phred_quality_score> and <https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm>)
 
 ```         
 @NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT
@@ -148,9 +148,9 @@ GCATGTGATGTTGTGTTTTTGTACTCTCCTCTCACTTTGTCCAAAGTGAGTGGTGTCATTATGAGTTGTATTTTGCTAAC
 AAA/AEEEEEEEEEEEEEEEEAEAAEEEEAAEEEEEEE/EEEAEEEEA/EE6EEEEEEEEEEEE6EE/EAEEE/EEEAAEAEEE/EEEEEE6EEEAE/<EAEEEEEE/EEAEEAE<E//AE<</EAEA//<<<A6AE/EEEE/A/EA
 ```
 
-Fasta files are a simpler (and thus smaller) text-based file format for representing both nucleotide and amino acid sequences. These can be produced from .fastq files (but fastq files cannot be produced from fasta files). Each sequence in .fasta format comes with a *header line* which is marked by a '\>' character prefix. Information following the '\>' typically contains a sequence identifier and optional description of the sequence.
+`Fasta` files are a simpler (and thus smaller) text-based file format for representing both nucleotide and amino acid sequences. These can be produced from `fastq` files (but `fastq` files cannot be produced from fasta files; comparing the two formats (above and below), can you figure out why?). Each sequence in `.fasta` format comes with a *header line* which is marked by a '\>' character prefix. Information following the '\>' typically contains a sequence identifier and optional description of the sequence.
 
-An example of three sequences from an Illumina sequencer in .fasta format is shown below, you may notice that these are the same sequences as shown above in the .fastq example; typically, the header lines in fasta files are more human-readable (i.e. *not* `>NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT`)
+An example of three sequences from an Illumina sequencer in `.fasta` format is shown below. You may notice that these are the same sequences as shown above in the `fastq` example; typically, the header lines in fasta files are more human-readable (i.e. *not* `>NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT`)
 
 ```         
 >NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT
