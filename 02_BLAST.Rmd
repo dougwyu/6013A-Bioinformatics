@@ -312,7 +312,7 @@ We used the `>` character, which is known as a redirect character. It is *re*dir
 
 </details>
 
-
+  
 Navigate to this newly made text file and use either `less` or `head` to view it. Compare the header information from our query and the top hit from our blast database. Do the results make sense?
 
 <details>
@@ -324,18 +324,14 @@ Navigate to this newly made text file and use either `less` or `head` to view it
 (Thus, the species is *Danio rerio*, which is the zebrafish.)
 
 </details>
-
+  
 ### BLASTn and BLASTx
 
 Try repeating the process with a new query. Use `awk` to extract lines 4121 and 4122 from the mouse *nucleotide* refseq files (Q: how many sequences do you get when you extract 2 lines?). Then use `blastn` (not `blastp`!) to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use `grep` to extract the top hit from the zebrafish RNA refseq file.
 
-Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
-
-You have been given an unknown nucleotide sequence from a *Corydoras* catfish species, `/cloud/project/data/query/unknown_cory.fasta`. Use the `blastx` and `grep` commands to try to work out what gene it most closely matches in zebrafish.
-
 <details>
 
-<summary>**Q. You can click here for the code, but try to write it yourself first.**</summary>
+<summary>**Q. Write the code first and then check here.**</summary>
 
 ```         
 # preceding text with a hashtag tells programs like bash and R not to try to run the text as a command.
@@ -354,7 +350,24 @@ head /cloud/project/data/NM_001347668.1_zebrafish.txt
 
 # 111407:>NM_001347668.1 Danio rerio thyroid hormone receptor interactor 12 (trip12), mRNA
 # in other words, the mouse nucleotide sequence is most similar to the zebrafish thyroid hormone receptor interactor 12 (trip12) gene, which gives you a clue as to the function of the mouse gene.
+```
 
+</details>
+
+Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
+
+
+## Formative work
+
+### Write a blastx query
+
+You have been given an unknown nucleotide sequence from a *Corydoras* catfish species, `/cloud/project/data/query/unknown_cory.fasta`. Use the `blastx` and `grep` commands to try to work out what gene it most closely matches in zebrafish.
+
+<details>
+
+<summary>**Q. Write the code first and then check here.**</summary>
+
+```         
 # Corydoras
 # with blastx, the query sequence is a nucleotide sequence, but the reference database is of amino acids (proteins)
 blastx -query /cloud/project/data/query/unknown_cory.fasta -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/unknown_cory.protein.x.zebrafish.1.tsv -outfmt 6
@@ -370,9 +383,10 @@ head /cloud/project/data/NP_001124065.1_zebrafish.txt
 
 </details>
 
-## Formative quiz
 
-Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the Genomes, Genes and Genomics blackboard page, Workshops and Practicals, Bioinformatics workshops to find the quiz.
+### Formative quiz
+
+Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the Genomes, Genes and Genomics Blackboard page, *Formative assessments*, *Bioinformatics Workshop 1 Quiz - BLAST* to find the quiz.
 
 ## Before you leave
 
