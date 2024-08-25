@@ -36,5 +36,7 @@ making-a-blast-database
 finding-a-query
 blastp
 blastn-and-blastx
+formative-work
+write-a-blastx-query
 formative-quiz
 before-you-leave
