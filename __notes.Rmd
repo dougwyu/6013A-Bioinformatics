@@ -30,11 +30,13 @@ which was forked from Phil and Ellen's original version at
 
   https://github.com/UEABIO/6013A-Bioinformatics
 
-I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my local Mac (in this directory).
+I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my Posit Cloud account, and it is located in the BIO-6013A/7004A Workspace as "6013A-Bioinformatics Skills I and II bookdown"
 
-To edit, push to GitHub, and publish on github.io, do this:
+I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token())
 
-  1. open the project (click on 6013A-Bioinformatics.Rproj)
+To edit, push to GitHub, and publish on github.io, do the following:
+
+  1. open the "6013A-Bioinformatics Skills I and II bookdown" project (click on 6013A-Bioinformatics.Rproj)
   
   2. edit *.Rmd files
   	index.Rmd # Section 1

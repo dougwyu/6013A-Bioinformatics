@@ -36,7 +36,7 @@ As stated above, Linux is free and open-source so there are lots of developers f
 
 Today, you will get some experience with using a Linux OS. By logging into posit.cloud in your browser, you are connecting to the company Posit's supercomputer, which runs Linux, and on top of Linux, Posit lets you run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is an operating system with a CLI shell, on which the RStudio GUI-shell runs, to make it easier to run the **R language** CLI shell.)
 
-When you click on RStudio's Terminal tab, you get access to a *Linux* CLI bash shell, where you can execute commands and functions directly in Linux. (yes, now you have gone from RStudio's GUI back to the Linux CLI). All these different shells give us the ability to use multiple programs & programming languages. 
+When you click on RStudio's Terminal tab, you get access to a *Linux* CLI bash shell, where you can execute commands and functions directly in Linux. (yes, now you have gone from RStudio's GUI back to the Linux CLI). All these different shells give us the ability to use multiple programs & programming languages.
 
 > **Note**
 >
@@ -46,7 +46,7 @@ When you click on RStudio's Terminal tab, you get access to a *Linux* CLI bash s
 
 Before we get started we need a terminal to work in.
 
--   Click on the `6013A-Bioinformatics Skills I and II`  RStudio Project in your `BIO-6013A` workspace
+-   Click on the `6013A-Bioinformatics Skills I and II` RStudio Project in your `BIO-6013A` workspace
 -   Click on the `Terminal` tab next to `Console` tab in the RStudio GUI. This opens a command-line *Shell*
 
 ```{r, eval=TRUE,echo=FALSE, fig.cap='Here is an example of the Terminal tab, right next to the R console', out.width='80%', fig.asp=.75, fig.align='center'}
@@ -55,13 +55,13 @@ knitr::include_graphics("images/terminal.png")
 
 -   This is our "command line" where we will be typing all of our commands. We type our commands in a language called `bash`
 
--   The \$ is where you start typing from, left of this it tells your `working directory`, which is the folder you are currently in. 
+-   The \$ is where you start typing from, left of this it tells your `working directory`, which is the folder you are currently in.
 
--   If you need to, you can exit the Terminal and start a new session. 
+-   If you need to, you can exit the Terminal and start a new session.
 
 ## A few foundational rules
 
--   Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (\_) where you want space to be. Thus, "draft_v3.txt" refers to one file, while "draft v3.txt" refers to *two* files:  draft and v3.txt.
+-   Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (\_) where you want space to be. Thus, "draft_v3.txt" refers to one file, while "draft v3.txt" refers to *two* files: draft and v3.txt.
 
 -   The general syntax on the bash command line is: `command argument`. Argument is a special term and it means all the extra text bits that customise your command. This is similar to R except we don't use brackets e.g. in R we put the arguments inside parentheses `command(argument)`
 
@@ -85,7 +85,7 @@ Now let's add an argument to the `date` command to ask for the date next Tuesday
 date --date="next tue"
 ```
 
-The `date` command can do lots of things. You can learn more about about it [here](https://www.geeksforgeeks.org/date-command-linux-examples/). #{.uri}
+The `date` command can do lots of things. You can learn more about about it [here](https://www.geeksforgeeks.org/date-command-linux-examples/).
 
 Occasionally and alternatively, you set an *environmental* variable to get a command to function differently. For instance, we might want to tell the computer that we are in the London time zone. We do it this way:
 
@@ -99,22 +99,21 @@ and if we want to find the time in Paris
 TZ=Europe/Paris date
 ```
 
-
 ### Downloading data
 
 We will start by typing in an instruction to download data from an online data repository, unpack the contents, and inspect it.
 
--   `curl` is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository called Figshare, and the `-o` argument sets the filename of the downloaded file (i.e. you can choose what to name the downloaded file). 
+-   `curl` is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository called Figshare, and the `-o` argument sets the filename of the downloaded file (i.e. you can choose what to name the downloaded file).
 
--   `tar` *unpacks* and *uncompresses* the data from a tarballed and compressed file format. A compressed file format (known as gzipped) makes a large file smaller for download. A tarball format makes many individual files appear as one single file. In this example, you have downloaded a whole directory with over a hundred individual files, and Figshare has tarballed and compressed the directory so that it is easy to download. You therefore need a command to *extract* the files from the tarball and *unzip* the files Can you guess which two arguments of the four here `tar -xzvf` tell the computer to do these two things? 
+-   `tar` *unpacks* and *uncompresses* the data from a tarballed and compressed file format. A compressed file format (known as gzipped) makes a large file smaller for download. A tarball format makes many individual files appear as one single file. In this example, you have downloaded a whole directory with over a hundred individual files, and Figshare has tarballed and compressed the directory so that it is easy to download. You therefore need a command to *extract* the files from the tarball and *unzip* the files Can you guess which two arguments of the four here `tar -xzvf` tell the computer to do these two things?
 
 -   `rm` removes the original downloaded file, which you had called `unix_intro.tar.gz`
 
--   after untarballing and extracting, we have a new directory called `unix_intro/`. Can you find it in the Files tab of RStudio? 
+-   after untarballing and extracting, we have a new directory called `unix_intro/`. Can you find it in the Files tab of RStudio?
 
-- `ls -l` lists the files in the working directory, and the `-l` asks for a particular format that I like. Can you see the new directory called `unix_intro`?
+-   `ls -l` lists the files in the working directory, and the `-l` asks for a particular format that I like. Can you see the new directory called `unix_intro`?
 
--   `cd` changes your working directory so we *land* in the new folder we have made. # When we write the name of a directory in Unix, we have the option to add a `/` at the end of the name. This slash is only decorative, but it's useful when you are reading bash scripts. 
+-   `cd` changes your working directory so we *land* in the new folder we have made. \# When we write the name of a directory in Unix, we have the option to add a `/` at the end of the name. This slash is only decorative, but it's useful when you are reading bash scripts.
 
 Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, you can find the shortcut by opening Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu.
 

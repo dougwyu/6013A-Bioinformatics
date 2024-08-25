@@ -7,11 +7,11 @@ knitr::opts_chunk$set(eval = FALSE)
 Lets take a moment to review some terminology.
 
 -   **Unix** - An operating system analogous with Windows.
--   **Shell** - This is the interface we use to talk to the computer. If we are able to use the mouse to point and click we are using a Graphical User Interface (GUI). If we are only using text we are using a Command Line Interface (CLI). We will be using a CLI in these workshops.
+-   **Shell** - This is the interface we use to talk to the computer. If we are able to use the mouse to point and click we are using a Graphical User Interface (GUI). If we are only typing text commands, we are using a Command Line Interface (CLI). We will be using a CLI in these workshops.
 -   **Command-line and Terminal** - A text-based environment for sending commands to a computer's operating system or to an application. The terminal is the app that gives you access to the operating system's command line. It's called terminal because there literally used to be a tv screen at the end (terminus) of a cable from a mainframe computer.
--   **bash** - a programming language used to run a series of Unix commands and programs that run on Unix. Bash scripts can be used to automated large amounts of bioinformatic work, and are known as pipelines.
+-   **bash** - For the operating system to understand your commands, you need to follow a set of rules (known as a syntax), which collectively are known as a language. bash is one of these languages. When you write a series of bash-syntax commands, it is known as a bash script. Scripts are used to automate large amounts of bioinformatic work. Often, we use the term pipeline instead of script, because we think of bioinformatic work as moving data files from one transformation to the next, connected by pipes. In fact, bash has a pipe character that does exactly this: `|`. (This is not a number 1 or the capital letter I. It is a separate character on your keyboard.
 
-Make sure that you are working in the **Terminal**, where you will run commands in the bash language, and NOT in the Console, which is RStudio's name for a Terminal that runs the R language. You will be running commands in the Terminal. (N.B. If RStudio goes to sleep and you resume it, RStudio will put you in the Console, not the Terminal, so you have to click on the Terminal tab to get back to the Terminal.)
+Make sure that you are working in the **Terminal**, where you will run commands in the bash language, and NOT in the Console, which is RStudio's name for a special terminal that runs the R language. You will be running commands in the **Terminal**. (N.B. If RStudio goes to sleep and you resume it, RStudio will put you in the Console, not the Terminal, so you have to click on the Terminal tab to get back to the Terminal.)
 
 ## Directories and their structure
 
@@ -21,7 +21,7 @@ Under **Files** in the bottom right panel of your screen you will see a file wit
 
 Look at the top of the File panel. You will see the file path to whatever directory is active in the File tab.
 
-  ```{r, eval=TRUE, echo=FALSE, fig.cap="The current directory in this image is `/cloud/project/images/`, where the final / here is used to indicate that `images/` is a directory, not a file. In Posit.cloud, `/cloud` is the 'root' directory. If a file's path is written out all the way from the root, it is known as the absolute path, e.g.` /cloud/project/images/ascii.png`", out.width='80%', fig.asp=.75, fig.align='center'}
+```{r, eval=TRUE, echo=FALSE, fig.cap="The current directory in this image is `/cloud/project/images/`, where I use the final / to indicate that `images/` is a directory, not a file. In Posit.cloud, `/cloud` is the 'root' directory. If a file's path is written out all the way from the root, it is known as the absolute path, e.g.` /cloud/project/images/ascii.png`", out.width='80%', fig.asp=.75, fig.align='center'}
 knitr::include_graphics("images/Cloud_project.png")
 ```
 
@@ -37,11 +37,10 @@ plus some individual files, which are used during programming
 -   .gitignore
 -   .Rhistory
 -   project.Rproj
--
 
 (If you don't see these files, click on the word "project" in "Cloud \> project" near the top of the Files tab, and you should get there.)
 
-You can move around folders/directories **in the command line**, and it's good to be comfortable doing this. Make sure you are in the `Terminal` tab in the panel to the bottom left and go to the `/cloud/project` directory with the `cd` command. (`cd`is shorthand for change directory, and remember to hit **enter**).
+You can move around folders (=directories) **in the command line**, and it's good to be comfortable doing this. Make sure you are in the `Terminal` tab in the panel to the bottom left and go to the `/cloud/project` directory with the `cd` command. (`cd`is shorthand for change directory, and remember to hit **enter**).
 
 ```         
 cd /cloud/project
@@ -53,7 +52,7 @@ Because we use `/cloud/` at the beginning, we are using the absolute path to the
 ls -lF
 ```
 
-The `ls` command is shorthand for list, the `-l` argument means long listing format, and the `-F` argument means to classify the items by their type. Unix allows you to combine arguments into a single thing, to speed up typing. So `ls -l -F` is usually written as `ls -lF`. In fact, one way to think about Unix is that the commands are designed by people who like to use the command line but hate the act of typing, so all the commands are very short. If you get good at Unix, you will become like this.
+The `ls` command is shorthand for list, the `-l` argument means long listing format, and the `-F` argument means to classify the items by their type. Unix allows you to combine arguments into a single thing, to speed up typing. So `ls -l -F` is usually written as `ls -lF`. One way to think about Unix is that the commands are designed by people who like to use the command line but hate the act of typing, so all the commands are very short. If you get good at Unix, you will become like this.
 
 The terminal should return something that looks like this, and you will see that `code/` and `data/` are directories (because of the forward slashes).
 
@@ -65,13 +64,13 @@ drwxrwx--- 6 r574796 rstudio-user 4096 Sep 22 06:56 data/
 -rw-rw-r-- 1 r574796 rstudio-user  205 Sep 22 11:07 project.Rproj
 ```
 
-Let's go and have a look at the files held within `data/`. Use following command;
+Let's go and have a look at the files held within `data/`. Use following command to navigate into data/;
 
 ```         
 cd data  # or cd data/  either syntax works.
 ```
 
-now use
+now your working directory is data/. List the files in this directory with
 
 ```         
 ls -lF
@@ -88,9 +87,9 @@ drwxrwx--- 2 r574796 rstudio-user 4096 Sep 22 06:56 query/
 drwxrwx--- 2 r574796 rstudio-user 4096 Sep 22 06:56 refseq/
 ```
 
-So you can see that you can use commands like `ls` and `cd` to move around your directories.
+So you can see that you can use the commands `cd` and `ls` to move around and look inside your directories.
 
-Note - if you want to move back up a directory level you can use `cd ..` to do so. `..` means up, and you can see the two dots at the top of the file list in the Files panel. If you click on those two dots, you also move up a directory level.
+Note - if you want to move back up a directory level you can use `cd ..`. The two dots together `..` means up in bash syntax, and you can also see the two dots at the top of the file list in the Files panel. If you click on those two dots, you also move up a directory level.
 
 Use `cd, ls and cd ..` to explore the directories available to you in your project.
 
@@ -102,7 +101,7 @@ So hopefully you are starting to get comfortable moving between directories in t
 cd /cloud/project/
 ```
 
-If you want to enter some commands *from this location* that use the `mouse.1.protein.faa` file stored in the `refseq`directory, you will need to provide a path for the location of that file. These paths can either be absolute or relative.
+If you want to enter some commands *from this location* that use the `mouse.1.protein.faa` file stored in the `refseq`directory, **you will need to provide a path for the location of that file**. These paths can either be absolute or relative.
 
 Relative paths provide a pathway from your current directory (which is currently `/cloud/project/`). So to get to the directory where your `mouse.1.protein.faa` file is you could use the following path;
 
@@ -110,9 +109,9 @@ Relative paths provide a pathway from your current directory (which is currently
 cd data/refseq
 ```
 
-However if you are currently, say, in the `databases/` directory, this path won't work because your computer will be looking for directories it can't see. This is where absolute paths come in useful.
+However if you are currently, say, in the `databases/` directory, this (relative) path won't work because your computer will be looking for directories it can't see. This is where absolute paths come in useful.
 
-Absolute paths specify the location of a file or directory starting from your root directory (the topmost directory). So it doesn't matter which directory you are currently in, the absolute pathname will go to the right place. In this case the absolute path is
+Absolute paths specify the location of a file or directory starting from your root directory (the topmost directory). So it doesn't matter which directory you are currently in, the absolute pathname will go to the right place. In this case the absolute path is:
 
 ```         
 cd /cloud/project/data/refseq
@@ -122,16 +121,17 @@ Have a go at using both absolute and relative paths with the `cd` command to mov
 
 ## File types
 
-When we look at sequence data there are a number of file types that you will regularly come into contact with. The most common of these are `.fastq` and `.fasta` files. Here we will have a look at some key features and differences of these file types.
+When we look at sequence data there are a number of file types that you will regularly come into contact with. The most common of these are `.fastq` and `.fasta` files, which are appended to filenames as suffixes. This is purely for your convenience. You could have a different suffix, or even no suffix, but if you do, you will confuse yourself and others as to the content and format of your files, so that's why we use filename suffixes. Here we will have a look at some key features and differences of these file types.
 
-`Fastq` files are used as a data storage file for the output from Illumina sequencers. The structure of a `.fastq` file is very uniform. Each DNA sequence has four lines dedicated to it.
+`Fastq` files are used as a data storage file for the output from Illumina sequencers. The structure of a `.fastq` file is very uniform. **Each DNA sequence has four lines dedicated to it**.
 
--   Line 1 - begins with an '\@' character and is followed by an identifier and optional description. For example it may contain information about the sequencer, the flow cell, index number etc. The identifier is unique to each sequence.
+-   Line 1 - begins with an '\@' character and is followed by an identifier and optional description. It contains information about the sequencer, the flow cell, index number, the precise location within the flow cell where the sequence comes from, etc. The identifier is unique to **each sequence**.
 -   Line 2 - is the DNA sequence
 -   Line 3 - a '+' character (and sometimes a repeat of line 1)
--   Line 4 - computer-readable information relating to the quality for the sequence in line 2. There is the same number of quality characters as the sequence. The letters indicate the probability of error and are known as phred scores, coded as ASCII characters.
+-   Line 4 - computer-readable information relating to the quality of each nucleotide in the sequence in line 2. Therefore, there are as many quality characters as sequence characters. The letters indicate the probability of error and are known as `phred` scores, coded as ASCII characters. For example, the phred ASCII code `A` translates to a score of 32, which means that there is a $1/1585$ probability that the nucleotide `G` is incorrect
+-   See <https://en.wikipedia.org/wiki/Phred_quality_score> and <https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm>
 
-An example of three sequences from an Illumina sequencer in fastq format is shown below. For example, the `A` phred ASCII code translates to a score of 32, which means that there is a $1/1585$ probability that the nucleotide `G` is incorrect (see <https://en.wikipedia.org/wiki/Phred_quality_score> and <https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm>)
+An example of three sequences from an Illumina sequencer in fastq format is shown below. Note that there is no empty line between the three sequences.
 
 ```         
 @NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT
@@ -148,7 +148,7 @@ GCATGTGATGTTGTGTTTTTGTACTCTCCTCTCACTTTGTCCAAAGTGAGTGGTGTCATTATGAGTTGTATTTTGCTAAC
 AAA/AEEEEEEEEEEEEEEEEAEAAEEEEAAEEEEEEE/EEEAEEEEA/EE6EEEEEEEEEEEE6EE/EAEEE/EEEAAEAEEE/EEEEEE6EEEAE/<EAEEEEEE/EEAEEAE<E//AE<</EAEA//<<<A6AE/EEEE/A/EA
 ```
 
-`Fasta` files are a simpler (and thus smaller) text-based file format for representing both nucleotide and amino acid sequences. These can be produced from `fastq` files (but `fastq` files cannot be produced from fasta files; comparing the two formats (above and below), can you figure out why?). Each sequence in `.fasta` format comes with a *header line* which is marked by a '\>' character prefix. Information following the '\>' typically contains a sequence identifier and optional description of the sequence.
+`Fasta` files are a simpler (and thus smaller) text-based file format for representing both nucleotide and amino acid sequences. These can be produced from `fastq` files (**However, `fastq` files cannot be produced from fasta files; comparing the two formats (above and below), can you figure out why?**). Each sequence in `.fasta` format comes with a *header line* which is marked by a '\>' character prefix. Information following the '\>' typically contains a sequence identifier and an optional description of the sequence. A lot of bioinformatic programming adds and subtracts information from the fasta header line.
 
 An example of three sequences from an Illumina sequencer in `.fasta` format is shown below. You may notice that these are the same sequences as shown above in the `fastq` example; typically, the header lines in fasta files are more human-readable (i.e. *not* `>NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT`)
 
@@ -177,7 +177,7 @@ head mouse.1.protein.faa
 
 What differences do you notice about the four files? Do you think these are .fastq or .fasta files?
 
-You might have noticed that there are two file suffixes (or file extensions): **.faa** and **.fna**. These file extensions can tell you something about the content of the file. Can you work out what these file extensions might be telling you?
+You might have noticed the two file suffixes (also known as file extensions): **.faa** and **.fna**. These file suffixes tell you something about the content of the file. Can you work out what **.faa** and **.fna** mean?
 
 That ends our review of Unix. Now let's do something bioinformatics-y!
 
@@ -185,7 +185,7 @@ That ends our review of Unix. Now let's do something bioinformatics-y!
 
 The acronym BLAST stands for Basic Local Alignment Search Tool. It is a very versatile and useful program, frequently used in bioinformatic analysis to find close (and not-so-close) nucleotide or protein sequence matches in a database. It has a range of uses, including assisting in the identification of sequences and assessing evolutionary relationships between sequences. There are different types of BLAST that work with nucleotide or amino acid input sequences.
 
-You might have previously uploaded sequences to the NCBI website and used their BLAST tool from a web browser. Running BLAST on the NCBI website compares your query sequence against the entirety of GenBank, which is enormous. Here we will run BLAST from the command line against a local database.
+You might have previously uploaded sequences to the NCBI website and used their BLAST tool from a web browser. Running BLAST on the NCBI website compares your query sequence against the entirety of GenBank, which is enormous. **Here we will run BLAST from the command line against a local database.**
 
 ### Making a BLAST database
 
@@ -198,26 +198,32 @@ cd /cloud/project
 makeblastdb -in /cloud/project/data/refseq/zebrafish.1.rna.fna -dbtype nucl -title zebrafish.1.rna -out /cloud/project/data/databases/zebrafish.1.rna
 ```
 
-Take a moment to break down this command. The command is `makeblastdb`. The first argument `-in` tells`makeblastdb`which file(s) you want to turn into a database. You chose to indicate the file with an absolute pathname, which means that you can run the command from anywhere in the computer. You have also given instructions on what type of database you wish to produce (i.e. a nucleotide database) using the argument `-dbtype nucl` and finally indicated where you want the output database to be stored, using the argument `-out pathway/file_prefix`.
+Take a moment to break down this command. The command is `makeblastdb`. The first argument `-in` tells `makeblastdb`which file(s) you want to turn into a database. You chose to indicate the file with an absolute pathname, which means that you can run the command from anywhere in the computer and still find the file. You have also given instructions on what type of database you wish to produce (i.e. a nucleotide database) using the argument `-dbtype nucl` and finally indicated where you want the output database to be stored, using the argument `-out /cloud/project/data/databases/zebrafish.1.rna`, again using an absolute pathname.
 
 Note that one of things you have to think about constantly is file naming. My preference is for longer filenames that explain what a file contains and what happened to it.
 
 Sometimes it helps to write and read a command *vertically* so that you can see all the arguments (debugging is easier too). Unfortunately, you can't copy and paste the command like this.
 
 ```{bash}
-makeblastdb -in /cloud/project/data/refseq/zebrafish.1.rna.fna -dbtype nucl -title zebrafish.1.rna -out /cloud/project/data/databases/zebrafish.1.rna
+makeblastdb -in /cloud/project/data/refseq/zebrafish.1.rna.fna 
+-dbtype nucl 
+-title zebrafish.1.rna 
+-out /cloud/project/data/databases/zebrafish.1.rna
 ```
 
-After running the command, use the `cd` and `ls` commands to go to `/cloud/project/data/databases/` and have a look at the new files stored there. There should be three files all starting with `zebrafish.1.rna`, and they should have `.nhr`, `.nin`, `.nsq` file extensions. This is just how BLAST likes to store its databases.
+After running the command, use the `cd` and `ls` commands to go to `/cloud/project/data/databases/` and have a look at the new files stored there. There should be three files all starting with `zebrafish.1.rna`, and they should have `.nhr`, `.nin`, `.nsq` file extensions. This is how BLAST likes to store its databases.
 
-Now try and make a similar database for the `zebrafish.1.protein.faa` refseq file. You will need to instruct `makeblastdb` to make a `prot` (protein) database instead of a `nucl` database. Check your results in `/cloud/project/data/databases/`. Once again there should be three files and they should have `.phr`, `.pin` and `.psq` file extensions.
+Now try and make a similar database for the `zebrafish.1.protein.faa` refseq file. You will need to instruct `makeblastdb` to make a `prot` (protein) database instead of a `nucl` database. Check your results in `/cloud/project/data/databases/`. Once again there should be three files, and they should have `.phr`, `.pin` and `.psq` file extensions.
 
 <details>
 
 <summary>**Q. What is the command? - Click here for Answer**</summary>
 
 ```{bash}
-makeblastdb -in /cloud/project/data/refseq/zebrafish.1.protein.faa -dbtype prot -title zebrafish.1.protein -out /cloud/project/data/databases/zebrafish.1.protein
+makeblastdb -in /cloud/project/data/refseq/zebrafish.1.protein.faa 
+-dbtype prot 
+-title zebrafish.1.protein 
+-out /cloud/project/data/databases/zebrafish.1.protein
 ```
 
 </details>
@@ -226,7 +232,7 @@ makeblastdb -in /cloud/project/data/refseq/zebrafish.1.protein.faa -dbtype prot 
 
 So hopefully you have a protein *and* a nucleotide database prepared. Now we need to decide on suitable query sequences. We could use an entire mouse refseq file as our set of query sequences, but that would take a long time because the refseq file contains many sequences.
 
-Instead, let's take a single entry from the mouse protein refseq file instead. To do this in the command line with the Unix utility program `awk`, which is used for querying and extracting rows from tabular data files. In bioinformatics, it is frequently used for filtering sequence files.
+Instead, let's take a single entry from the mouse protein refseq file instead. We do this in the command line with the Unix utility program `awk`, which is used for querying and extracting rows from tabular data files. In bioinformatics, it is frequently used for filtering sequence files.
 
 For now, I would like you to use the `awk` command below; this will copy lines 5 and 6 of the `mouse.1.protein.faa` file and paste them in a new file called `mouse.1.protein.1.faa` in the `query` directory.
 
@@ -241,14 +247,22 @@ Use `head` to look at the contents of the `mouse.1.protein.1.faa` file in the `q
 MFINRWLFSTNHKDIGTLYLLFGAWAGMVGTALSILIRAELGQPGALLGDDQIYNVIVTAHAFVMIFFMVMPMMIGGFGNWLVPLMIGAPDMAFPRMNNMSFWLLPPSFLLLLASSMVEAGAGTGWTVYPPLAGNLAHAGASVDLTIFSLHLAGVSSILGAINFITTIINMKPPAMTQYQTPLFVWSVLITAVLLLLSLPVLAAGITMLLTDRNLNTTFFDPAGGGDPILYQHLFWFFGHPEVYILILPGFGIISHVVTYYSGKKEPFGYMGMVWAMMSIGFLGFIVWAHHMFTVGLDVDTRAYFTSATMIIAIPTGVKVFSWLATLHGGNIKWSPAMLWALGFIFLFTVGGLTGIVLSNSSLDIVLHDTYYVVAHFHYVLSMGAVFAIMAGFVHWFPLFSGFTLDDTWAKAHFAIMFVGVNMTFFPQHFLGLSGMPRRYSDYPDAYTTWNTVSSMGSFISLTAVLIMIFMIWEAFASKREVMSVSYASTNLEWLHGCPPPYHTFEEPTYVKVK
 ```
 
-> Note that the refseq.fasta file has been formatted so that each entry has two lines, one for header, one for sequence. This means odd numbered lines are headers and even numbered lines are the corresponding sequences. Note that bioinformaticians have written lots of utility programs that let us query, extract, and edit sequence files and are easier to use than the base Unix programs like`awk`, `grep`, and `sed`. But even so, i often find myself using basic unix utility programs.
+> Note that `refseq.fasta` has a `.fasta` file suffix, and when you look inside, it indeed has been formatted as a fasta file, so that each entry has two lines: one header line, one sequence line. (yes, the sequence is one line; it just wraps around) This means odd numbered lines are headers and even numbered lines are the corresponding sequences. Note that bioinformaticians have written lots of utility programs that let us query, extract, and edit sequence files and are easier to use than the base Unix programs like`awk`, `grep`, and `sed`. But even so, i often find myself using basic Unix utility programs.
 
 ### BLASTp
 
 Now that we have prepared a query and database we can start to run some BLASTs. Our query is from the protein refseq files, so we will run `BLASTp` against the protein zebrafish database. Run the following command;
 
 ```{bash}
-blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt # it might help to see this command without the long pathnames and vertically # blastp # -query mouse.1.protein.1.faa # -db zebrafish.1.protein # -out mouse.1.protein.x.zebrafish.txt
+blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt 
+```
+
+It is helpful to read this command without the long pathnames and written vertically. There are three arguments: `-query`, `-db`, and `-out`
+
+```{bash}
+blastp -query mouse.1.protein.1.faa
+  -db zebrafish.1.protein
+  -out mouse.1.protein.x.zebrafish.txt
 ```
 
 Take a look at the default output from this BLAST search, use:
@@ -257,15 +271,19 @@ Take a look at the default output from this BLAST search, use:
 less /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt 
 ```
 
-Type `Enter` to scroll through the file and `q` when you're ready to quit. You will see that this default output contains a lot of information, including information relating to significant database hits, significance scores and alignments. We only have three hits here, so its easy enough to process in this format, but sometimes you may have much larger outputs, in this case a tabular format is much more desirable. Try running the following command;
+`less` is yet another Unix utility program that lets you look at portions of really long files (see less than the whole). 
 
-(remember to have typed `q` to get out of the `less` command.
+Type `Enter` to scroll through the file, and use `q` when you're ready to quit. You will see that this default output contains a lot of information, including information relating to significant database hits, significance scores and alignments. We only have three hits here, so its easy enough to process in this format, but sometimes you may have much larger outputs. In this case a tabular format is much more desirable. Try running the following command;
+
+(*Remember to have typed `q` to get out of the `less` command.* You need to be back at the command line.)
 
 ```{bash}
 blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.2.tsv -outfmt 6
 ```
 
-Use `head` to have a look at this new presentation of information (remember to include the correct path). The output this time is a tabular format, which is much easier to process quickly especially when you are looking at large data sets. I have pasted the output you should be looking at below with the column headers added. You can read all about [output format 6 here](https://www.metagenomics.wiki/tools/blast/blastn-output-format-6).
+Now we have added one more argument:  `-outfmt 6`, which means output format number 6. 
+
+Use `head` to have a look at this new presentation of information (remember to include the correct path). The output this time is a tabular format, which is much easier to process quickly especially when you are looking at large data sets. I have pasted a bit of the output you should be looking at below with the column headers added. You can read all about [output format 6 here](https://www.metagenomics.wiki/tools/blast/blastn-output-format-6).
 
 ```         
 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
@@ -274,9 +292,9 @@ YP_220552.1 XP_021326074.1  31.818  66  32  2   427 482 16  78  6.7 29.3
 YP_220552.1 NP_001373511.1  31.818  66  32  2   427 482 48  110 7.5 29.6
 ```
 
-Your query sequence is YP_220552.1, and it matched three sequences in the protein database. The topmost row is the best match, which you can tell by reading the second-to-last (evalue) and last (bitscore) columns. evalue is the probability of getting a match this good in a random database of the same size. Here, evalue has been rounded to 0.0, which just means that the probability is very small (but not strictly 0). The bitscore value is the "size of a random sequence database in which the current match could be achieved just by chance". In this case, the bitscore number is high (877), and the database size is $2^{877}$, which is astronomically high. In short, the topmost reference sequence, NP_059333.1, is a really good match to your query sequence, YP_220552.1.
+Your query sequence is YP_220552.1, and it matched three sequences in the protein database. The topmost row is the best match, which you can tell by reading the second-to-last (evalue) and last (bitscore) columns. evalue is the probability of getting a match this good in a random database of the same size. Here, evalue has been rounded to 0.0, which just means that the probability is very small (but not strictly 0). The bitscore value is the "size of a random sequence database in which the current match could be achieved just by chance". In this case, the bitscore number is high (877), and the database size is $2^{877}$, which is astronomically high. To have a random sequence match your query sequence this well, you would have needed a gigantic random sequence. In short, the topmost reference sequence, NP_059333.1, is a really good match to your query sequence, YP_220552.1.
 
-See [here](https://www.metagenomics.wiki/tools/blast/evalue){.uri} for more details on evalue and bit scores.
+See [here](https://www.metagenomics.wiki/tools/blast/evalue){.uri} for more details on evalue and bit score.
 
 The problem with output format 6 is that you can't see any *additional* information about your reference sequence NP_059333.1. But since you now have the reference sequence identifier, you can search and extract the relevant information from the original refseq file. For this we can use `grep`, which is the Unix equivalent of the Find function in your word processor. Try the following command:
 
@@ -285,6 +303,15 @@ grep -n "NP_059333.1" /cloud/project/data/refseq/zebrafish.1.protein.faa > /clou
 ```
 
 Here we are asking `grep` to look for lines containing the sequence identifier NP_059333.1 in our refseq zebrafish protein fasta file. Once found, `grep` puts those lines into a new text file within the `data` directory `NP_059333.1_zebrafish.txt`. The `-n` flag tells `grep` to also report the line number.
+
+<details>
+
+<summary>**Q. How did we tell grep to put the output in a new file? - Click here for Answer**</summary>
+
+We used the `>` character, which is known as a redirect character. It is *re*directing, because if you hadn't used `> /cloud/project/data/NP_059333.1_zebrafish.txt`, grep would have sent the output to the standard place, which is the screen. 
+
+</details>
+
 
 Navigate to this newly made text file and use either `less` or `head` to view it. Compare the header information from our query and the top hit from our blast database. Do the results make sense?
 
@@ -300,7 +327,7 @@ Navigate to this newly made text file and use either `less` or `head` to view it
 
 ### BLASTn and BLASTx
 
-Try repeating the process with a new query. Use `awk` to extract lines 4121 and 4122 from the mouse nucleotide refseq files (Q: how many sequences do you get when you extract 2 lines?). Then use `blastn` (not `blastp`!) to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use `grep` to extract the top hit from the zebrafish RNA refseq file.
+Try repeating the process with a new query. Use `awk` to extract lines 4121 and 4122 from the mouse *nucleotide* refseq files (Q: how many sequences do you get when you extract 2 lines?). Then use `blastn` (not `blastp`!) to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use `grep` to extract the top hit from the zebrafish RNA refseq file.
 
 Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
 
@@ -349,12 +376,13 @@ Use the workbook and outputs from the workshop to complete a quick online format
 
 ## Before you leave
 
-Today we have been building the beginnings of a bioinformatics toolkit. We have taken a look at .fastq and .fasta files and have started developing tips and tricks for working in the command line and using commonly used commands, packages and languages, including;
+Today we have been building the beginnings of a bioinformatics toolkit. We have taken a look at .fastq and .fasta files and have started learning commands for working in the command line and using commonly used commands, packages and languages, including;
 
--   `bash`
+-   `cd`, `ls`
+-   `head`, `less`
 -   `awk`
 -   `grep`
--   `blastp`, `blastn`, `blastx`
+-   `makeblastdb`, `blastp`, `blastn`, `blastx`
 
 To continue developing these skills there are some really awesome resources available with Astro Bio Mike at [Happy Belly Bioinformatics](https://astrobiomike.github.io/)
 
