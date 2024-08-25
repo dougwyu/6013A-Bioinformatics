@@ -115,7 +115,7 @@ We will start by typing in an instruction to download data from an online data r
 
 -   `cd` changes your working directory so we *land* in the new folder we have made. \# When we write the name of a directory in Unix, we have the option to add a `/` at the end of the name. This slash is only decorative, but it's useful when you are reading bash scripts.
 
-Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, you can find the shortcut by opening Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu.
+Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, it is ctrl-alt-enter. You can find these keyboard shortcuts (and many others) under Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu. Alternatively, you can read and type the command, which might help you learn the command better.
 
 ```{bash}
 curl -L -o unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746
