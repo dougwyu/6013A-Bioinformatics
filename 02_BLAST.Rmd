@@ -325,7 +325,10 @@ Navigate to this newly made text file and use either `less` or `head` to view it
 
 </details>
   
-### BLASTn and BLASTx
+
+## Formative work
+
+### Write your own blastn query  
 
 Try repeating the process with a new query. Use `awk` to extract lines 4121 and 4122 from the mouse *nucleotide* refseq files (Q: how many sequences do you get when you extract 2 lines?). Then use `blastn` (not `blastp`!) to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use `grep` to extract the top hit from the zebrafish RNA refseq file.
 
@@ -353,11 +356,7 @@ head /cloud/project/data/NM_001347668.1_zebrafish.txt
 ```
 </details>
   
-  
-
-## Formative work
-
-### Write a blastx query
+### Write your own blastx query
 
 Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
 
