@@ -21,6 +21,7 @@ and is deployed here:
 git2r::repository(here::here())
 ```
 
+Use my Github account to sign into the correct Posit Cloud account for the class. 
 
 The code for the practical instructions is hosted on Doug's Github account at
 
@@ -34,11 +35,11 @@ I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my Posit Cloud 
 
 I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token())
 
-gitcreds::gitcreds_set() # lets me add my personal access token, which gives me access to NM's repo
+gitcreds::gitcreds_set() # lets me add my personal access token to my Posit cloud, which gives me access to my github repo
 # choose:  "2. Replace these credentials", and paste in the new PAT. 
 
 
-To edit, push to GitHub, and publish on github.io, do the following:
+To edit the workshop files, push to GitHub, and publish on github.io, do the following:
 
   1. open the "6013A-Bioinformatics Skills I and II bookdown" project (click on 6013A-Bioinformatics.Rproj)
   
@@ -58,12 +59,6 @@ To edit, push to GitHub, and publish on github.io, do the following:
 
 An explanation for how to publish a bookdown project to github.io
 https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
-
-
-Use my Github account to sign into the correct Posit Cloud account for the class. 
-
-
-
 
 
 Reference code chunk for installing some of the more obscure R packages
