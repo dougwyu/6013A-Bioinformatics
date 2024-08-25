@@ -353,12 +353,13 @@ head /cloud/project/data/NM_001347668.1_zebrafish.txt
 ```
 </details>
   
-Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
-
+  
 
 ## Formative work
 
 ### Write a blastx query
+
+Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
 
 You have been given an unknown nucleotide sequence from a *Corydoras* catfish species, `/cloud/project/data/query/unknown_cory.fasta`. Use the `blastx` and `grep` commands to try to work out what gene it most closely matches in zebrafish.
 
