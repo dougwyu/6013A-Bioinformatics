@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2023-10-06" />
+<meta name="date" content="2024-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.9.1" data-path="Unix.html"><a href="Unix.html#terms"><i class="fa fa-check"></i><b>2.9.1</b> Terms</a></li>
 <li class="chapter" data-level="2.9.2" data-path="Unix.html"><a href="Unix.html#commands"><i class="fa fa-check"></i><b>2.9.2</b> Commands</a></li>
-<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters"><i class="fa fa-check"></i><b>2.9.3</b> Special characters</a></li>
+<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters-for-the-cd-command"><i class="fa fa-check"></i><b>2.9.3</b> Special characters for the <code>cd</code> command</a></li>
 </ul></li>
 <li class="chapter" data-level="2.10" data-path="Unix.html"><a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills"><i class="fa fa-check"></i><b>2.10</b> Stretch yourself - optional extras to try a couple of other skills</a>
 <ul>
@@ -225,14 +225,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   addClassKlippyTo("pre.r, pre.bash");
   addKlippy('right', 'top', 'auto', '1', 'copy to clipboard', 'Copied!');
 </script>
-<p>Unix is very likely the most fundamental skillset we can develop for bioinformatics (and much more than bioinformatics). Many of the most common and powerful bioinformatics approaches happen in this text-based environment, and having a solid foundation here can make everything we’re trying to learn and do much easier. This is a short introductory tutorial to help us get from being completely new to Unix up to being friendly with it 🙂</p>
+<p>Unix is very likely the most fundamental skillset we can develop for bioinformatics (and beyond bioinformatics). Many of the most common and powerful bioinformatics approaches happen in this text-based environment, and having a solid foundation here can make everything we’re trying to learn and do much easier. This is a short introductory tutorial to help us get from being completely new to Unix up to being acquainted with it 🙂.</p>
 <div id="what-is-unixlinux" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> What is Unix/Linux?<a href="Unix.html#what-is-unixlinux" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language <code>C</code>. Unix is proprietary software, whereas Linux is <em>basically</em> free and open-source Unix.</p>
-<p>The Linux Operating System is highly flexible, free, open-source (like R) and uses very little RAM to run (Unlike Windows OS) - as such you find most supercomputers run on Linux. Operationally Linux is almost identical to Unix, and so we often refer to it under the umbrella term of “unix-like” systems.</p>
+<p>UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language <code>C</code>. Unix is proprietary software, whereas Linux is <em>basically</em> a free and open-source version of Unix. Most supercomputers run Linux. Operationally Linux is almost identical to Unix, and so we refer to it under the umbrella term of “unix-like” systems. The ‘Li’ in Linux is from the person who led its creation, Linus Torvalds.</p>
 <div id="some-terms" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Some terms<a href="Unix.html#some-terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Here are some terms worth knowing, don’t worry about memorising them, it can just be useful to have these to refer to in the future.</p>
+<p>Here are terms and concepts worth knowing.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -250,39 +249,15 @@ What it is
 shell
 </td>
 <td style="text-align:left;">
-what we use to talk to the computer; anything where you are pointing and clicking with a mouse is a Graphical User Interface (GUI) shell; something with text only is a Command Line Interface (CLI) shell
+The environment in which we communicate with a computer. A shell where you are pointing and clicking with a mouse is a Graphical User Interface (GUI) shell. A shell with only text input and output is a Command Line Interface (CLI) shell. A CLI shell has an associated programming language.
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-command line
+server
 </td>
 <td style="text-align:left;">
-a text-based environment capable of taking input and providing output
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-terminal
-</td>
-<td style="text-align:left;">
-A program that runs a shell
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Unix
-</td>
-<td style="text-align:left;">
-a family of operating systems (we also use the term “Unix-like” because one of the most popular operating systems derived from Unix is specifically named as not being Unix)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Linux
-</td>
-<td style="text-align:left;">
-a “Unix-like” OS
+the computer where we host the data and programs that we are running. A server could be local, that is your own PC, or you could use a ‘remote’ server (a computer running in some other physical location), and you communicate with the remote server using your local PC. The reason to use a remote server is that they can be big computers that require a lot of power and cooling, which is most efficiently provided in specialised buildings. Another reason to use a remote server is that they can accommodate multiple users, and specialist administrators can be in charge of installing and maintaining one set of programs that are available to all users.
 </td>
 </tr>
 <tr>
@@ -290,7 +265,15 @@ a “Unix-like” OS
 bash
 </td>
 <td style="text-align:left;">
-the most common programming language used at a Unix command-line
+the most common CLI shell used in unix-like OSs. the sh in bash stands for shell. You are using a combination GUI/CLI shell (called RStudio) running on your local PC to communicate with the Posit Cloud remote server, which runs R, bash, Python, C, and many, many programs that you link together with a series of commands, called a script. Thus, we say “We write bash scripts to run on the Linux server.”
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+terminal
+</td>
+<td style="text-align:left;">
+In the 1960s, the word terminal referred to TV+keyboard setups at the ends of long cables that were attached to a big “mainframe” computer, usually in another room in the same building. The word terminal means ‘end’. Now that we use the internet to connect to remote servers, which could be a continent away, the terminal is just an app on your personal computer that runs a CLI shell (mimicking the old TV+keyboard setups). Inside the RStudio GUI shell running locally on your PC, you will open multiple Terminals to communicate with different Posit Cloud servers.
 </td>
 </tr>
 <tr>
@@ -298,24 +281,23 @@ the most common programming language used at a Unix command-line
 flag
 </td>
 <td style="text-align:left;">
-a way to set options for a function, a specific type of argument usually preceded by a -
+a way to set options for a function, a specific type of argument usually preceded by a - (a dash)
 </td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong></p>
-<p>You should be familiar with using a GUI (Windows and macOS are GUIs), but to program a computer, you need to use a CLI (command line interface).</p>
+<p>You are familiar with using a GUI (Windows, iOS, Android, and MacOS are all GUIs), but to program a computer, you need to use a CLI (command line interface).</p>
 </blockquote>
 </div>
 </div>
 <div id="why-learn-unix" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Why Learn Unix?<a href="Unix.html#why-learn-unix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they “remote-connect” to high performance supercomputers or cluster computers. Almost all of these high performance computers use “Unix-like” operating systems, the most common of which is Linux.</p>
-<p>As stated above, Linux is free and open-source so there are lots of developers. It’s also well known for being stable, secure, reliable, and efficient.</p>
-<p>Today, you will get some experience with using a Linux OS. By logging into posit.cloud you are connecting to a supercomputer that runs Linux, and on top of Linux, the company Posit makes it possible to run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is a CLI on which the GUI RStudio runs, so that it is easier to run the CLI R.)</p>
-<p>When you click on RStudio’s Terminal tab, it provides direct access to a command line where we can execute commands and functions directly in Linux. (yes, now you have gone from the Linux CLI to RStudio’s GUI back to the Linux CLI).</p>
-<p>This allows us to use programs other than R, and potentially use multiple programs &amp; programming languages to work together.</p>
+<p>Most sequencing data files are large and require a lot of computer memory (RAM) to process. As a result most of the work that bioinformaticians do is not hosted on their own laptops or desktops. Instead, they “remote-connect” to high performance supercomputers or computer clusters. Almost all of these high performance computers use “Unix-like” operating systems, the most common of which is Linux.</p>
+<p>As stated above, Linux is free and open-source so there are lots of developers for it, which has helped Linux become stable, secure, reliable, and efficient.</p>
+<p>Today, you will get some experience with using a Linux OS. By logging into posit.cloud in your browser, you are connecting to the company Posit’s supercomputer, which runs Linux, and on top of Linux, Posit lets you run RStudio, which is a GUI for the statistics program called R. (Confusing? Yes. Linux is an operating system with a CLI shell, on which the RStudio GUI-shell runs, to make it easier to run the <strong>R language</strong> CLI shell.)</p>
+<p>When you click on RStudio’s Terminal tab, you get access to a <em>Linux</em> CLI bash shell, where you can execute commands and functions directly in Linux. (yes, now you have gone from RStudio’s GUI back to the Linux CLI). All these different shells give us the ability to use multiple programs &amp; programming languages.</p>
 <blockquote>
 <p><strong>Note</strong></p>
 <p>This series of practicals is designed for you to have a first introduction to Bioinformatics. It’s about <strong>exposure</strong>, not memorising or mastering anything. Don’t worry about the details!</p>
@@ -325,8 +307,8 @@ a way to set options for a function, a specific type of argument usually precede
 <h2><span class="header-section-number">2.3</span> Getting started<a href="Unix.html#getting-started-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before we get started we need a terminal to work in.</p>
 <ul>
-<li>Open the Bioinformatics RStudio Cloud Project in the BIO-6013A workspace</li>
-<li>Click on the <code>Terminal</code> tab next to <code>Console</code> in the bottom-left pane of the RStudio GUI, this opens a command-line <em>Shell</em></li>
+<li>Click on the <code>6013A-Bioinformatics Skills I and II</code> RStudio Project in your <code>BIO-6013A</code> workspace</li>
+<li>Click on the <code>Terminal</code> tab next to <code>Console</code> tab in the RStudio GUI. This opens a command-line <em>Shell</em></li>
 </ul>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="images/terminal.png" alt="Here is an example of the Terminal tab, right next to the R console" width="80%" />
@@ -336,61 +318,74 @@ Figure 2.1: Here is an example of the Terminal tab, right next to the R console
 </div>
 <ul>
 <li><p>This is our “command line” where we will be typing all of our commands. We type our commands in a language called <code>bash</code></p></li>
-<li><p>The $ is where you start typing from, left of this it tells you what folder you are currently in (<code>working directory</code>)</p></li>
-<li><p>If you need to, you can exit the Terminal and start a new session easily with options in RStudio</p></li>
+<li><p>The $ is where you start typing from, left of this it tells your <code>working directory</code>, which is the folder you are currently in.</p></li>
+<li><p>If you need to, you can exit the Terminal and start a new session.</p></li>
 </ul>
 </div>
 <div id="a-few-foundational-rules" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> A few foundational rules<a href="Unix.html#a-few-foundational-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (_) where you want space to be- e.g. “draft_v3.txt” is preferred to “draft v3.txt”.</p></li>
-<li><p>The general syntax on the command line is: <code>command argument</code>. This is very similar to R except we don’t use brackets e.g. in R we are used to <code>command(argument)</code></p></li>
+<li><p>Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (_) where you want space to be. Thus, “draft_v3.txt” refers to one file, while “draft v3.txt” refers to <em>two</em> files: draft and v3.txt.</p></li>
+<li><p>The general syntax on the bash command line is: <code>command argument</code>. Argument is a special term and it means all the extra text bits that customise your command. This is similar to R except we don’t use brackets e.g. in R we put the arguments inside parentheses <code>command(argument)</code></p></li>
 <li><p>Arguments can be <strong>optional</strong> e.g. if their is a default argument you may not have to write anything. Some functions <em>require</em> that arguments are specified. Again this is just like R.</p></li>
 </ul>
 </div>
 <div id="lets-get-started" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Let’s get started<a href="Unix.html#lets-get-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will perform a very simple function and get a flavour of the similarities and differences to working in <code>R</code>.</p>
-<p><code>date</code> is a command that prints out the date and time. Copy and paste this command into your terminal</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="Unix.html#cb1-1" tabindex="-1"></a>    <span class="fu">date</span></span></code></pre></div>
-<p>This prints out the date/time in UTC</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<p><code>date</code> is a command that prints out the date and time. Type <code>date</code> into your terminal</p>
+<p>This prints out the date/time in UTC format</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
 <img src="images/date_on_command_line.png" alt="It should look like this:" width="80%" />
 <p class="caption">
 Figure 2.2: It should look like this:
 </p>
 </div>
-<p>More information on using the date function is <a href="https://www.geeksforgeeks.org/date-command-linux-examples/" class="uri">here</a>.</p>
-<p>We can also ask for the output for a particular timezone using the <code>TZ</code> function and <code>date</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="Unix.html#cb2-1" tabindex="-1"></a>    <span class="va">TZ</span><span class="op">=</span>Europe/London <span class="fu">date</span></span></code></pre></div>
-<p>Or we can ask the computer what the date will be next Tuesday…</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="Unix.html#cb3-1" tabindex="-1"></a>    <span class="fu">date</span> <span class="at">--date</span><span class="op">=</span><span class="st">&quot;next tue&quot;</span></span></code></pre></div>
-<p>Note how we use the <code>command</code> <code>argument</code> structure here. <code>date</code> is the command, and <code>--date="next tue"</code> is the argument that causes the <code>date</code> command to modify its output. This argument is optional, as you have seen. Often, commands have required arguments.</p>
+<p>Now let’s add an argument to the <code>date</code> command to ask for the date next Tuesday. <code>date</code> is the command, and <code>--date="next tue"</code> is the argument that causes the <code>date</code> command to modify its output. This argument is optional, as you have seen. Often, commands have required arguments.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="Unix.html#cb1-1" tabindex="-1"></a><span class="fu">date</span> <span class="at">--date</span><span class="op">=</span><span class="st">&quot;next tue&quot;</span></span></code></pre></div>
+<p>The <code>date</code> command can do lots of things. You can learn more about about it <a href="https://www.geeksforgeeks.org/date-command-linux-examples/">here</a>. #{.uri}</p>
+<p>Occasionally and alternatively, you set an <em>environmental</em> variable to get a command to function differently. For instance, we might want to tell the computer that we are in the London time zone. We do it this way:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="Unix.html#cb2-1" tabindex="-1"></a><span class="va">TZ</span><span class="op">=</span>Europe/London <span class="fu">date</span></span></code></pre></div>
+<p>and if we want to find the time in Paris</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="Unix.html#cb3-1" tabindex="-1"></a><span class="va">TZ</span><span class="op">=</span>Europe/Paris <span class="fu">date</span></span></code></pre></div>
 <div id="downloading-data" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Downloading data<a href="Unix.html#downloading-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We will start by typing in an instruction to download data from an online data repository, unpack the contents and inspect it.</p>
+<p>We will start by typing in an instruction to download data from an online data repository, unpack the contents, and inspect it.</p>
 <ul>
-<li><p><code>curl</code> is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository.</p></li>
-<li><p><code>tar</code> will <em>unpack</em> the data from a compressed file format</p></li>
-<li><p><code>cd</code> changes the directory so we <em>land</em> in the new folder we have made</p></li>
+<li><p><code>curl</code> is a command line tool for transferring data to and from a remote computer server. Here we will use this to download data from an online repository called Figshare, and the <code>-o</code> argument sets the filename of the downloaded file (i.e. you can choose what to name the downloaded file).</p></li>
+<li><p><code>tar</code> <em>unpacks</em> and <em>uncompresses</em> the data from a tarballed and compressed file format. A compressed file format (known as gzipped) makes a large file smaller for download. A tarball format makes many individual files appear as one single file. In this example, you have downloaded a whole directory with over a hundred individual files, and Figshare has tarballed and compressed the directory so that it is easy to download. You therefore need a command to <em>extract</em> the files from the tarball and <em>unzip</em> the files Can you guess which two arguments of the four here <code>tar -xzvf</code> tell the computer to do these two things?</p></li>
+<li><p><code>rm</code> removes the original downloaded file, which you had called <code>unix_intro.tar.gz</code></p></li>
+<li><p>after untarballing and extracting, we have a new directory called <code>unix_intro/</code>. Can you find it in the Files tab of RStudio?</p></li>
+<li><p><code>ls -l</code> lists the files in the working directory, and the <code>-l</code> asks for a particular format that I like. Can you see the new directory called <code>unix_intro</code>?</p></li>
+<li><p><code>cd</code> changes your working directory so we <em>land</em> in the new folder we have made. # When we write the name of a directory in Unix, we have the option to add a <code>/</code> at the end of the name. This slash is only decorative, but it’s useful when you are reading bash scripts.</p></li>
 </ul>
 <p>Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, you can find the shortcut by opening Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="Unix.html#cb4-1" tabindex="-1"></a>    <span class="ex">curl</span> <span class="at">-L</span> <span class="at">-o</span> unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746</span>
-<span id="cb4-2"><a href="Unix.html#cb4-2" tabindex="-1"></a>    <span class="fu">tar</span> <span class="at">-xzvf</span> unix_intro.tar.gz <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> unix_intro.tar.gz</span>
-<span id="cb4-3"><a href="Unix.html#cb4-3" tabindex="-1"></a>    <span class="bu">cd</span> unix_intro</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="Unix.html#cb4-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> <span class="at">-o</span> unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746</span>
+<span id="cb4-2"><a href="Unix.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="Unix.html#cb4-3" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzvf</span> unix_intro.tar.gz</span>
+<span id="cb4-4"><a href="Unix.html#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="Unix.html#cb4-5" tabindex="-1"></a><span class="fu">rm</span> unix_intro.tar.gz</span>
+<span id="cb4-6"><a href="Unix.html#cb4-6" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="Unix.html#cb4-7" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> </span>
+<span id="cb4-8"><a href="Unix.html#cb4-8" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="Unix.html#cb4-9" tabindex="-1"></a><span class="bu">cd</span> unix_intro/ </span></code></pre></div>
 <div class="rmdwarning">
 <p>
 Check each command line has run, in the example above you might find
-that the first two lines run, to download and unpack data, while the
-last line to change directory doesn’t run until you hit enter
+that the last line to change directory doesn’t run until you hit enter
+inside the Terminal
 </p>
 </div>
 </div>
 <div id="more-functions" class="section level3 hasAnchor" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> More functions<a href="Unix.html#more-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Before the next step, make sure that you are in the <code>unix_intro/</code> directory. You should see <code>unix_intro$</code> in the command line.</p>
-<p>Unlike <code>date</code>, most commands require arguments and won’t work without them. <code>head</code> is a command that prints the first lines of a file, so it requires us to provide the file we want it to act on:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="Unix.html#cb5-1" tabindex="-1"></a>    <span class="fu">head</span> example.txt</span></code></pre></div>
+<p>Before the next step, make sure that you are in the <code>unix_intro/</code> directory. <strong>You should see <code>unix_intro$</code> in the command line.</strong></p>
+<p>Unlike <code>date</code>, most commands require arguments and won’t work without them. <code>head</code> is a command that prints the first lines of a file, so of course it requires the filename:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="Unix.html#cb5-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="co"># do you see the file called example.txt?</span></span>
+<span id="cb5-2"><a href="Unix.html#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="Unix.html#cb5-3" tabindex="-1"></a><span class="co"># if I precede a line with # (a hash), then bash knows to ignore it. This is how we can add comments inside a script</span></span>
+<span id="cb5-4"><a href="Unix.html#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="Unix.html#cb5-5" tabindex="-1"></a><span class="fu">head</span> example.txt</span></code></pre></div>
 <p>Here “example.txt” is the required argument, and in this case it is also what’s known as a positional argument. Whether things need to be provided as positional arguments or not depends on how the command or program we are using was written.</p>
 <p>Sometimes we need to specify the input file by putting something in front of it (e.g. some commands will use the -i flag, but it’s often other things as well).</p>
 <details>
@@ -403,9 +398,9 @@ last line to change directory doesn’t run until you hit enter
 <p><em>etc.</em></p>
 </details>
 <p>There are also optional arguments for the head command. The default for head is to print the first 10 lines of a file. We can change that by specifying the -n flag, followed by how many lines we want:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="Unix.html#cb6-1" tabindex="-1"></a>    <span class="fu">head</span> <span class="at">-n</span> 20 example.txt</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="Unix.html#cb6-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 example.txt</span></code></pre></div>
 <p>How would we know we needed the <code>-n</code> flag for that? There are a few ways to find out. Many standard Unix commands and other programs will have built-in help menus that we can access by providing –help as the only argument:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="Unix.html#cb7-1" tabindex="-1"></a>    <span class="fu">head</span> <span class="at">--help</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="Unix.html#cb7-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">--help</span></span></code></pre></div>
 <p>Well, as it happens, the command <code>head</code> does not have a help menu, but it still gives you some help when you try.</p>
 <p>Again this is very similar to the logic in which R commands are structured e.g. <code>?ggplot</code> The syntax is similar even if the specific icons or arguments are different.</p>
 <p>Remember just like with R, one of your best friends is Google! As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!</p>
@@ -417,9 +412,9 @@ last line to change directory doesn’t run until you hit enter
 <p>Just to be awkward, Posit Cloud actually has us working in a different location “Cloud”, which is underneath Root but separate to home which would be in the “Users” folder.</p>
 <p><img src="images/file_system_structure.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>We tell the command line where files and directories are located by pre-pending the file name with the list of directories that hold them, known as the file’s “path”. If we use the <code>pwd</code> command (for print working directory), we can find out what the path is for the directory we are sitting in. Our working directory is also visible to the left of the $ in the command line</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="Unix.html#cb8-1" tabindex="-1"></a>    <span class="bu">pwd</span></span></code></pre></div>
-<p>And if we use the <code>ls -l</code> command (for list), we can see what directories and files are in the current directory we are sitting in. (Note the <code>-l</code> argument) (also, try <code>ls –help</code>)</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="Unix.html#cb9-1" tabindex="-1"></a>    <span class="fu">ls</span> <span class="at">-l</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="Unix.html#cb8-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<p>And if we use the <code>ls -l</code> command (for list), we can see what directories and files are in the current directory we are sitting in. (Note the <code>-l</code> argument) (also, try <code>ls –-help</code>) (that’s 2 dashes in front of <code>help</code>)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="Unix.html#cb9-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code></pre></div>
 <blockquote>
 <p><strong>Note</strong></p>
 <p>Why is it important to know this? Usually when you are working on a Unix-like environment there is no GUI (a click and point interface), and all commands have to be submitted through the terminal. So you have to get used to navigating directories with typed commands, and it’s useful to know what the standard hierarchy is and where you happen to be at any given moment.</p>
@@ -433,32 +428,32 @@ last line to change directory doesn’t run until you hit enter
 <li><p>An <strong>absolute path</strong> is an address that starts from an explicitly specified location: usually the “root” <code>/</code> or the “home” <code>~/</code> location. (Side note, because we also may see or hear the term, the “full path”, is usually the absolute path that starts from the “root” /.)</p></li>
 <li><p>A <strong>relative path</strong> is an address that starts from wherever we are currently sitting (the working directory). For example, let’s look again at the head command we ran above:</p></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="Unix.html#cb10-1" tabindex="-1"></a>    <span class="fu">head</span> example.txt</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="Unix.html#cb10-1" tabindex="-1"></a><span class="fu">head</span> example.txt</span></code></pre></div>
 <p>What we are actually doing here is using a relative path to specify where the “example.txt” file is located. This is because the command line <strong>automatically looks</strong> in the current working directory if we don’t specify anything else about its location.</p>
 <p>We can also run the same command on the same file using an <strong>absolute path</strong> - note Posit Cloud has a slightly unique set-up in that we start from a folder called cloud:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="Unix.html#cb11-1" tabindex="-1"></a>    <span class="fu">head</span> /cloud/project/unix_intro/example.txt</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="Unix.html#cb11-1" tabindex="-1"></a><span class="fu">head</span> /cloud/project/unix_intro/example.txt</span></code></pre></div>
 <p>The previous two commands both point to the same file right now. <strong>But the first way, <code>head example.txt</code>, will only work if we are “sitting” in the directory that holds that file, while the second way will work no matter where we happen to be in the computer.</strong></p>
 <p>It is <strong>important to always think about where we are in the computer</strong> when working at the command line. One of the most common errors/easiest mistakes to make is trying to do something to a file that isn’t where we think it is. Let’s run head on the “example.txt” file again, and then let’s try it on another file: “notes.txt”:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="Unix.html#cb12-1" tabindex="-1"></a><span class="fu">head</span> example.txt</span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="Unix.html#cb13-1" tabindex="-1"></a><span class="fu">head</span> notes.txt</span></code></pre></div>
 <p>Here the head command works fine on “example.txt”, but we get an error message when we call it on “notes.txt” telling us no such file or directory. If we run the <code>ls</code> command to list the contents of the current working directory, we can see the computer is absolutely right – spoiler alert: it usually is – and there is no file here named “notes.txt”.</p>
 <p>The ls command by default operates on the current working directory if we don’t specify any location, but we can tell it to list the contents of a different directory by providing it as a positional argument:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="Unix.html#cb14-1" tabindex="-1"></a>    <span class="fu">ls</span> <span class="at">-lF</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="Unix.html#cb14-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lF</span></span></code></pre></div>
 <p>By running ls without each argument, can you understand what the -l and -F arguments are doing?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="Unix.html#cb15-1" tabindex="-1"></a>    <span class="fu">ls</span> <span class="at">-lF</span> experiment</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="Unix.html#cb15-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lF</span> experiment</span></code></pre></div>
 <p>We can see the file we were looking for is located in the subdirectory called “experiment”. Here is how we can run head on “notes.txt” by specifying an accurate relative path to that file:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="Unix.html#cb16-1" tabindex="-1"></a>    <span class="fu">head</span> experiment/notes.txt</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="Unix.html#cb16-1" tabindex="-1"></a><span class="fu">head</span> experiment/notes.txt</span></code></pre></div>
 </div>
 <div id="moving-around" class="section level2 hasAnchor" number="2.8">
 <h2><span class="header-section-number">2.8</span> Moving around<a href="Unix.html#moving-around" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also move into the directory containing the file we want to work with by using the <code>cd</code> command (<strong>c</strong>hange <strong>d</strong>irectory). This command takes a positional argument that is the path (address) of the directory we want to change into. This can be a relative path or an absolute path. Here we’ll use the relative path of the subdirectory, “experiment”, to change into it</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="Unix.html#cb17-1" tabindex="-1"></a>    <span class="bu">cd</span> experiment/</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="Unix.html#cb18-1" tabindex="-1"></a>    <span class="bu">pwd</span></span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="Unix.html#cb19-1" tabindex="-1"></a>    <span class="fu">ls</span> <span class="at">-lF</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="Unix.html#cb20-1" tabindex="-1"></a>    <span class="fu">head</span> notes.txt</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="Unix.html#cb17-1" tabindex="-1"></a><span class="bu">cd</span> experiment/</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="Unix.html#cb18-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="Unix.html#cb19-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lF</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="Unix.html#cb20-1" tabindex="-1"></a><span class="fu">head</span> notes.txt</span></code></pre></div>
 <p>Great. But now how do we get <strong>back “up”</strong> to the directory above us? One way would be to provide an absolute path, like <code>cd /cloud/project/unix_intro</code>, but there is also a handy shortcut. <code>..</code> which are special characters that act as a relative path specifying “up” one level – one directory – from wherever we currently are.</p>
 <p>So we can provide that as the positional argument to cd to get back to where we started:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="Unix.html#cb21-1" tabindex="-1"></a>    <span class="bu">cd</span> ..</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="Unix.html#cb21-1" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
 <p>Moving around the computer like this might feel a bit cumbersome and frustrating at first, but after spending a little time with it, you will get used to it, and it starts to feel more natural.</p>
 <blockquote>
 <p><strong>Note</strong></p>
@@ -467,7 +462,7 @@ last line to change directory doesn’t run until you hit enter
 </div>
 <div id="summary" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> Summary<a href="Unix.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>While maybe not all that exciting, these commands really are the foundation needed to start utilizing the command line – which then gives us the capability to use lots of tools that only work at a command line, manipulate large files rapidly access and work with remote computers, and more! These are the fundamental tools that every scientist needs to work with <strong>big data</strong>.</p>
+<p>While maybe not all that exciting, these commands really are the foundation needed to start utilizing the command line – which then gives us the capability to use lots of tools that only work at the command line to manipulate <strong>big data</strong> and to rapidly access and work with remote computers, and more!</p>
 <div id="terms" class="section level3 hasAnchor" number="2.9.1">
 <h3><span class="header-section-number">2.9.1</span> Terms<a href="Unix.html#terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -590,8 +585,8 @@ change directories
 </tbody>
 </table>
 </div>
-<div id="special-characters" class="section level3 hasAnchor" number="2.9.3">
-<h3><span class="header-section-number">2.9.3</span> Special characters<a href="Unix.html#special-characters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="special-characters-for-the-cd-command" class="section level3 hasAnchor" number="2.9.3">
+<h3><span class="header-section-number">2.9.3</span> Special characters for the <code>cd</code> command<a href="Unix.html#special-characters-for-the-cd-command" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -606,39 +601,31 @@ What it is
 <tbody>
 <tr>
 <td style="text-align:left;">
-Characters
+cd ~
 </td>
 <td style="text-align:left;">
-Meaning
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-/
-</td>
-<td style="text-align:left;">
-the computer’s root location
+go to your home directory
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-~/
+cd ..
 </td>
 <td style="text-align:left;">
-the user’s home location
+go to one level above current (working) directory
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-../
+ls -lF .
 </td>
 <td style="text-align:left;">
-specifies a directory one level “above” the current working directory
+list files and directories in current directory. Normally, you don’t have to include the <code>.</code> character, but this is to let you know the meaning of the <code>.</code> dot. Some commands need you to say that you want to work on a file in <em>this</em> directory, and you use the dot to indicate that.
 </td>
 </tr>
 </tbody>
 </table>
-<p>In a single session, you won’t get used to operating in bash, or moving around directories using just the command line. So if you think you are interested in developing your bioinformatic skills, spend some time practising.</p>
+<p>In a single session, you won’t get used to operating in bash, or moving around directories using just the command line. So if you think you are interested in developing your bioinformatic skills, carve out a chunk of time to practise.</p>
 <p>Here is a link to a couple of extended tutorials you can bookmark if you want to explore this further:</p>
 <p><a href="https://datacarpentry.org/shell-genomics/index.html" class="uri">https://datacarpentry.org/shell-genomics/index.html</a></p>
 </div>
@@ -647,19 +634,20 @@ specifies a directory one level “above” the current working directory
 <h2><span class="header-section-number">2.10</span> Stretch yourself - optional extras to try a couple of other skills<a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="creation" class="section level3 hasAnchor" number="2.10.1">
 <h3><span class="header-section-number">2.10.1</span> Creation<a href="Unix.html#creation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>I want to create a new directory to store some code files I’m going to write later, so I’ll use <code>mkdir</code> to create a new directory called Code:</p>
+<p>I want to create a new directory, use <code>mkdir</code> to create a new directory called Code:</p>
 <details>
 <summary>
-<strong>Check you are in the <code>unix_intro</code> folder - Click here for Answer</strong>
+<strong>Check you are in the <code>unix_intro</code> folder - Click on the arrow for Answer</strong>
 </summary>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="Unix.html#cb22-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
 </details>
 <details>
 <summary>
-<strong>Make a new directory called TEST inside unix_intro/ - Click here for Answer</strong>
+<strong>Make a new directory called TEST inside unix_intro/ - Click on the arrow for Answer</strong>
 </summary>
 <div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="Unix.html#cb23-1" tabindex="-1"></a><span class="bu">cd</span> /cloud/project/unix_intro/</span>
-<span id="cb23-2"><a href="Unix.html#cb23-2" tabindex="-1"></a><span class="fu">mkdir</span> TEST</span></code></pre></div>
+<span id="cb23-2"><a href="Unix.html#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="Unix.html#cb23-3" tabindex="-1"></a><span class="fu">mkdir</span> TEST</span></code></pre></div>
 </details>
 <details>
 <summary>
@@ -674,7 +662,8 @@ specifies a directory one level “above” the current working directory
 <strong>Make a new text file inside the TEST/ directory, called data-science-class.txt - Click here for Answer</strong>
 </summary>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="Unix.html#cb25-1" tabindex="-1"></a><span class="fu">touch</span> TEST/data-science-class.txt</span>
-<span id="cb25-2"><a href="Unix.html#cb25-2" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lF</span> TEST/</span></code></pre></div>
+<span id="cb25-2"><a href="Unix.html#cb25-2" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="Unix.html#cb25-3" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lF</span> TEST/</span></code></pre></div>
 <p><em>Note here I could just use ls to list all files and folders in a directory, but if i set the flag <code>-l</code> then it will produce a <strong>l</strong>ong list of files.</em></p>
 <p><em>If the entry in the first column is a <code>d</code>, then the row in the table corresponds to a directory, otherwise the information in the row corresponds to a file.</em></p>
 <p><em>The string of characters following the <code>d</code> in the case of a directory or following the first <code>-</code> in the case of a file represent the permissions for that file or directory - I won’t cover that here - but some of the links I provide go into more detail.</em></p>

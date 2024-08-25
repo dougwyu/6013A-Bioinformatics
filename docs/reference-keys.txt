@@ -3,7 +3,7 @@ fig:unnamed-chunk-2
 fig:unnamed-chunk-3
 fig:unnamed-chunk-4
 fig:unnamed-chunk-8
-fig:unnamed-chunk-10
+fig:unnamed-chunk-9
 fig:unnamed-chunk-40
 fig:unnamed-chunk-41
 introduction
@@ -23,7 +23,7 @@ moving-around
 summary
 terms
 commands
-special-characters
+special-characters-for-the-cd-command
 stretch-yourself---optional-extras-to-try-a-couple-of-other-skills
 creation
 BLAST

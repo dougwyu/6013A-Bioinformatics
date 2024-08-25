@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2023-10-06" />
+<meta name="date" content="2024-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.9.1" data-path="Unix.html"><a href="Unix.html#terms"><i class="fa fa-check"></i><b>2.9.1</b> Terms</a></li>
 <li class="chapter" data-level="2.9.2" data-path="Unix.html"><a href="Unix.html#commands"><i class="fa fa-check"></i><b>2.9.2</b> Commands</a></li>
-<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters"><i class="fa fa-check"></i><b>2.9.3</b> Special characters</a></li>
+<li class="chapter" data-level="2.9.3" data-path="Unix.html"><a href="Unix.html#special-characters-for-the-cd-command"><i class="fa fa-check"></i><b>2.9.3</b> Special characters for the <code>cd</code> command</a></li>
 </ul></li>
 <li class="chapter" data-level="2.10" data-path="Unix.html"><a href="Unix.html#stretch-yourself---optional-extras-to-try-a-couple-of-other-skills"><i class="fa fa-check"></i><b>2.10</b> Stretch yourself - optional extras to try a couple of other skills</a>
 <ul>
@@ -222,20 +222,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">BIO-6013A/7004A, Bioinformatics Skills I and II</h1>
 <p class="author"><em>Philip Leftwich, Ellen Bell, Douglas Yu</em></p>
-<p class="date"><em>2023-10-06</em></p>
+<p class="date"><em>2024-08-24</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a very short introduction to some of the processes and tools we use when working in bioinformatics.</p>
-<p>This is not meant to be anywhere near comprehensive; you will be shown a few Unix fundamentals and one walk-through of a single bioinformatics task: using BLAST to identify nucleotide (DNA) and protein sequences.</p>
-<p>One of the main differences between Bioinformatics and the data analysis you have done before is the <strong>size</strong> of the data. Bioinformatics usually deals with sequencing data, which has large file sizes (measured in gigabytes and terabytes).</p>
-<p>Handling <strong>big data</strong> means you need to know how to operate on a remote computing cluster, so we will be learning a little bit of how to use a Unix-OS computer.</p>
+<p>This is a very short introduction to some of the processes and tools we use when working in bioinformatics. This is not meant to be comprehensive; you will be shown a few Unix fundamentals and one walk-through of a single bioinformatics task: using BLAST to identify nucleotide (DNA) and protein sequences.</p>
+<p>One of the main differences between Bioinformatics and the data analyses that you have done before is the <strong>size</strong> of the data. Bioinformatics usually deals with DNA sequencing data, which has large file sizes (measured in gigabytes and terabytes).</p>
+<p>Handling <strong>big data</strong> means you need to know how to operate on remote computing clusters, which nearly all run with the Unix operating system (you have probably only ever used Windows, MacOS, iOS, or ChromeOS computers, which are operating systems designed for personal computers).</p>
 <div id="getting-started" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Getting started<a href="index.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>These bioinformatics workshops will be run through RStudio Cloud, you will need to make a free account at <a href="https://posit.cloud/">posit.cloud</a> and join the workspace <code>BIO 6013A</code> with this link:</p>
-<p><a href="https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ">https://posit.cloud/spaces/83242/join?access_code=ajuk3LeOpqmo8rwXDQpKU-QJYAGgTPUWvF-TqJgZ</a>.</p>
+<p>These bioinformatics workshops will be run through RStudio in the Cloud, which is created by the company Posit.</p>
+<p>You should already have a free account at <a href="https://posit.cloud/">posit.cloud</a>, following the instructions in the PDF (<code>BIO-6013A Posit.cloud.pdf</code>) that I posted previously on Announcements.</p>
+<p>After signing into Posit Cloud, join the workspace <code>BIO 6013A</code> with this link:</p>
+<p><a href="https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX">https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX</a>.</p>
 <ol style="list-style-type: decimal">
-<li>First make an account on posit.cloud</li>
+<li>First make an account on posit.cloud and</li>
 <li>Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces:</li>
 </ol>
 <ul>
@@ -255,14 +256,14 @@ Figure 1.1: Screen for when you first login to Posit Cloud
 Figure 1.2: Click on the 6013A-Bioinformatics Skills I and II workspace link
 </p>
 </div>
-<p>Once you are in the workshop, it should look something like this.</p>
+<p>This will create a copy of the RStudio project, and it should look something like this.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="images/default_rstudio.png" alt="Default RStudio workspace" width="90%" />
 <p class="caption">
 Figure 1.3: Default RStudio workspace
 </p>
 </div>
-<p>I strongly suggest that you go to Tools/Global Options and customise the workspace to look like this:</p>
+<p>Go to Tools/Global Options and customise the workspace to look like this illustration. There are instructions on <code>BIO-6013A Posit.cloud.pdf</code>.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="images/customise_workspace.png" alt="Customisation of the RStudio workspace" width="90%" />
 <p class="caption">
