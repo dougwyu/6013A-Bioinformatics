@@ -35,8 +35,8 @@ basic-local-alignment-search-tool-blast
 making-a-blast-database
 finding-a-query
 blastp
-blastn-and-blastx
 formative-work
-write-a-blastx-query
+write-your-own-blastn-query
+write-your-own-blastx-query
 formative-quiz
 before-you-leave
