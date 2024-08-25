@@ -271,7 +271,7 @@ Take a look at the default output from this BLAST search, use:
 less /cloud/project/data/blast/mouse.1.protein.x.zebrafish.txt 
 ```
 
-`less` is yet another Unix utility program that lets you look at portions of really long files (see less than the whole). 
+`less` is yet another Unix utility program that lets you look at portions of really long files (see less than the whole).
 
 Type `Enter` to scroll through the file, and use `q` when you're ready to quit. You will see that this default output contains a lot of information, including information relating to significant database hits, significance scores and alignments. We only have three hits here, so its easy enough to process in this format, but sometimes you may have much larger outputs. In this case a tabular format is much more desirable. Try running the following command;
 
@@ -281,7 +281,7 @@ Type `Enter` to scroll through the file, and use `q` when you're ready to quit. 
 blastp -query /cloud/project/data/query/mouse.1.protein.1.faa -db /cloud/project/data/databases/zebrafish.1.protein -out /cloud/project/data/blast/mouse.1.protein.x.zebrafish.2.tsv -outfmt 6
 ```
 
-Now we have added one more argument:  `-outfmt 6`, which means output format number 6. 
+Now we have added one more argument: `-outfmt 6`, which means output format number 6.
 
 Use `head` to have a look at this new presentation of information (remember to include the correct path). The output this time is a tabular format, which is much easier to process quickly especially when you are looking at large data sets. I have pasted a bit of the output you should be looking at below with the column headers added. You can read all about [output format 6 here](https://www.metagenomics.wiki/tools/blast/blastn-output-format-6).
 
@@ -308,11 +308,10 @@ Here we are asking `grep` to look for lines containing the sequence identifier N
 
 <summary>**Q. How did we tell grep to put the output in a new file? - Click here for Answer**</summary>
 
-We used the `>` character, which is known as a redirect character. It is *re*directing, because if you hadn't used `> /cloud/project/data/NP_059333.1_zebrafish.txt`, grep would have sent the output to the standard place, which is the screen. 
+We used the `>` character, which is known as a redirect character. It is *re*directing, because if you hadn't used `> /cloud/project/data/NP_059333.1_zebrafish.txt`, grep would have sent the output to the standard place, which is the screen.
 
 </details>
 
-  
 Navigate to this newly made text file and use either `less` or `head` to view it. Compare the header information from our query and the top hit from our blast database. Do the results make sense?
 
 <details>
@@ -324,17 +323,16 @@ Navigate to this newly made text file and use either `less` or `head` to view it
 (Thus, the species is *Danio rerio*, which is the zebrafish.)
 
 </details>
-  
 
 ## Formative work
 
-### Write your own blastn query  
+### Write your own blastn query
 
 Try repeating the process with a new query. Use `awk` to extract lines 4121 and 4122 from the mouse *nucleotide* refseq files (Q: how many sequences do you get when you extract 2 lines?). Then use `blastn` (not `blastp`!) to BLAST your new query against the zebrafish nucleotide database and create a new output file in output format 6 and use `grep` to extract the top hit from the zebrafish RNA refseq file.
 
 <details>
 
-<summary>**Q. Write the code first and then check here.**  </summary>
+<summary>**Q. Write the code first and then check here.**</summary>
 
 ```         
 # preceding text with a hashtag tells programs like bash and R not to try to run the text as a command.
@@ -354,8 +352,9 @@ head /cloud/project/data/NM_001347668.1_zebrafish.txt
 # 111407:>NM_001347668.1 Danio rerio thyroid hormone receptor interactor 12 (trip12), mRNA
 # in other words, the mouse nucleotide sequence is most similar to the zebrafish thyroid hormone receptor interactor 12 (trip12) gene, which gives you a clue as to the function of the mouse gene.
 ```
+
 </details>
-  
+
 ### Write your own blastx query
 
 Now you are confident with BLASTp and BLASTn, we can look at BLASTx. `blastx` is a great way to increase the power of your search, especially if you have an unknown sequence and are trying to work out which gene family it may belong to or if you are trying to identify protein coding genes. It takes a nucleotide query and translates the sequence using all six possible reading frames (so all three possible codons for both forward and reverse complement) and blasts the results against a protein database.
@@ -382,7 +381,6 @@ head /cloud/project/data/NP_001124065.1_zebrafish.txt
 
 </details>
 
-  
 ### Formative quiz
 
 Use the workbook and outputs from the workshop to complete a quick online formative quiz. Go to the Genomes, Genes and Genomics Blackboard page, *Formative assessments*, *Bioinformatics Workshop 1 Quiz - BLAST* to find the quiz.
