@@ -32,11 +32,10 @@ After signing into Posit Cloud, join the workspace `BIO 6013A` with this link:
 
 [https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX](https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX).
 
-1. First make an account on posit.cloud and 
-2. Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces:
+Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces:
 
 * Your Workspace
-* BIO-6013A
+* BIO-6013A/7004A
 
 ```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Screen for when you first login to Posit Cloud", fig.cap ="Screen for when you first login to Posit Cloud"}
 knitr::include_graphics("images/posit_workspaces.png")

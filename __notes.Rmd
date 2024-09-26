@@ -44,7 +44,7 @@ To edit the workshop files, push to GitHub, and publish on github.io, do the fol
   1. open the "6013A-Bioinformatics Skills I and II bookdown" project (click on 6013A-Bioinformatics.Rproj)
   
   2. edit *.Rmd files
-  	index.Rmd # Section 1
+  	index.Rmd # Section 1 (this is the introduction)
   	01-intro.Rmd # Section 2
   	02_BLAST.Rmd # Section 3
   	
