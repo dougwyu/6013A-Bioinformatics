@@ -55,9 +55,9 @@ To edit the workshop files, push to GitHub, and publish on github.io, do the fol
   
   4. go to the Build tab and click on arrow next to Build Book and click on bookdown::gitbook
   
-  	This will cause changes to files in the /docs directory.
+  	This will cause changes to files in the /docs directory. 
   
-  5. git commit and push those changes. In about a minute, the dougwyu.github.io pages will change.
+  5. git commit and push those changes (there will be be a lot of changes to commit). In about a minute, the dougwyu.github.io pages will change.
 
 
 An explanation for how to publish a bookdown project to github.io
