@@ -39,6 +39,8 @@ I need to ensure that i have an up-to-date Personal Access Token (PAT), which I 
 gitcreds::gitcreds_set() # lets me add my personal access token to my Posit cloud, which gives me access to my github repo
 # choose:  "2. Replace these credentials", and paste in the new PAT. 
 
+# RECORD THE PAT BECAUSE YOU MIGHT NEED IT THE FIRST TIME YOU TRY TO PUSH. FOR SOME REASON, THE POSIT CLOUD SESSION DOESN'T READ THE PAT FROM GITCREDS, AT LEAST THE FIRST TIME
+
 usethis::git_vaccinate() # Adds .DS_Store, .quarto, .Rproj.user, .Rdata, .Rhistory, and .httr-oauth to your global (a.k.a. user-level) .gitignore. This is good practice as it decreases the chance that you will accidentally leak credentials to GitHub. git_vaccinate() also tries to detect and fix the situation where you have a global gitignore file, but it's missing from your global Git config.
 ```
 
