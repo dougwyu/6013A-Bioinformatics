@@ -35,9 +35,12 @@ I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my Posit Cloud 
 
 I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token())
 
+```{r}
 gitcreds::gitcreds_set() # lets me add my personal access token to my Posit cloud, which gives me access to my github repo
 # choose:  "2. Replace these credentials", and paste in the new PAT. 
 
+usethis::git_vaccinate() # Adds .DS_Store, .quarto, .Rproj.user, .Rdata, .Rhistory, and .httr-oauth to your global (a.k.a. user-level) .gitignore. This is good practice as it decreases the chance that you will accidentally leak credentials to GitHub. git_vaccinate() also tries to detect and fix the situation where you have a global gitignore file, but it's missing from your global Git config.
+```
 
 To edit the workshop files, push to GitHub, and publish on github.io, do the following:
 
