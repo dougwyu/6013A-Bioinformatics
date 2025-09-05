@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>BIO-6013A/7004A, Bioinformatics Skills I and II</title>
   <meta name="description" content="This is very brief introduction to some of the basic skills required to handling sequencing data for Bioinformatics" />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="BIO-6013A/7004A, Bioinformatics Skills I and II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2024-09-26" />
+<meta name="date" content="2025-09-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -74,7 +74,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">BIO-6013A/7004A, Bioinformatics Skills I and II</h1>
 <p class="author"><em>Philip Leftwich, Ellen Bell, Douglas Yu</em></p>
-<p class="date"><em>2024-09-26</em></p>
+<p class="date"><em>2025-09-05</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -236,13 +236,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="getting-started" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Getting started<a href="index.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>These bioinformatics workshops will be run through RStudio in the Cloud, which is created by the company Posit.</p>
-<p>You should already have a free account at <a href="https://posit.cloud/">posit.cloud</a>, following the instructions in the PDF (<code>BIO-6013A Posit.cloud.pdf</code>) that I posted previously on Announcements.</p>
-<p>After signing into Posit Cloud, join the workspace <code>BIO 6013A</code> with this link:</p>
-<p><a href="https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX">https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX</a>.</p>
-<p>Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces:</p>
+<p>You should already have a free account at <a href="https://posit.cloud/">posit.cloud</a>, following the instructions in the PDF (<code>BIO-6013A Posit.cloud 20250905.pdf</code>) that I linked to previously on Announcements. It is in the Practicals folder on BB.</p>
+<p>After signing into Posit Cloud, join the workspace <code>BIO-6013A/7004A 2025</code> with this link:</p>
+<p><a href="https://posit.cloud/spaces/650296/join?access_code=dZrtj5cFp6I2AXz2gld7BbEyz9Fltt_R4d9mWzHl">https://posit.cloud/spaces/650296/join?access_code=dZrtj5cFp6I2AXz2gld7BbEyz9Fltt_R4d9mWzHl</a></p>
+<p>Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces (something like the image but not exactly):</p>
 <ul>
 <li>Your Workspace</li>
-<li>BIO-6013A/7004A</li>
+<li>BIO-6013A/7004A 2025</li>
 </ul>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 <img src="images/posit_workspaces.png" alt="Screen for when you first login to Posit Cloud" width="90%" />
@@ -250,11 +250,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 1.1: Screen for when you first login to Posit Cloud
 </p>
 </div>
-<p>Click on <code>6013A-Bioinformatics Skills I and II</code>:</p>
+<p>Click on <code>1-2. 6013A-Bioinformatics Skills I and II</code>:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="images/Assignment_link.png" alt="Click on the 6013A-Bioinformatics Skills I and II workspace" width="90%" />
+<img src="images/Assignment_link.png" alt="Click on the 1-2. 6013A-Bioinformatics Skills I and II workspace" width="90%" />
 <p class="caption">
-Figure 1.2: Click on the 6013A-Bioinformatics Skills I and II workspace link
+Figure 1.2: Click on the 1-2. 6013A-Bioinformatics Skills I and II workspace link
 </p>
 </div>
 <p>This will create a copy of the RStudio project, and it should look something like this.</p>
@@ -264,7 +264,7 @@ Figure 1.2: Click on the 6013A-Bioinformatics Skills I and II workspace link
 Figure 1.3: Default RStudio workspace
 </p>
 </div>
-<p>Go to Tools/Global Options and customise the workspace to look like this illustration. There are instructions on <code>BIO-6013A Posit.cloud.pdf</code>.</p>
+<p>Go to Tools/Global Options and customise the workspace to look like this illustration. There are instructions on <code>BIO-6013A Posit.cloud 20250905.pdf</code>.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="images/customise_workspace.png" alt="Customisation of the RStudio workspace" width="90%" />
 <p class="caption">
@@ -300,42 +300,42 @@ Figure 1.4: Customisation of the RStudio workspace
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
