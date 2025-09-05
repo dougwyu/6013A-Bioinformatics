@@ -26,24 +26,24 @@ Handling **big data** means you need to know how to operate on remote computing 
 
 These bioinformatics workshops will be run through RStudio in the Cloud, which is created by the company Posit. 
 
-You should already have a free account at [posit.cloud](https://posit.cloud/), following the instructions in the PDF (`BIO-6013A Posit.cloud.pdf`) that I posted previously on Announcements.
+You should already have a free account at [posit.cloud](https://posit.cloud/), following the instructions in the PDF (`BIO-6013A Posit.cloud 20250905.pdf`) that I linked to previously on Announcements. It is in the Practicals folder on BB.
 
-After signing into Posit Cloud, join the workspace `BIO 6013A` with this link:
+After signing into Posit Cloud, join the workspace `BIO-6013A/7004A 2025` with this link:
 
-[https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX](https://posit.cloud/spaces/83242/join?access_code=KdnoYkm_NjGCQTX_BOlBC3bdBL99F8ePrbKJYHsX).
+[https://posit.cloud/spaces/650296/join?access_code=dZrtj5cFp6I2AXz2gld7BbEyz9Fltt_R4d9mWzHl](https://posit.cloud/spaces/650296/join?access_code=dZrtj5cFp6I2AXz2gld7BbEyz9Fltt_R4d9mWzHl)
 
-Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces:
+Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces (something like the image but not exactly):
 
 * Your Workspace
-* BIO-6013A/7004A
+* BIO-6013A/7004A 2025
 
 ```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Screen for when you first login to Posit Cloud", fig.cap ="Screen for when you first login to Posit Cloud"}
 knitr::include_graphics("images/posit_workspaces.png")
 ```
 
-Click on `6013A-Bioinformatics Skills I and II`:
+Click on `1-2. 6013A-Bioinformatics Skills I and II`:
 
-```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Click on the 6013A-Bioinformatics Skills I and II workspace", fig.cap ="Click on the 6013A-Bioinformatics Skills I and II workspace link"}
+```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Click on the 1-2. 6013A-Bioinformatics Skills I and II workspace", fig.cap ="Click on the 1-2. 6013A-Bioinformatics Skills I and II workspace link"}
 knitr::include_graphics("images/Assignment_link.png")
 ```
 
@@ -53,7 +53,7 @@ This will create a copy of the RStudio project, and it should look something lik
 knitr::include_graphics("images/default_rstudio.png")
 ```
 
-Go to Tools/Global Options and customise the workspace to look like this illustration. There are instructions on `BIO-6013A Posit.cloud.pdf`. 
+Go to Tools/Global Options and customise the workspace to look like this illustration. There are instructions on `BIO-6013A Posit.cloud 20250905.pdf`. 
 
 ```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Customisation of the RStudio workspace", fig.cap ="Customisation of the RStudio workspace"}
 knitr::include_graphics("images/customise_workspace.png")

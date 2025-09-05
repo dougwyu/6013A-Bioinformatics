@@ -11,7 +11,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This bookdown project is hosted here:
+This bookdown project is hosted on github here:
 <https://github.com/dougwyu/6013A-Bioinformatics>
 
 and is deployed here:
@@ -31,7 +31,7 @@ which was forked from Phil and Ellen's original version at
 
   https://github.com/UEABIO/6013A-Bioinformatics
 
-I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my Posit Cloud account, and it is located in the BIO-6013A/7004A Workspace as "6013A-Bioinformatics Skills I and II bookdown"
+I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my Posit Cloud account, and it is located in the "Your Workspace" as "6013A-Bioinformatics Skills I and II bookdown"
 
 I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token())
 
