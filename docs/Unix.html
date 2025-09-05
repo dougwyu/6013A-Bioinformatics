@@ -311,7 +311,7 @@ a way to set options for a function, a specific type of argument usually precede
 <h2><span class="header-section-number">2.3</span> Getting started<a href="Unix.html#getting-started-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before we get started we need a terminal to work in.</p>
 <ul>
-<li>Click on the <code>6013A-Bioinformatics Skills I and II</code> RStudio Project in your <code>BIO-6013A</code> workspace</li>
+<li>Click on the <code>1-2. 6013A-Bioinformatics Skills I and II</code> RStudio Project in your <code>BIO-6013A</code> workspace</li>
 <li>Click on the <code>Terminal</code> tab next to <code>Console</code> tab in the RStudio GUI. This opens a command-line <em>Shell</em></li>
 </ul>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
@@ -330,8 +330,8 @@ Figure 2.1: Here is an example of the Terminal tab, right next to the R console
 <h2><span class="header-section-number">2.4</span> A few foundational rules<a href="Unix.html#a-few-foundational-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>Spaces are special and break things apart. As a rule it is better to have functions and file names with dashes (-) or underscores (_) where you want space to be. Thus, “draft_v3.txt” refers to one file, while “draft v3.txt” refers to <em>two</em> files: draft and v3.txt.</p></li>
-<li><p>The general syntax on the bash command line is: <code>command argument</code>. Argument is a special term and it means all the extra text bits that customise your command. This is similar to R except we don’t use brackets e.g. in R we put the arguments inside parentheses <code>command(argument)</code></p></li>
-<li><p>Arguments can be <strong>optional</strong> e.g. if their is a default argument you may not have to write anything. Some functions <em>require</em> that arguments are specified. Again this is just like R.</p></li>
+<li><p>The general syntax on the bash command line is: <code>command argument</code>. Argument is a special term, and it means all the extra text bits that customise your command. This is similar to R except we don’t use brackets e.g. in R we put the arguments inside parentheses <code>command(argument)</code></p></li>
+<li><p>Arguments can be <strong>optional</strong> e.g. if there is a default argument you may not have to write anything. Some functions <em>require</em> that arguments be specified. Again this is just like R.</p></li>
 </ul>
 </div>
 <div id="lets-get-started" class="section level2 hasAnchor" number="2.5">
@@ -363,7 +363,7 @@ Figure 2.2: It should look like this:
 <li><p><code>ls -l</code> lists the files in the working directory, and the <code>-l</code> asks for a particular format that I like. Can you see the new directory called <code>unix_intro</code>?</p></li>
 <li><p><code>cd</code> changes your working directory so we <em>land</em> in the new folder we have made. # When we write the name of a directory in Unix, we have the option to add a <code>/</code> at the end of the name. This slash is only decorative, but it’s useful when you are reading bash scripts.</p></li>
 </ul>
-<p>Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, it is ctrl-alt-enter. You can find these keyboard shortcuts (and many others) under Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu. Alternatively, you can read and type the command, which might help you learn the command better.</p>
+<p>Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, it is ctrl-alt-enter. You can find these keyboard shortcuts (and many others) under Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu. Alternatively, you can read and type the command, which will help you learn the command better.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="Unix.html#cb4-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> <span class="at">-o</span> unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746</span>
 <span id="cb4-2"><a href="Unix.html#cb4-2" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="Unix.html#cb4-3" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzvf</span> unix_intro.tar.gz</span>
@@ -405,7 +405,7 @@ inside the Terminal
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="Unix.html#cb6-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 example.txt</span></code></pre></div>
 <p>How would we know we needed the <code>-n</code> flag for that? There are a few ways to find out. Many standard Unix commands and other programs will have built-in help menus that we can access by providing –help as the only argument:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="Unix.html#cb7-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">--help</span></span></code></pre></div>
-<p>Well, as it happens, the command <code>head</code> does not have a help menu, but it still gives you some help when you try.</p>
+<p>Read the help menu for the command <code>head</code>. It explains the default behaviour (show the top 10 lines) and describes the arguments.</p>
 <p>Again this is very similar to the logic in which R commands are structured e.g. <code>?ggplot</code> The syntax is similar even if the specific icons or arguments are different.</p>
 <p>Remember just like with R, one of your best friends is Google! As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!</p>
 </div>
@@ -413,7 +413,7 @@ inside the Terminal
 <div id="unix-file-structure" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Unix File Structure<a href="Unix.html#unix-file-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are two special locations in all Unix-based systems: the “root” location and the current user’s “home” location. “Root” is where the address system of the computer starts; “home” is usually where the current user’s location starts.</p>
-<p>Just to be awkward, Posit Cloud actually has us working in a different location “Cloud”, which is underneath Root but separate to home which would be in the “Users” folder.</p>
+<p>Just to be awkward, Posit Cloud actually has us working in a different location “Cloud”, which is inside Root but separate to home, which would be in the “Users” folder.</p>
 <p><img src="images/file_system_structure.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>We tell the command line where files and directories are located by pre-pending the file name with the list of directories that hold them, known as the file’s “path”. If we use the <code>pwd</code> command (for print working directory), we can find out what the path is for the directory we are sitting in. Our working directory is also visible to the left of the $ in the command line</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="Unix.html#cb8-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
@@ -441,7 +441,7 @@ inside the Terminal
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="Unix.html#cb12-1" tabindex="-1"></a><span class="fu">head</span> example.txt</span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="Unix.html#cb13-1" tabindex="-1"></a><span class="fu">head</span> notes.txt</span></code></pre></div>
 <p>Here the head command works fine on “example.txt”, but we get an error message when we call it on “notes.txt” telling us no such file or directory. If we run the <code>ls</code> command to list the contents of the current working directory, we can see the computer is absolutely right – spoiler alert: it usually is – and there is no file here named “notes.txt”.</p>
-<p>The ls command by default operates on the current working directory if we don’t specify any location, but we can tell it to list the contents of a different directory by providing it as a positional argument:</p>
+<p>The <code>ls</code> command by default operates on the current working directory if we don’t specify any location, but we can tell it to list the contents of a different directory by providing it as a positional argument:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="Unix.html#cb14-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lF</span></span></code></pre></div>
 <p>By running ls without each argument, can you understand what the -l and -F arguments are doing?</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="Unix.html#cb15-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lF</span> experiment</span></code></pre></div>
