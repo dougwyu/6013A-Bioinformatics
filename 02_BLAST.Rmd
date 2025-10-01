@@ -129,7 +129,7 @@ When we look at sequence data there are a number of file types that you will reg
 -   Line 2 - is the DNA sequence
 -   Line 3 - a '+' character (and sometimes a repeat of line 1)
 -   Line 4 - computer-readable information relating to the quality of each nucleotide in the sequence in line 2. Therefore, there are as many quality characters as sequence characters. The letters indicate the probability of error and are known as `phred` scores, coded as ASCII characters. For example, the phred ASCII code `A` translates to a score of 32, which means that there is a $1/1585$ probability that the nucleotide `G` is incorrect
--   See <https://en.wikipedia.org/wiki/Phred_quality_score> and <https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm>
+-   See <https://en.wikipedia.org/wiki/Phred_quality_score>
 
 An example of three sequences from an Illumina sequencer in fastq format is shown below. Note that there is no empty line between the three sequences.
 
