@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2025-09-05" />
+<meta name="date" content="2025-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -306,7 +306,7 @@ drwxrwx--- 2 r574796 rstudio-user 4096 Sep 22 06:56 refseq/</code></pre>
 <li>Line 2 - is the DNA sequence</li>
 <li>Line 3 - a ‘+’ character (and sometimes a repeat of line 1)</li>
 <li>Line 4 - computer-readable information relating to the quality of each nucleotide in the sequence in line 2. Therefore, there are as many quality characters as sequence characters. The letters indicate the probability of error and are known as <code>phred</code> scores, coded as ASCII characters. For example, the phred ASCII code <code>A</code> translates to a score of 32, which means that there is a <span class="math inline">\(1/1585\)</span> probability that the nucleotide <code>G</code> is incorrect</li>
-<li>See <a href="https://en.wikipedia.org/wiki/Phred_quality_score" class="uri">https://en.wikipedia.org/wiki/Phred_quality_score</a> and <a href="https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm" class="uri">https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm</a></li>
+<li>See <a href="https://en.wikipedia.org/wiki/Phred_quality_score" class="uri">https://en.wikipedia.org/wiki/Phred_quality_score</a></li>
 </ul>
 <p>An example of three sequences from an Illumina sequencer in fastq format is shown below. Note that there is no empty line between the three sequences.</p>
 <pre><code>@NB501793:9:H77L2BGX2:1:11101:26113:7113 1:N:0:ATCACGAT
