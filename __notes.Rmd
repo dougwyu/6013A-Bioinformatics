@@ -33,7 +33,7 @@ which was forked from Phil and Ellen's original version at
 
 I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my Posit Cloud account, and it is located in the "Your Workspace" as "6013A-Bioinformatics Skills I and II bookdown"
 
-I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token())
+I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token()) another test
 
 ```{r}
 gitcreds::gitcreds_set() # lets me add my personal access token to my Posit cloud, which gives me access to my github repo
