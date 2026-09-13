@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2025-10-01" />
+<meta name="date" content="2026-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,8 +63,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -74,7 +75,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -232,7 +233,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Unix is very likely the most fundamental skillset we can develop for bioinformatics (and beyond bioinformatics). Many of the most common and powerful bioinformatics approaches happen in this text-based environment, and having a solid foundation here can make everything we’re trying to learn and do much easier. This is a short introductory tutorial to help us get from being completely new to Unix up to being acquainted with it 🙂.</p>
 <div id="what-is-unixlinux" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> What is Unix/Linux?<a href="Unix.html#what-is-unixlinux" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>UNIX is a computer operating system. It was first developed in 1969 at Bell Labs. Unix is written in the programming language <code>C</code>. Unix is proprietary software, whereas Linux is <em>basically</em> a free and open-source version of Unix. Most supercomputers run Linux. Operationally Linux is almost identical to Unix, and so we refer to it under the umbrella term of “unix-like” systems. The ‘Li’ in Linux is from the person who led its creation, Linus Torvalds.</p>
+<p>UNIX is a computer operating system (OS). It was first developed in 1969 at Bell Labs. Unix is written in the programming language <code>C</code>. Unix is proprietary software, whereas Linux is <em>basically</em> a free and open-source version of Unix. Most supercomputers run Linux. Operationally Linux is almost identical to Unix, and so we refer to it under the umbrella term of “unix-like” systems. The ‘Li’ in Linux is from the person who led its creation, Linus Torvalds.</p>
+<p>LLMs (like Claude and Codex) run really well on Unix/Linux because this OS is entirely run by text commands, and LLMs generate text.</p>
 <div id="some-terms" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Some terms<a href="Unix.html#some-terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here are terms and concepts worth knowing.</p>
@@ -253,7 +255,7 @@ What it is
 shell
 </td>
 <td style="text-align:left;">
-The environment in which we communicate with a computer. A shell where you are pointing and clicking with a mouse is a Graphical User Interface (GUI) shell. A shell with only text input and output is a Command Line Interface (CLI) shell. A CLI shell has an associated programming language.
+The environment (= a window on your computer) in which we communicate with a computer. A shell where you are pointing and clicking with a mouse is a Graphical User Interface (GUI) shell. A shell with only text input and output is a Command Line Interface (CLI) shell. A CLI shell has an associated programming language.
 </td>
 </tr>
 <tr>
@@ -261,7 +263,7 @@ The environment in which we communicate with a computer. A shell where you are p
 server
 </td>
 <td style="text-align:left;">
-the computer where we host the data and programs that we are running. A server could be local, that is your own PC, or you could use a ‘remote’ server (a computer running in some other physical location), and you communicate with the remote server using your local PC. The reason to use a remote server is that they can be big computers that require a lot of power and cooling, which is most efficiently provided in specialised buildings. Another reason to use a remote server is that they can accommodate multiple users, and specialist administrators can be in charge of installing and maintaining one set of programs that are available to all users.
+The computer where we host the data and programs that we are running. A server could be local, that is your own PC, or you could use a ‘remote’ server (a computer running in some other physical location), and you communicate with the remote server using your local PC. The reason to use a remote server is that they can be big computers that require a lot of power and cooling, which is most efficiently provided in specialised buildings. Another reason to use a remote server is that they can accommodate multiple users, and specialist administrators can be in charge of installing and maintaining one set of programs that are available to all users.
 </td>
 </tr>
 <tr>
@@ -269,7 +271,7 @@ the computer where we host the data and programs that we are running. A server c
 bash
 </td>
 <td style="text-align:left;">
-the most common CLI shell used in unix-like OSs. the sh in bash stands for shell. You are using a combination GUI/CLI shell (called RStudio) running on your local PC to communicate with the Posit Cloud remote server, which runs R, bash, Python, C, and many, many programs that you link together with a series of commands, called a script. Thus, we say “We write bash scripts to run on the Linux server.”
+<code>bash</code> is the most common CLI shell used in unix-like OSs. the sh in bash stands for shell. You are using a combination GUI/CLI shell (called RStudio) running on your local PC to communicate with the Posit Cloud remote server, which runs R, bash, Python, C, and many, many programs that you link together with a series of commands, called a script. Thus, we say “We write bash scripts to run on the Linux server.”
 </td>
 </tr>
 <tr>
@@ -285,7 +287,7 @@ In the 1960s, the word terminal referred to TV+keyboard setups at the ends of lo
 flag
 </td>
 <td style="text-align:left;">
-a way to set options for a function, a specific type of argument usually preceded by a - (a dash)
+A way to set options for a function, a specific type of argument usually preceded by a - (a dash)
 </td>
 </tr>
 </tbody>
@@ -363,7 +365,8 @@ Figure 2.2: It should look like this:
 <li><p><code>ls -l</code> lists the files in the working directory, and the <code>-l</code> asks for a particular format that I like. Can you see the new directory called <code>unix_intro</code>?</p></li>
 <li><p><code>cd</code> changes your working directory so we <em>land</em> in the new folder we have made. # When we write the name of a directory in Unix, we have the option to add a <code>/</code> at the end of the name. This slash is only decorative, but it’s useful when you are reading bash scripts.</p></li>
 </ul>
-<p>Use the copy icon in the top right of the code block to copy all 3 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending commands to the terminal. On Macs, it is opt-cmd-enter. On Windows, it is ctrl-alt-enter. You can find these keyboard shortcuts (and many others) under Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu. Alternatively, you can read and type the command, which will help you learn the command better.</p>
+<p>Use the copy icon in the top right of the code block to copy all 5 commands and paste them into the Terminal. If this seems onerous to you, you are right. There is a keyboard shortcut for sending individual commands to the terminal. On Macs, it is <code>opt-cmd-enter</code>. On Windows, it is <code>ctrl-alt-enter</code>.</p>
+<p>You can find these keyboard shortcuts (and many others) under Tools/Keyboard Shortcuts Help/ and looking for Send to Terminal under the Execute submenu. Alternatively, you can read and type the command, which will help you learn the command better.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="Unix.html#cb4-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> <span class="at">-o</span> unix_intro.tar.gz https://ndownloader.figshare.com/files/15573746</span>
 <span id="cb4-2"><a href="Unix.html#cb4-2" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="Unix.html#cb4-3" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzvf</span> unix_intro.tar.gz</span>
@@ -407,7 +410,7 @@ inside the Terminal
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="Unix.html#cb7-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">--help</span></span></code></pre></div>
 <p>Read the help menu for the command <code>head</code>. It explains the default behaviour (show the top 10 lines) and describes the arguments.</p>
 <p>Again this is very similar to the logic in which R commands are structured e.g. <code>?ggplot</code> The syntax is similar even if the specific icons or arguments are different.</p>
-<p>Remember just like with R, one of your best friends is Google! As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!</p>
+<p>Remember just like with R, one of your best friends is an LLM! I have found that Google’s free AI answers work great for questions about Unix and R, because there is so much material on the web. As you get familiar with any language or OS we might remember a few flags or specific options, but searching for options and details when needed is definitely the norm!</p>
 </div>
 </div>
 <div id="unix-file-structure" class="section level2 hasAnchor" number="2.6">

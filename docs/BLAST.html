@@ -23,7 +23,7 @@
 <meta name="author" content="Philip Leftwich, Ellen Bell, Douglas Yu" />
 
 
-<meta name="date" content="2025-10-01" />
+<meta name="date" content="2026-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,8 +63,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -74,7 +75,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -229,10 +230,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><strong>Unix</strong> - An operating system analogous with Windows.</li>
 <li><strong>Shell</strong> - This is the interface we use to talk to the computer. If we are able to use the mouse to point and click we are using a Graphical User Interface (GUI). If we are only typing text commands, we are using a Command Line Interface (CLI). We will be using a CLI in these workshops.</li>
-<li><strong>Command-line and Terminal</strong> - A text-based environment for sending commands to a computer’s operating system or to an application. The terminal is the app that gives you access to the operating system’s command line. It’s called terminal because there literally used to be a tv screen at the end (terminus) of a cable from a mainframe computer.</li>
-<li><strong>bash</strong> - For the operating system to understand your commands, you need to follow a set of rules (known as a syntax), which collectively are known as a language. bash is one of these languages. When you write a series of bash-syntax commands, it is known as a bash script. Scripts are used to automate large amounts of bioinformatic work. Often, we use the term pipeline instead of script, because we think of bioinformatic work as moving data files from one transformation to the next, connected by pipes. In fact, bash has a pipe character that does exactly this: <code>|</code>. (This is not a number 1 or the capital letter I. It is a separate character on your keyboard.</li>
+<li><strong>Terminal</strong> - Terminal refers to an app (or just a tab inside Posit Cloud) for sending text-based commands to Unix or to an application running on Unix. It’s called terminal because the app used to be a physical TV and keyboard at the end (terminus) of a cable running from a mainframe computer.</li>
+<li><strong>bash</strong> - For the operating system to understand your commands, you need to follow a set of grammatical rules (known as a syntax), which collectively are known as a language. bash is one of these languages. When you write a series of bash-syntax commands, it is known as a bash script. Scripts are used to automate large amounts of bioinformatic work. Often, we use the term pipeline instead of script, because we think of bioinformatic work as moving data files from one transformation to the next, connected by pipes. In fact, bash has a pipe character that does exactly this: <code>|</code>. (This is not a number 1 or the capital letter I. It is a separate character on your keyboard. Look for it.)</li>
 </ul>
-<p>Make sure that you are working in the <strong>Terminal</strong>, where you will run commands in the bash language, and NOT in the Console, which is RStudio’s name for a special terminal that runs the R language. You will be running commands in the <strong>Terminal</strong>. (N.B. If RStudio goes to sleep and you resume it, RStudio will put you in the Console, not the Terminal, so you have to click on the Terminal tab to get back to the Terminal.)</p>
+<p>Make sure that you are working in the <strong>Terminal</strong> tab, where you will run commands in the bash language, and NOT in the Console, which is RStudio’s name for a special terminal that only runs the R language. You will be running commands in the <strong>Terminal</strong>. (N.B. If RStudio goes to sleep and you resume it, RStudio will put you in the Console, not the Terminal, so you have to click on the Terminal tab to get back to the Terminal.)</p>
 <div id="directories-and-their-structure" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Directories and their structure<a href="BLAST.html#directories-and-their-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Working with text-based interfaces, where you are writing and running commands, means that we need to have some understanding of how files are organised within directories (“folders”) and why it’s important to know which directory you are working in. Basically, you cannot open a file by pointing at it in a window. You need to write down the address to the file, which is known as the file’s <em>path</em>. To do that, you need to have a starting point for the path.</p>
