@@ -11,32 +11,30 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This bookdown project is hosted on github here:
-<https://github.com/dougwyu/6013A-Bioinformatics>
+This bookdown project is hosted on github here: <https://github.com/dougwyu/6013A-Bioinformatics>
 
-and is deployed here:
-<https://dougwyu.github.io/6013A-Bioinformatics/index.html>
+and is deployed here: <https://dougwyu.github.io/6013A-Bioinformatics/index.html>
 
 ```{r}
 git2r::repository(here::here())
 ```
 
-Use my Github account to sign into the correct Posit Cloud account for the class. 
+Use my Github account to sign into the correct Posit Cloud account for the class.
 
 The code for the practical instructions is hosted on Doug's Github account at
 
-  https://github.com/dougwyu/6013A-Bioinformatics
+<https://github.com/dougwyu/6013A-Bioinformatics>
 
-which was forked from Phil and Ellen's original version at 
+which was forked from Phil and Ellen's original version at
 
-  https://github.com/UEABIO/6013A-Bioinformatics
+<https://github.com/UEABIO/6013A-Bioinformatics>
 
-I have cloned https://github.com/dougwyu/6013A-Bioinformatics to my Posit Cloud account, and it is located in the "Your Workspace" as "6013A-Bioinformatics Skills I and II bookdown"
+I have cloned <https://github.com/dougwyu/6013A-Bioinformatics> to my Posit Cloud account, and it is located in the "Your Workspace" as "6013A-Bioinformatics Skills I and II bookdown"
 
-I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token()) 
+I need to ensure that i have an up-to-date Personal Access Token (PAT), which I use instead of a password when pushing. Details are here (<https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls>). To create a new PAT, follow the instructions in my R_command_history.Rmd file (search for usethis::create_github_token())
 
 ```{r}
-gitcreds::gitcreds_set() # lets me add my personal access token to my Posit cloud, which gives me access to my github repo
+gitcreds::gitcreds_set() # lets me add my fine-grained personal access token to my Posit cloud, which gives me access to my github repo
 # choose:  "2. Replace these credentials", and paste in the new PAT. 
 
 # RECORD THE PAT BECAUSE YOU MIGHT NEED IT THE FIRST TIME YOU TRY TO PUSH. FOR SOME REASON, THE POSIT CLOUD SESSION DOESN'T READ THE PAT FROM GITCREDS, AT LEAST THE FIRST TIME
@@ -44,29 +42,34 @@ gitcreds::gitcreds_set() # lets me add my personal access token to my Posit clou
 usethis::git_vaccinate() # Adds .DS_Store, .quarto, .Rproj.user, .Rdata, .Rhistory, and .httr-oauth to your global (a.k.a. user-level) .gitignore. This is good practice as it decreases the chance that you will accidentally leak credentials to GitHub. git_vaccinate() also tries to detect and fix the situation where you have a global gitignore file, but it's missing from your global Git config.
 ```
 
+debugging PAT problems:
+
+| Problem | Fix |
+|----|----|
+| credential.helper=credential-manager (doesn't exist on Posit Cloud) | git config --global --unset-all credential.helper |
+| Global URL rewrite silently substituted a dead classic PAT (ghp_tBtcFpXLSVG...) into every GitHub URL | git config --global --unset-all url.<that URL>.insteadOf (now clean) |
+| .Renviron didn't load into bash on Posit Cloud, so \$GITHUB_PAT in the terminal stayed stale | Pushed via R instead, using Sys.getenv("GITHUB_PAT") to embed the fresh fine-grained PAT into the URL |
+
 To edit the workshop files, push to GitHub, and publish on github.io, do the following:
 
-  1. open the "6013A-Bioinformatics Skills I and II bookdown" project (click on 6013A-Bioinformatics.Rproj)
-  
-  2. edit *.Rmd files
-  	index.Rmd # Section 1 (this is the introduction)
-  	01-intro.Rmd # Section 2
-  	02_BLAST.Rmd # Section 3
-  	
-  3. git commit and push those changes.  This is only for version control, i.e. this only pushes the changes to https://github.com/dougwyu/6013A-Bioinformatics
-  
-  4. go to the Build tab and click on arrow next to Build Book and click on bookdown::gitbook
-  
-  	This will cause changes to files in the /docs directory. 
-  
-  5. git commit and push those changes (there will be be a lot of changes to commit). In about a minute, the dougwyu.github.io pages will change.
+1.  open the "6013A-Bioinformatics Skills I and II bookdown" project (click on 6013A-Bioinformatics.Rproj)
 
+2.  edit \*.Rmd files index.Rmd \# Section 1 (this is the introduction) 01-intro.Rmd \# Section 2 02_BLAST.Rmd \# Section 3
 
-An explanation for how to publish a bookdown project to github.io
-https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7
+3.  git commit and push those changes. This is only for version control, i.e. this only pushes the changes to <https://github.com/dougwyu/6013A-Bioinformatics>
 
+4.  go to the Build tab and click on arrow next to Build Book and click on bookdown::gitbook
+
+```         
+This will cause changes to files in the /docs directory. 
+```
+
+5.  git commit and push those changes (there will be be a lot of changes to commit). In about a minute, the dougwyu.github.io pages will change.
+
+An explanation for how to publish a bookdown project to github.io <https://community.rstudio.com/t/hosting-bookdown-in-github/20427/7>
 
 Reference code chunk for installing some of the more obscure R packages
+
 ```{r}
 remotes::install_github("rlesur/klippy")
 
@@ -76,7 +79,6 @@ BiocManager::install(version = "3.17")
 BiocManager::install(c("GenomicFeatures", "AnnotationDbi"))
 BiocManager::install(c("phyloseq"))
 ```
-
 
 ```{r install packages, eval=FALSE}
 remotes::install_bioc("Biostrings")  
