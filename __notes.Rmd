@@ -27,7 +27,7 @@ The code for the practical instructions is hosted on Doug's Github account at
 
   https://github.com/dougwyu/6013A-Bioinformatics
 
-which was forked from Phil and Ellen's original version at
+which was forked from Phil and Ellen's original version at 
 
   https://github.com/UEABIO/6013A-Bioinformatics
 
