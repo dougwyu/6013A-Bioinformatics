@@ -28,14 +28,14 @@ These bioinformatics workshops will be run through RStudio in the Cloud, which i
 
 You should already have a free account at [posit.cloud](https://posit.cloud/), following the instructions in the PDF (`BIO-6013A Posit.cloud 20250905.pdf`) that I linked to previously on Announcements. It is in the Practicals folder on BB.
 
-After signing into Posit Cloud, join the workspace `BIO-6013A/7004A 2025` with this link:
+After signing into Posit Cloud, join the workspace `BIO-6013A/7004A 2026` with this link:
 
-[https://posit.cloud/spaces/650296/join?access_code=dZrtj5cFp6I2AXz2gld7BbEyz9Fltt_R4d9mWzHl](https://posit.cloud/spaces/650296/join?access_code=dZrtj5cFp6I2AXz2gld7BbEyz9Fltt_R4d9mWzHl)
+[https://posit.cloud/spaces/808311/join?access_code=73C_hScLirPP91zeTBpJrKKtWAYDMO3QZnBGCi3k](https://posit.cloud/spaces/808311/join?access_code=73C_hScLirPP91zeTBpJrKKtWAYDMO3QZnBGCi3k)
 
 Copy and paste the above link in your browser. Posit will ask you if you want to join the workspace. Say yes. You should now see two spaces (something like the image but not exactly):
 
 * Your Workspace
-* BIO-6013A/7004A 2025
+* BIO-6013A/7004A 2026
 
 ```{r, eval=TRUE, echo=FALSE, out.width="90%", fig.alt= "Screen for when you first login to Posit Cloud", fig.cap ="Screen for when you first login to Posit Cloud"}
 knitr::include_graphics("images/posit_workspaces.png")
