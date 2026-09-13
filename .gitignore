@@ -2,15 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-placeholder.Rcheck/
+**/*.Rcheck/
 placeholder*.tar.gz
 placeholder*.tgz
 unix_intro
-placeholder.Rcheck/
-placeholder.Rcheck/
-placeholder.Rcheck/
-placeholder.Rcheck/
-placeholder.Rcheck/
-placeholder.Rcheck/
-placeholder.Rcheck/
-placeholder.Rcheck/
+*.bak
