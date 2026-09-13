@@ -45,7 +45,7 @@ usethis::git_vaccinate() # Adds .DS_Store, .quarto, .Rproj.user, .Rdata, .Rhisto
 debugging PAT problems:
 
 | Problem | Fix |
-|----|----|
+|------------------------------------|------------------------------------|
 | credential.helper=credential-manager (doesn't exist on Posit Cloud) | git config --global --unset-all credential.helper |
 | Global URL rewrite silently substituted a dead classic PAT (ghp_tBtcFpXLSVG...) into every GitHub URL | git config --global --unset-all url.<that URL>.insteadOf (now clean) |
 | .Renviron didn't load into bash on Posit Cloud, so \$GITHUB_PAT in the terminal stayed stale | Pushed via R instead, using Sys.getenv("GITHUB_PAT") to embed the fresh fine-grained PAT into the URL |
@@ -54,7 +54,7 @@ To edit the workshop files, push to GitHub, and publish on github.io, do the fol
 
 1.  open the "6013A-Bioinformatics Skills I and II bookdown" project (click on 6013A-Bioinformatics.Rproj)
 
-2.  edit \*.Rmd files index.Rmd \# Section 1 (this is the introduction) 01-intro.Rmd \# Section 2 02_BLAST.Rmd \# Section 3
+2.  edit \*.Rmd files `index.Rmd` \# Section 1 (this is the introduction) `01-intro.Rmd` \# Section 2 `02_BLAST.Rmd` \# Section 3
 
 3.  git commit and push those changes. This is only for version control, i.e. this only pushes the changes to <https://github.com/dougwyu/6013A-Bioinformatics>
 
